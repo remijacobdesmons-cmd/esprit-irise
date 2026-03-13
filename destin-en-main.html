@@ -314,8 +314,13 @@
           <div class="form-section-title">🌿 La personne concernée par le guide</div>
 
           <div class="form-group">
-            <label for="nom_prenom">Nom d'usage et prénom(s) <span class="req">*</span></label>
-            <input type="text" id="nom_prenom" name="nom_prenom" placeholder="Ex : Marie DUPONT" required>
+            <label for="nom_usage">Nom d'usage (époux/adoption) et prénom(s) <span class="req">*</span></label>
+            <input type="text" id="nom_usage" name="nom_usage" placeholder="Ex : Marie DUPONT" required>
+          </div>
+
+          <div class="form-group">
+            <label for="nom_naissance">Nom de naissance</label>
+            <input type="text" id="nom_naissance" name="nom_naissance" placeholder="Ex : Marie MARTIN (si différent du nom d'usage)">
           </div>
 
           <div class="form-group">
@@ -332,7 +337,7 @@
           <div class="form-section-title">✨ Situation & contexte</div>
 
           <div class="form-group">
-            <label for="situation">Situation professionnelle</label>
+            <label for="situation">Situation professionnelle (statut actuel)</label>
             <select id="situation" name="situation">
               <option value="">Choisissez…</option>
               <option value="Étudiant(e)">Étudiant(e)</option>
@@ -345,13 +350,23 @@
           </div>
 
           <div class="form-group">
-            <label for="precisions_situation">Précisions sur votre situation (optionnel)</label>
-            <textarea id="precisions_situation" name="precisions_situation" placeholder="Quelques mots sur votre parcours, votre contexte actuel…"></textarea>
+            <label for="metier_actuel">Métier actuel</label>
+            <input type="text" id="metier_actuel" name="metier_actuel" placeholder="Ex : Infirmière, comptable, artisan plombier…">
           </div>
 
           <div class="form-group">
-            <label for="animal">Votre animal préféré</label>
+            <label for="metiers_exerces">Métiers exercés par le passé (optionnel)</label>
+            <textarea id="metiers_exerces" name="metiers_exerces" placeholder="Listez les métiers ou domaines que vous avez exercés au cours de votre vie…"></textarea>
+          </div>
+
+          <div class="form-group">
+            <label for="animal">Animal préféré</label>
             <input type="text" id="animal" name="animal" placeholder="Ex : Le loup, le dauphin, l'aigle…">
+          </div>
+
+          <div class="form-group">
+            <label for="couleur">Couleur préférée</label>
+            <input type="text" id="couleur" name="couleur" placeholder="Ex : Le bleu nuit, le vert forêt, le rouge…">
           </div>
 
           <!-- BLOC 4 : ATTENTES -->
@@ -382,7 +397,7 @@
     <div class="footer-grid">
       <div>
         <div class="footer-logo">Esprit irisé</div>
-        <p class="footer-tagline">École de vie intérieure · Formations holistiques<br>Science, Corps & Sens de la vie<br><br>Tresson, 72440 · Sarthe</p>
+        <p class="footer-tagline">École de vie intérieure · Formations holistiques<br>Science, Corps & Sens de la vie<br><br>Sarthe · France</p>
       </div>
       <div class="footer-col">
         <h5>Pages</h5>
@@ -414,7 +429,7 @@
 
       const email    = document.getElementById('email');
       const adresse  = document.getElementById('adresse');
-      const nom      = document.getElementById('nom_prenom');
+      const nom      = document.getElementById('nom_usage');
       const naiss    = document.getElementById('naissance');
       const attentes = document.getElementById('attentes');
       const civilite = document.querySelector('input[name="civilite"]:checked');
@@ -444,12 +459,15 @@
           email:                 email.value,
           adresse:               adresse.value,
           achat_pour:            achat.value,
-          nom_prenom:            nom.value,
+          nom_usage:             document.getElementById('nom_usage').value,
+          nom_naissance:         document.getElementById('nom_naissance').value,
           naissance:             naiss.value,
           fratrie:               document.getElementById('fratrie').value,
           situation:             document.getElementById('situation').value,
-          precisions_situation:  document.getElementById('precisions_situation').value,
+          metier_actuel:         document.getElementById('metier_actuel').value,
+          metiers_exerces:       document.getElementById('metiers_exerces').value,
           animal:                document.getElementById('animal').value,
+          couleur:               document.getElementById('couleur').value,
           attentes:              attentes.value,
           complementaires:       document.getElementById('complementaires').value
         })
@@ -468,14 +486,4 @@
       })
       .finally(() => {
         btn.disabled = false;
-        btn.textContent = '🪄 Envoyer mon questionnaire';
-      });
-    });
-
-    document.getElementById('popupConfirm').addEventListener('click', function(e) {
-      if (e.target === this) this.style.display = 'none';
-    });
-  </script>
-
-</body>
-</html>
+        btn
