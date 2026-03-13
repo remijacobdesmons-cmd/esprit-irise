@@ -1,0 +1,810 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Réserver une séance — Esprit Irisé · Alicia Desmons</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Raleway:wght@200;300;400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --marine:      #1B3A5C;
+      --deep:        #0F2540;
+      --canard:      #2A7F8A;
+      --turquoise:   #6ECECE;
+      --turquoise-2: #3A9E9E;
+      --or:          #C4A35A;
+      --or-deep:     #B8963E;
+      --iris-3:      #B8C4E8;
+      --iris-4:      #C9B8E8;
+      --light:       #F0F7FA;
+      --muted:       #6B8CAE;
+      --text:        #1B3A5C;
+      --white:       #FFFFFF;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Raleway', sans-serif;
+      font-weight: 300;
+      color: var(--text);
+      background: var(--white);
+      overflow-x: hidden;
+    }
+
+    /* ─── NAV ─────────────────────────────── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1.2rem 4rem;
+      background: rgba(255,255,255,0.92);
+      backdrop-filter: blur(18px);
+      border-bottom: 1px solid rgba(110,206,206,0.2);
+    }
+    .nav-logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.5rem;
+      font-weight: 300;
+      letter-spacing: 0.12em;
+      text-decoration: none;
+      background: linear-gradient(120deg, var(--marine), var(--turquoise));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .nav-links { display: flex; gap: 2.5rem; list-style: none; align-items: center; }
+    .nav-links a {
+      text-decoration: none;
+      font-size: 0.75rem;
+      font-weight: 400;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--marine);
+      transition: color 0.3s;
+    }
+    .nav-links a:hover { color: var(--turquoise); }
+    .nav-cta {
+      background: linear-gradient(135deg, var(--turquoise), var(--turquoise-2)) !important;
+      color: var(--marine) !important;
+      padding: 0.5rem 1.4rem;
+      border-radius: 2rem;
+      font-weight: 500 !important;
+      -webkit-text-fill-color: var(--marine) !important;
+    }
+
+    /* ─── HERO PAGE ───────────────────────── */
+    .page-hero {
+      min-height: 52vh;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      text-align: center;
+      padding: 10rem 2rem 5rem;
+      position: relative;
+      overflow: hidden;
+      background: linear-gradient(160deg, var(--deep) 0%, var(--marine) 55%, var(--canard) 100%);
+    }
+    .hero-orb {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(80px);
+      pointer-events: none;
+    }
+    .orb-1 {
+      width: 500px; height: 500px;
+      background: radial-gradient(circle, rgba(110,206,206,0.2), transparent 70%);
+      top: -10%; left: -10%;
+      animation: float 8s ease-in-out infinite;
+    }
+    .orb-2 {
+      width: 350px; height: 350px;
+      background: radial-gradient(circle, rgba(196,163,90,0.15), transparent 70%);
+      bottom: 0; right: -5%;
+      animation: float 10s ease-in-out infinite reverse;
+    }
+    @keyframes float {
+      0%, 100% { transform: translateY(0) scale(1); }
+      50% { transform: translateY(-25px) scale(1.04); }
+    }
+    .page-hero-content { position: relative; z-index: 2; max-width: 700px; }
+    .hero-eyebrow {
+      font-size: 0.68rem;
+      font-weight: 300;
+      letter-spacing: 0.45em;
+      text-transform: uppercase;
+      color: rgba(110,206,206,0.7);
+      margin-bottom: 1.5rem;
+      opacity: 0;
+      animation: fadeUp 0.9s ease 0.1s forwards;
+    }
+    .page-hero h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2.5rem, 5.5vw, 4rem);
+      font-weight: 300;
+      line-height: 1.15;
+      color: white;
+      margin-bottom: 1.5rem;
+      opacity: 0;
+      animation: fadeUp 0.9s ease 0.3s forwards;
+    }
+    .page-hero h1 em {
+      font-style: italic;
+      background: linear-gradient(135deg, var(--turquoise), var(--iris-4), var(--or));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .page-hero p {
+      font-size: 0.95rem;
+      font-weight: 200;
+      line-height: 1.85;
+      color: rgba(255,255,255,0.7);
+      opacity: 0;
+      animation: fadeUp 0.9s ease 0.5s forwards;
+    }
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(18px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ─── SÉPARATEUR ─────────────────────── */
+    .iris-divider {
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--deep), var(--turquoise), var(--iris-4), var(--or), transparent);
+      opacity: 0.6;
+      border: none;
+    }
+
+    /* ─── CONTAINER ─────────────────────── */
+    section { padding: 6rem 2rem; }
+    .container { max-width: 1100px; margin: 0 auto; }
+    .section-label {
+      font-size: 0.65rem;
+      font-weight: 400;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      color: var(--muted);
+      display: block;
+      margin-bottom: 0.8rem;
+    }
+    .section-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 300;
+      color: var(--marine);
+      line-height: 1.2;
+      margin-bottom: 1rem;
+    }
+    .section-title em {
+      font-style: italic;
+      background: linear-gradient(135deg, var(--turquoise), var(--or));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .section-sub {
+      font-size: 0.95rem;
+      font-weight: 300;
+      color: var(--muted);
+      line-height: 1.8;
+      max-width: 560px;
+      margin-bottom: 3rem;
+    }
+
+    /* ─── SÉANCES OFFRES ─────────────────── */
+    .offres-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem;
+      margin-bottom: 4rem;
+    }
+    .offre-card {
+      border: 1px solid rgba(110,206,206,0.2);
+      border-radius: 1.4rem;
+      padding: 2.5rem 2rem;
+      background: white;
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .offre-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--turquoise), var(--or));
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+    .offre-card:hover { transform: translateY(-5px); box-shadow: 0 20px 50px rgba(110,206,206,0.18); }
+    .offre-card:hover::before { opacity: 1; }
+    .offre-card.featured {
+      border-color: rgba(196,163,90,0.35);
+      background: linear-gradient(145deg, rgba(196,163,90,0.04), rgba(110,206,206,0.04));
+    }
+    .offre-card.featured::before { opacity: 1; background: linear-gradient(90deg, var(--or), var(--turquoise)); }
+    .badge-featured {
+      display: inline-block;
+      background: linear-gradient(135deg, var(--or), var(--or-deep));
+      color: white;
+      font-size: 0.6rem;
+      font-weight: 500;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      padding: 0.3rem 0.8rem;
+      border-radius: 2rem;
+      margin-bottom: 1.2rem;
+    }
+    .offre-icon { font-size: 2rem; margin-bottom: 1rem; }
+    .offre-titre {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.5rem;
+      font-weight: 400;
+      color: var(--marine);
+      margin-bottom: 0.5rem;
+    }
+    .offre-sous-titre {
+      font-size: 0.72rem;
+      font-weight: 400;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 1.2rem;
+    }
+    .offre-desc {
+      font-size: 0.88rem;
+      font-weight: 300;
+      color: var(--muted);
+      line-height: 1.75;
+      margin-bottom: 1.5rem;
+    }
+    .offre-details { display: flex; flex-direction: column; gap: 0.5rem; margin-bottom: 1.8rem; }
+    .offre-detail {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-size: 0.8rem;
+      font-weight: 300;
+      color: var(--text);
+    }
+    .offre-detail span:first-child { color: var(--turquoise); font-size: 1rem; }
+    .offre-prix {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2rem;
+      font-weight: 300;
+      color: var(--marine);
+      margin-bottom: 0.3rem;
+    }
+    .offre-prix-note { font-size: 0.75rem; font-weight: 300; color: var(--muted); margin-bottom: 1.5rem; }
+    .btn-reserver {
+      display: block;
+      width: 100%;
+      text-align: center;
+      padding: 0.9rem 2rem;
+      border-radius: 3rem;
+      text-decoration: none;
+      font-size: 0.75rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      font-weight: 500;
+      background: linear-gradient(135deg, var(--turquoise), var(--turquoise-2));
+      color: var(--marine);
+      box-shadow: 0 4px 20px rgba(110,206,206,0.3);
+      transition: transform 0.25s, box-shadow 0.25s;
+      cursor: pointer;
+      border: none;
+    }
+    .btn-reserver:hover { transform: translateY(-2px); box-shadow: 0 8px 32px rgba(110,206,206,0.5); }
+    .btn-reserver-or {
+      background: linear-gradient(135deg, var(--or), var(--or-deep));
+      color: white;
+      box-shadow: 0 4px 20px rgba(196,163,90,0.3);
+    }
+    .btn-reserver-or:hover { box-shadow: 0 8px 32px rgba(196,163,90,0.5); }
+
+    /* ─── COMMENT ÇA MARCHE ──────────────── */
+    .comment {
+      background: linear-gradient(160deg, var(--deep) 0%, var(--marine) 60%, var(--canard) 100%);
+      color: white;
+      position: relative;
+      overflow: hidden;
+    }
+    .comment-orb-1 {
+      position: absolute;
+      width: 400px; height: 400px;
+      background: radial-gradient(circle, rgba(110,206,206,0.12), transparent);
+      border-radius: 50%; filter: blur(80px);
+      top: -20%; right: -10%; pointer-events: none;
+    }
+    .comment-orb-2 {
+      position: absolute;
+      width: 300px; height: 300px;
+      background: radial-gradient(circle, rgba(196,163,90,0.1), transparent);
+      border-radius: 50%; filter: blur(80px);
+      bottom: -10%; left: 20%; pointer-events: none;
+    }
+    .comment-label { color: rgba(110,206,206,0.7); }
+    .comment-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 300;
+      color: white;
+      line-height: 1.2;
+      margin-bottom: 3rem;
+    }
+    .comment-title em {
+      font-style: italic;
+      background: linear-gradient(135deg, var(--turquoise), var(--or));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .etapes { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 2rem; position: relative; z-index: 2; }
+    .etape {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(110,206,206,0.12);
+      border-radius: 1.2rem;
+      padding: 2rem 1.8rem;
+      transition: background 0.3s;
+    }
+    .etape:hover { background: rgba(255,255,255,0.09); }
+    .etape-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 3rem;
+      font-weight: 300;
+      background: linear-gradient(135deg, var(--turquoise), var(--or));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      line-height: 1;
+      margin-bottom: 1rem;
+    }
+    .etape-titre { font-size: 0.85rem; font-weight: 400; color: white; letter-spacing: 0.05em; margin-bottom: 0.6rem; }
+    .etape-texte { font-size: 0.82rem; font-weight: 200; color: rgba(255,255,255,0.6); line-height: 1.7; }
+
+    /* ─── FORMULAIRE ─────────────────────── */
+    .form-section { background: var(--light); }
+    .form-wrapper {
+      max-width: 680px;
+      margin: 0 auto;
+      background: white;
+      border-radius: 1.5rem;
+      padding: 3.5rem;
+      border: 1px solid rgba(110,206,206,0.2);
+      box-shadow: 0 8px 40px rgba(27,58,92,0.06);
+    }
+    .form-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2rem;
+      font-weight: 300;
+      color: var(--marine);
+      margin-bottom: 0.5rem;
+    }
+    .form-title em {
+      font-style: italic;
+      background: linear-gradient(135deg, var(--turquoise), var(--or));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .form-sous-titre { font-size: 0.85rem; font-weight: 300; color: var(--muted); margin-bottom: 2.5rem; }
+    .form-group { margin-bottom: 1.5rem; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem; }
+    label {
+      display: block;
+      font-size: 0.72rem;
+      font-weight: 400;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 0.5rem;
+    }
+    input, select, textarea {
+      width: 100%;
+      padding: 0.85rem 1.1rem;
+      border: 1px solid rgba(110,206,206,0.25);
+      border-radius: 0.75rem;
+      font-family: 'Raleway', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 300;
+      color: var(--text);
+      background: rgba(240,247,250,0.5);
+      outline: none;
+      transition: border-color 0.25s, box-shadow 0.25s;
+    }
+    input:focus, select:focus, textarea:focus {
+      border-color: var(--turquoise);
+      box-shadow: 0 0 0 3px rgba(110,206,206,0.12);
+      background: white;
+    }
+    textarea { resize: vertical; min-height: 120px; }
+    .form-submit {
+      width: 100%;
+      padding: 1rem;
+      border-radius: 3rem;
+      border: none;
+      font-family: 'Raleway', sans-serif;
+      font-size: 0.8rem;
+      font-weight: 500;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      background: linear-gradient(135deg, var(--turquoise), var(--turquoise-2));
+      color: var(--marine);
+      cursor: pointer;
+      box-shadow: 0 4px 20px rgba(110,206,206,0.35);
+      transition: transform 0.25s, box-shadow 0.25s;
+      margin-top: 1rem;
+    }
+    .form-submit:hover { transform: translateY(-2px); box-shadow: 0 8px 32px rgba(110,206,206,0.5); }
+    .form-note {
+      text-align: center;
+      font-size: 0.75rem;
+      font-weight: 300;
+      color: var(--muted);
+      margin-top: 1.2rem;
+      line-height: 1.6;
+    }
+
+    /* ─── FOOTER ──────────────────────────── */
+    footer {
+      background: var(--deep);
+      color: rgba(255,255,255,0.85);
+      padding: 4rem 2rem 2rem;
+    }
+    .footer-grid {
+      max-width: 1100px; margin: 0 auto;
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: 4rem;
+      padding-bottom: 3rem;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      margin-bottom: 2rem;
+    }
+    .footer-logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.5rem;
+      font-weight: 300;
+      letter-spacing: 0.12em;
+      background: linear-gradient(120deg, var(--turquoise), var(--or));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 0.8rem;
+    }
+    .footer-tagline { font-size: 0.75rem; font-weight: 200; color: rgba(255,255,255,0.45); line-height: 1.8; letter-spacing: 0.05em; }
+    .footer-col h5 { font-family: 'Raleway', sans-serif; font-size: 0.65rem; font-weight: 400; letter-spacing: 0.3em; text-transform: uppercase; color: rgba(255,255,255,0.4); margin-bottom: 1.2rem; }
+    .footer-col a { display: block; font-size: 0.82rem; font-weight: 200; color: rgba(255,255,255,0.75); text-decoration: none; margin-bottom: 0.6rem; transition: color 0.2s; }
+    .footer-col a:hover { color: var(--turquoise); }
+    .footer-bottom { max-width: 1100px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; font-size: 0.72rem; font-weight: 200; color: rgba(255,255,255,0.3); }
+
+    /* ─── RESPONSIVE ─────────────────────── */
+    @media (max-width: 768px) {
+      nav { padding: 1rem 1.5rem; }
+      .nav-links { gap: 1rem; }
+      .form-row { grid-template-columns: 1fr; }
+      .form-wrapper { padding: 2rem 1.5rem; }
+      .footer-grid { grid-template-columns: 1fr; gap: 2rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="index.html" class="nav-logo">Esprit irisé</a>
+    <ul class="nav-links">
+      <li><a href="formations.html">Formations</a></li>
+      <li><a href="livres.html">Livres</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a href="reservation.html" class="nav-cta">Réserver</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section class="page-hero">
+    <div class="hero-orb orb-1"></div>
+    <div class="hero-orb orb-2"></div>
+    <div class="page-hero-content">
+      <p class="hero-eyebrow">Esprit irisé · Réservation</p>
+      <h1>Choisissez votre<br><em>séance</em></h1>
+      <p>Un accompagnement sur mesure — Alicia se déplace chez vous, ou en visioconférence.<br>Chaque séance est un espace rien qu'à vous.</p>
+    </div>
+  </section>
+
+  <hr class="iris-divider">
+
+  <!-- OFFRES -->
+  <section>
+    <div class="container">
+      <span class="section-label">Les séances disponibles</span>
+      <h2 class="section-title">À chaque chemin,<br><em>son espace</em></h2>
+      <p class="section-sub">Séances individuelles pour adultes, parents et enfants — chez vous ou en visioconférence, sans engagement.</p>
+
+      <div class="offres-grid">
+
+        <div class="offre-card">
+          <div class="offre-icon">🌿</div>
+          <div class="offre-titre">Séance découverte</div>
+          <div class="offre-sous-titre">Premier contact · 45 min</div>
+          <p class="offre-desc">Une séance pour se rencontrer, poser les premières questions, et voir si l'accompagnement vous correspond. Sans engagement — pour adultes, parents ou enfants.</p>
+          <div class="offre-details">
+            <div class="offre-detail"><span>⏱</span><span>45 minutes</span></div>
+            <div class="offre-detail"><span>📍</span><span>Chez vous ou en visioconférence</span></div>
+            <div class="offre-detail"><span>✉️</span><span>Confirmation par e-mail</span></div>
+          </div>
+          <div class="offre-prix">30 €</div>
+          <div class="offre-prix-note">Déductible de tout parcours suivi</div>
+          <a href="#formulaire" class="btn-reserver">Réserver cette séance</a>
+        </div>
+
+        <div class="offre-card featured">
+          <span class="badge-featured">✦ La plus choisie</span>
+          <div class="offre-icon">✨</div>
+          <div class="offre-titre">Séance d'accompagnement</div>
+          <div class="offre-sous-titre">Adulte · Parent · Enfant · 1h30</div>
+          <p class="offre-desc">La séance cœur de la pratique d'Alicia. Un espace de travail individuel — émotions, corps, relations, sens de la vie, parentalité, ou accompagnement de l'enfant.</p>
+          <div class="offre-details">
+            <div class="offre-detail"><span>⏱</span><span>1h30</span></div>
+            <div class="offre-detail"><span>📍</span><span>Chez vous ou en visioconférence</span></div>
+            <div class="offre-detail"><span>📋</span><span>Compte-rendu envoyé après séance</span></div>
+          </div>
+          <div class="offre-prix">80 €</div>
+          <div class="offre-prix-note">Tarif réduit disponible selon situation</div>
+          <a href="#formulaire" class="btn-reserver btn-reserver-or">Réserver cette séance</a>
+        </div>
+
+        <div class="offre-card">
+          <div class="offre-icon">🔬</div>
+          <div class="offre-titre">Bilan intégratif</div>
+          <div class="offre-sous-titre">Évaluation complète · 2h</div>
+          <p class="offre-desc">Un espace pour faire le point sur votre vie intérieure. Corps, émotions, relations, sens — une lecture holistique de là où vous en êtes, suivie d'un plan d'accompagnement.</p>
+          <div class="offre-details">
+            <div class="offre-detail"><span>⏱</span><span>2 heures</span></div>
+            <div class="offre-detail"><span>📄</span><span>Rapport écrit inclus</span></div>
+            <div class="offre-detail"><span>🗺</span><span>Plan d'accompagnement personnalisé</span></div>
+          </div>
+          <div class="offre-prix">130 €</div>
+          <div class="offre-prix-note">Recommandé en début de parcours</div>
+          <a href="#formulaire" class="btn-reserver">Réserver cette séance</a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <hr class="iris-divider">
+
+  <!-- COMMENT ÇA MARCHE -->
+  <section class="comment">
+    <div class="comment-orb-1"></div>
+    <div class="comment-orb-2"></div>
+    <div class="container">
+      <span class="section-label comment-label">Le déroulement</span>
+      <h2 class="comment-title">Comment ça<br><em>se passe ?</em></h2>
+      <div class="etapes">
+        <div class="etape">
+          <div class="etape-num">01</div>
+          <div class="etape-titre">Remplissez le formulaire</div>
+          <div class="etape-texte">Choisissez votre type de séance et indiquez vos disponibilités. Alicia confirme sous 48h.</div>
+        </div>
+        <div class="etape">
+          <div class="etape-num">02</div>
+          <div class="etape-titre">Confirmation & paiement</div>
+          <div class="etape-texte">Vous recevez un e-mail de confirmation avec le lien de paiement sécurisé et les informations pratiques.</div>
+        </div>
+        <div class="etape">
+          <div class="etape-num">03</div>
+          <div class="etape-titre">La séance</div>
+          <div class="etape-texte">En visio ou directement chez vous — dans un cadre bienveillant et confidentiel. Un espace rien qu'à vous.</div>
+        </div>
+        <div class="etape">
+          <div class="etape-num">04</div>
+          <div class="etape-titre">Le suivi</div>
+          <div class="etape-texte">Après la séance, un compte-rendu ou des ressources vous sont envoyées. Et la suite se décide ensemble.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="iris-divider">
+
+  <!-- POPUP CONFIRMATION -->
+  <div id="popupConfirm" style="display:none; position:fixed; inset:0; z-index:200; background:rgba(15,37,64,0.72); backdrop-filter:blur(6px); align-items:center; justify-content:center; padding:2rem;">
+    <div style="background:white; border-radius:1.5rem; padding:3rem 2.5rem; max-width:480px; width:100%; text-align:center; box-shadow:0 40px 100px rgba(15,37,64,0.3); animation:slideUp 0.35s ease;">
+      <div style="font-size:2.5rem; margin-bottom:1.2rem;">✉️</div>
+      <h2 style="font-family:'Cormorant Garamond',serif; font-size:1.9rem; font-weight:300; color:#1B3A5C; margin-bottom:0.6rem;">Demande envoyée <em style="font-style:italic; background:linear-gradient(135deg,#6ECECE,#C4A35A); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;">avec succès</em></h2>
+      <p style="font-size:0.88rem; font-weight:300; color:#6B8CAE; line-height:1.75; margin-bottom:2rem;">Alicia a bien reçu votre demande de réservation et vous répondra personnellement sous 48h pour confirmer votre rendez-vous.</p>
+      <button onclick="document.getElementById('popupConfirm').style.display='none'" style="padding:0.85rem 2.5rem; border-radius:3rem; border:none; font-family:'Raleway',sans-serif; font-size:0.78rem; font-weight:500; letter-spacing:0.18em; text-transform:uppercase; background:linear-gradient(135deg,#6ECECE,#3A9E9E); color:#1B3A5C; cursor:pointer; box-shadow:0 4px 20px rgba(110,206,206,0.35);">Parfait, merci !</button>
+    </div>
+  </div>
+
+  <!-- FORMULAIRE -->
+  <section class="form-section" id="formulaire">
+    <div class="container">
+      <div class="form-wrapper">
+        <h2 class="form-title">Réserver une <em>séance</em></h2>
+        <p class="form-sous-titre">Alicia vous répond personnellement sous 48h pour confirmer et organiser votre rendez-vous.</p>
+
+        <form id="formReservation">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="prenom">Prénom</label>
+              <input type="text" id="prenom" name="prenom" placeholder="Votre prénom" required>
+            </div>
+            <div class="form-group">
+              <label for="nom">Nom</label>
+              <input type="text" id="nom" name="nom" placeholder="Votre nom" required>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="email">E-mail</label>
+            <input type="email" id="email" name="email" placeholder="votre@email.com" required>
+          </div>
+
+          <div class="form-group">
+            <label for="telephone">Téléphone (optionnel)</label>
+            <input type="tel" id="telephone" name="telephone" placeholder="06 xx xx xx xx">
+          </div>
+
+          <div class="form-group">
+            <label for="seance">Type de séance souhaitée</label>
+            <select id="seance" name="seance" required>
+              <option value="" disabled selected>Choisissez une séance…</option>
+              <option value="Séance découverte (30 €)">Séance découverte — 30 €</option>
+              <option value="Séance d'accompagnement (80 €)">Séance d'accompagnement — 80 €</option>
+              <option value="Bilan intégratif (130 €)">Bilan intégratif — 130 €</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="modalite">Modalité</label>
+            <select id="modalite" name="modalite">
+              <option value="Visioconférence">Visioconférence</option>
+              <option value="À domicile (déplacement d'Alicia)">À domicile (déplacement d'Alicia)</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="disponibilites">Vos disponibilités</label>
+            <textarea id="disponibilites" name="disponibilites" placeholder="Indiquez vos jours et créneaux préférés (ex : mardi ou jeudi matin, semaine du 20…)"></textarea>
+          </div>
+
+          <div class="form-group">
+            <label for="message">Ce qui vous amène (optionnel)</label>
+            <textarea id="message" name="message" placeholder="Un mot sur ce que vous traversez, ce que vous cherchez… pas d'obligation."></textarea>
+          </div>
+
+          <button type="submit" class="form-submit">Envoyer ma demande de réservation</button>
+          <p class="form-note">Vos informations restent confidentielles et ne sont jamais partagées.<br>Alicia vous répond personnellement sous 48h.</p>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    // Styles erreurs inline
+    const errStyle = '1px solid #e05252';
+    const okStyle  = '1px solid rgba(110,206,206,0.25)';
+
+    function validerChamp(el) {
+      if (!el.value.trim()) {
+        el.style.border = errStyle;
+        el.style.boxShadow = '0 0 0 3px rgba(224,82,82,0.1)';
+        return false;
+      }
+      el.style.border = okStyle;
+      el.style.boxShadow = '';
+      return true;
+    }
+
+    // Validation live au blur
+    ['prenom','nom','email','seance'].forEach(id => {
+      const el = document.getElementById(id);
+      el.addEventListener('blur', () => validerChamp(el));
+      el.addEventListener('input', () => validerChamp(el));
+    });
+
+    document.getElementById('formReservation').addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      // Validation manuelle des champs requis
+      const prenom  = document.getElementById('prenom');
+      const nom     = document.getElementById('nom');
+      const email   = document.getElementById('email');
+      const seance  = document.getElementById('seance');
+
+      const ok = [prenom, nom, email, seance].map(el => validerChamp(el));
+      if (ok.includes(false)) {
+        // Scroller vers le premier champ en erreur
+        const first = [prenom, nom, email, seance].find(el => !el.value.trim());
+        if (first) first.focus();
+        return;
+      }
+
+      // Email basique
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value)) {
+        email.style.border = errStyle;
+        email.style.boxShadow = '0 0 0 3px rgba(224,82,82,0.1)';
+        email.focus();
+        return;
+      }
+
+      const prenomV      = prenom.value;
+      const nomV         = nom.value;
+      const emailV       = email.value;
+      const telephone    = document.getElementById('telephone').value || 'Non renseigné';
+      const seanceV      = seance.value;
+      const modalite     = document.getElementById('modalite').value;
+      const dispos       = document.getElementById('disponibilites').value || 'Non renseignées';
+      const message      = document.getElementById('message').value || 'Aucun message';
+
+      const sujet = encodeURIComponent('Demande de réservation — ' + prenomV + ' ' + nomV);
+      const corps = encodeURIComponent(
+        'Bonjour Alicia,\n\n' +
+        'Nouvelle demande de réservation reçue depuis le site.\n\n' +
+        '─── Informations ───────────────────\n' +
+        'Prénom : ' + prenomV + '\n' +
+        'Nom : ' + nomV + '\n' +
+        'E-mail : ' + emailV + '\n' +
+        'Téléphone : ' + telephone + '\n\n' +
+        '─── Séance ─────────────────────────\n' +
+        'Type : ' + seanceV + '\n' +
+        'Modalité : ' + modalite + '\n' +
+        'Disponibilités : ' + dispos + '\n\n' +
+        '─── Message ────────────────────────\n' +
+        message + '\n\n' +
+        '────────────────────────────────────\n' +
+        'Message envoyé depuis esprit-irise.fr'
+      );
+
+      window.location.href = 'mailto:espritirise@gmail.com?subject=' + sujet + '&body=' + corps;
+
+      // Popup confirmation
+      document.getElementById('popupConfirm').style.display = 'flex';
+      document.getElementById('formReservation').reset();
+      // Remettre les bordures à la normale après reset
+      ['prenom','nom','email','seance'].forEach(id => {
+        document.getElementById(id).style.border = okStyle;
+        document.getElementById(id).style.boxShadow = '';
+      });
+    });
+
+    // Fermer popup en cliquant à l'extérieur
+    document.getElementById('popupConfirm').addEventListener('click', function(e) {
+      if (e.target === this) this.style.display = 'none';
+    });
+  </script>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-grid">
+      <div>
+        <div class="footer-logo">Esprit irisé</div>
+        <p class="footer-tagline">
+          École de vie intérieure · Formations holistiques<br>
+          Science, Corps & Sens de la vie<br><br>
+          Tresson, 72440 · Sarthe
+        </p>
+      </div>
+      <div class="footer-col">
+        <h5>Pages</h5>
+        <a href="index.html">Accueil</a>
+        <a href="reservation.html">Réserver une séance</a>
+        <a href="formations.html">Commander une formation</a>
+        <a href="livres.html">Livres</a>
+        <a href="contact.html">Contact</a>
+      </div>
+      <div class="footer-col">
+        <h5>Contact</h5>
+        <a href="mailto:espritirise@gmail.com">espritirise@gmail.com</a>
+        <a href="tel:0672634154">06 72 63 41 54</a>
+        <a href="index.html#alicia">À propos d'Alicia</a>
+      </div>
+    </div>
+          <div class="footer-col">
+        <h5>Légal</h5>
+        <a href="cgv.html">CGV</a>
+        <a href="confidentialite.html">Confidentialité</a>
+      </div>
+      <div class="footer-bottom">
+      <spa

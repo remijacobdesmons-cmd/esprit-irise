@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact — Esprit Irisé · Alicia Desmons</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Raleway:wght@200;300;400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --marine:      #1B3A5C;
+      --deep:        #0F2540;
+      --canard:      #2A7F8A;
+      --turquoise:   #6ECECE;
+      --turquoise-2: #3A9E9E;
+      --or:          #C4A35A;
+      --or-deep:     #B8963E;
+      --iris-3:      #B8C4E8;
+      --iris-4:      #C9B8E8;
+      --light:       #F0F7FA;
+      --muted:       #6B8CAE;
+      --text:        #1B3A5C;
+      --white:       #FFFFFF;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Raleway', sans-serif; font-weight: 300; color: var(--text); background: var(--white); overflow-x: hidden; }
+
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1.2rem 4rem;
+      background: rgba(255,255,255,0.92);
+      backdrop-filter: blur(18px);
+      border-bottom: 1px solid rgba(110,206,206,0.2);
+    }
+    .nav-logo { font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; font-weight: 300; letter-spacing: 0.12em; text-decoration: none; background: linear-gradient(120deg, var(--marine), var(--turquoise)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .nav-links { display: flex; gap: 2.5rem; list-style: none; align-items: center; }
+    .nav-links a { text-decoration: none; font-size: 0.75rem; font-weight: 400; letter-spacing: 0.18em; text-transform: uppercase; color: var(--marine); transition: color 0.3s; }
+    .nav-links a:hover { color: var(--turquoise); }
+    .nav-cta { background: linear-gradient(135deg, var(--turquoise), var(--turquoise-2)) !important; color: var(--marine) !important; padding: 0.5rem 1.4rem; border-radius: 2rem; font-weight: 500 !important; -webkit-text-fill-color: var(--marine) !important; }
+
+    /* ─── HERO ────────────────────────────── */
+    .page-hero {
+      min-height: 52vh;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      text-align: center;
+      padding: 10rem 2rem 5rem;
+      position: relative; overflow: hidden;
+      background: linear-gradient(160deg, var(--deep) 0%, var(--marine) 55%, var(--canard) 100%);
+    }
+    .hero-orb { position: absolute; border-radius: 50%; filter: blur(80px); pointer-events: none; }
+    .orb-1 { width: 500px; height: 500px; background: radial-gradient(circle, rgba(110,206,206,0.2), transparent 70%); top: -10%; left: -10%; animation: float 8s ease-in-out infinite; }
+    .orb-2 { width: 350px; height: 350px; background: radial-gradient(circle, rgba(196,163,90,0.15), transparent 70%); bottom: 0; right: -5%; animation: float 10s ease-in-out infinite reverse; }
+    @keyframes float { 0%, 100% { transform: translateY(0) scale(1); } 50% { transform: translateY(-25px) scale(1.04); } }
+    .page-hero-content { position: relative; z-index: 2; max-width: 700px; }
+    .hero-eyebrow { font-size: 0.68rem; font-weight: 300; letter-spacing: 0.45em; text-transform: uppercase; color: rgba(110,206,206,0.7); margin-bottom: 1.5rem; opacity: 0; animation: fadeUp 0.9s ease 0.1s forwards; }
+    .page-hero h1 { font-family: 'Cormorant Garamond', serif; font-size: clamp(2.5rem, 5.5vw, 4rem); font-weight: 300; line-height: 1.15; color: white; margin-bottom: 1.5rem; opacity: 0; animation: fadeUp 0.9s ease 0.3s forwards; }
+    .page-hero h1 em { font-style: italic; background: linear-gradient(135deg, var(--turquoise), var(--iris-4), var(--or)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .page-hero p { font-size: 0.95rem; font-weight: 200; line-height: 1.85; color: rgba(255,255,255,0.7); opacity: 0; animation: fadeUp 0.9s ease 0.5s forwards; }
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: translateY(0); } }
+
+    .iris-divider { height: 2px; background: linear-gradient(90deg, transparent, var(--deep), var(--turquoise), var(--iris-4), var(--or), transparent); opacity: 0.6; border: none; }
+
+    section { padding: 6rem 2rem; }
+    .container { max-width: 1100px; margin: 0 auto; }
+
+    /* ─── CONTACT GRID ───────────────────── */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.2fr;
+      gap: 5rem;
+      align-items: start;
+    }
+
+    /* ─── INFOS COLONNE GAUCHE ────────────── */
+    .contact-intro-label { font-size: 0.65rem; font-weight: 400; letter-spacing: 0.35em; text-transform: uppercase; color: var(--muted); display: block; margin-bottom: 0.8rem; }
+    .contact-intro-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.8rem, 3.5vw, 2.8rem); font-weight: 300; color: var(--marine); line-height: 1.2; margin-bottom: 1.5rem; }
+    .contact-intro-title em { font-style: italic; background: linear-gradient(135deg, var(--turquoise), var(--or)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .contact-intro-text { font-size: 0.92rem; font-weight: 300; color: var(--muted); line-height: 1.85; margin-bottom: 3rem; }
+
+    .contact-cards { display: flex; flex-direction: column; gap: 1rem; }
+    .contact-card {
+      display: flex;
+      align-items: center;
+      gap: 1.2rem;
+      padding: 1.2rem 1.5rem;
+      border: 1px solid rgba(110,206,206,0.2);
+      border-radius: 1rem;
+      background: white;
+      text-decoration: none;
+      color: var(--text);
+      transition: transform 0.25s, box-shadow 0.25s, border-color 0.25s;
+    }
+    .contact-card:hover { transform: translateX(4px); box-shadow: 0 8px 30px rgba(110,206,206,0.15); border-color: rgba(110,206,206,0.4); }
+    .contact-card-icon {
+      width: 44px; height: 44px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, rgba(110,206,206,0.15), rgba(196,163,90,0.1));
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.2rem;
+      flex-shrink: 0;
+    }
+    .contact-card-label { font-size: 0.68rem; font-weight: 400; letter-spacing: 0.15em; text-transform: uppercase; color: var(--muted); margin-bottom: 0.2rem; }
+    .contact-card-value { font-size: 0.9rem; font-weight: 400; color: var(--marine); }
+
+    .contact-adresse {
+      margin-top: 2rem;
+      padding: 1.5rem;
+      background: linear-gradient(135deg, rgba(110,206,206,0.06), rgba(201,184,232,0.06));
+      border: 1px solid rgba(110,206,206,0.15);
+      border-radius: 1rem;
+    }
+    .contact-adresse-label { font-size: 0.65rem; font-weight: 400; letter-spacing: 0.25em; text-transform: uppercase; color: var(--muted); margin-bottom: 0.8rem; }
+    .contact-adresse-text { font-size: 0.88rem; font-weight: 300; color: var(--text); line-height: 1.8; }
+    .contact-adresse-note { font-size: 0.78rem; font-weight: 300; color: var(--muted); margin-top: 0.8rem; font-style: italic; }
+
+    /* ─── FORMULAIRE COLONNE DROITE ───────── */
+    .form-wrapper {
+      background: white;
+      border-radius: 1.5rem;
+      padding: 3rem;
+      border: 1px solid rgba(110,206,206,0.2);
+      box-shadow: 0 8px 40px rgba(27,58,92,0.06);
+    }
+    .form-title { font-family: 'Cormorant Garamond', serif; font-size: 1.8rem; font-weight: 300; color: var(--marine); margin-bottom: 0.4rem; }
+    .form-title em { font-style: italic; background: linear-gradient(135deg, var(--turquoise), var(--or)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .form-sous-titre { font-size: 0.82rem; font-weight: 300; color: var(--muted); margin-bottom: 2.5rem; line-height: 1.6; }
+    .form-group { margin-bottom: 1.4rem; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    label { display: block; font-size: 0.7rem; font-weight: 400; letter-spacing: 0.15em; text-transform: uppercase; color: var(--muted); margin-bottom: 0.45rem; }
+    input, select, textarea { width: 100%; padding: 0.85rem 1.1rem; border: 1px solid rgba(110,206,206,0.25); border-radius: 0.75rem; font-family: 'Raleway', sans-serif; font-size: 0.88rem; font-weight: 300; color: var(--text); background: rgba(240,247,250,0.5); outline: none; transition: border-color 0.25s, box-shadow 0.25s; }
+    input:focus, select:focus, textarea:focus { border-color: var(--turquoise); box-shadow: 0 0 0 3px rgba(110,206,206,0.12); background: white; }
+    textarea { resize: vertical; min-height: 130px; }
+    .form-submit { width: 100%; padding: 1rem; border-radius: 3rem; border: none; font-family: 'Raleway', sans-serif; font-size: 0.78rem; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; background: linear-gradient(135deg, var(--turquoise), var(--turquoise-2)); color: var(--marine); cursor: pointer; box-shadow: 0 4px 20px rgba(110,206,206,0.35); transition: transform 0.25s, box-shadow 0.25s; margin-top: 0.8rem; }
+    .form-submit:hover { transform: translateY(-2px); box-shadow: 0 8px 32px rgba(110,206,206,0.5); }
+    .form-note { text-align: center; font-size: 0.72rem; font-weight: 300; color: var(--muted); margin-top: 1rem; line-height: 1.6; }
+
+    /* ─── CITATION ────────────────────────── */
+    .citation-section {
+      background: linear-gradient(135deg, rgba(110,206,206,0.06), rgba(201,184,232,0.06));
+      text-align: center;
+      padding: 5rem 2rem;
+    }
+    .citation-section blockquote {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: clamp(1.2rem, 2.5vw, 1.65rem);
+      font-weight: 300;
+      color: var(--canard);
+      max-width: 700px;
+      margin: 0 auto;
+      line-height: 1.7;
+    }
+
+    /* ─── FOOTER ──────────────────────────── */
+    footer { background: var(--deep); color: rgba(255,255,255,0.85); padding: 4rem 2rem 2rem; }
+    .footer-grid { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 4rem; padding-bottom: 3rem; border-bottom: 1px solid rgba(255,255,255,0.08); margin-bottom: 2rem; }
+    .footer-logo { font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; font-weight: 300; letter-spacing: 0.12em; background: linear-gradient(120deg, var(--turquoise), var(--or)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin-bottom: 0.8rem; }
+    .footer-tagline { font-size: 0.75rem; font-weight: 200; color: rgba(255,255,255,0.45); line-height: 1.8; letter-spacing: 0.05em; }
+    .footer-col h5 { font-size: 0.65rem; font-weight: 400; letter-spacing: 0.3em; text-transform: uppercase; color: rgba(255,255,255,0.4); margin-bottom: 1.2rem; }
+    .footer-col a { display: block; font-size: 0.82rem; font-weight: 200; color: rgba(255,255,255,0.75); text-decoration: none; margin-bottom: 0.6rem; transition: color 0.2s; }
+    .footer-col a:hover { color: var(--turquoise); }
+    .footer-bottom { max-width: 1100px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; font-size: 0.72rem; font-weight: 200; color: rgba(255,255,255,0.3); }
+
+    @media (max-width: 900px) {
+      .contact-grid { grid-template-columns: 1fr; gap: 3rem; }
+    }
+    @media (max-width: 768px) {
+      nav { padding: 1rem 1.5rem; }
+      .nav-links { gap: 1rem; }
+      .form-row { grid-template-columns: 1fr; }
+      .form-wrapper { padding: 2rem 1.5rem; }
+      .footer-grid { grid-template-columns: 1fr; gap: 2rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="index.html" class="nav-logo">Esprit irisé</a>
+    <ul class="nav-links">
+      <li><a href="formations.html">Formations</a></li>
+      <li><a href="livres.html">Livres</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a href="reservation.html" class="nav-cta">Réserver</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section class="page-hero">
+    <div class="hero-orb orb-1"></div>
+    <div class="hero-orb orb-2"></div>
+    <div class="page-hero-content">
+      <p class="hero-eyebrow">Esprit irisé · Contact</p>
+      <h1>Écrire à <em>Alicia</em></h1>
+      <p>Une question, une envie d'explorer, ou simplement un élan —<br>c'est largement suffisant pour écrire.</p>
+    </div>
+  </section>
+
+  <hr class="iris-divider">
+
+  <!-- CONTACT -->
+  <section>
+    <div class="container">
+      <div class="contact-grid">
+
+        <!-- Infos -->
+        <div>
+          <span class="contact-intro-label">Alicia Desmons</span>
+          <h2 class="contact-intro-title">Un espace de<br><em>dialogue ouvert</em></h2>
+          <p class="contact-intro-text">Que vous ayez une question sur une formation, que vous souhaitiez réserver une séance, ou simplement que quelque chose résonne en vous sans que vous sachiez encore quoi — Alicia lit chaque message personnellement et répond avec soin.</p>
+
+          <div class="contact-cards">
+            <a href="mailto:espritirise@gmail.com" class="contact-card">
+              <div class="contact-card-icon">✉️</div>
+              <div>
+                <div class="contact-card-label">E-mail</div>
+                <div class="contact-card-value">espritirise@gmail.com</div>
+              </div>
+            </a>
+            <a href="tel:0672634154" class="contact-card">
+              <div class="contact-card-icon">📞</div>
+              <div>
+                <div class="contact-card-label">Téléphone</div>
+                <div class="contact-card-value">06 72 63 41 54</div>
+              </div>
+            </a>
+            <a href="reservation.html" class="contact-card">
+              <div class="contact-card-icon">📅</div>
+              <div>
+                <div class="contact-card-label">Réserver une séance</div>
+                <div class="contact-card-value">Voir les disponibilités →</div>
+              </div>
+            </a>
+          </div>
+
+          <div class="contact-adresse">
+            <div class="contact-adresse-label">📍 En présentiel</div>
+            <div class="contact-adresse-text">
+              Esprit irisé<br>
+              Tresson, 72440<br>
+              Sarthe · France
+            </div>
+            <p class="contact-adresse-note">Les séances en présentiel ont lieu à Tresson. Accès facile depuis Le Mans, Vendôme et La Ferté-Bernard.</p>
+          </div>
+        </div>
+
+        <!-- Formulaire -->
+        <div class="form-wrapper">
+          <h2 class="form-title">Envoyer un <em>message</em></h2>
+          <p class="form-sous-titre">Réponse personnelle sous 48h, souvent bien avant.</p>
+
+          <form action="mailto:espritirise@gmail.com" method="post" enctype="text/plain">
+            <div class="form-row">
+              <div class="form-group">
+                <label for="prenom">Prénom</label>
+                <input type="text" id="prenom" name="prenom" placeholder="Votre prénom" required>
+              </div>
+              <div class="form-group">
+                <label for="nom">Nom</label>
+                <input type="text" id="nom" name="nom" placeholder="Votre nom">
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="email">E-mail</label>
+              <input type="email" id="email" name="email" placeholder="votre@email.com" required>
+            </div>
+
+            <div class="form-group">
+              <label for="sujet">Sujet</label>
+              <select id="sujet" name="sujet">
+                <option value="">De quoi s'agit-il ?</option>
+                <option value="renseignement">Renseignement général</option>
+                <option value="seance">Réservation de séance</option>
+                <option value="formation">Question sur une formation</option>
+                <option value="livre">Commande ou question livres</option>
+                <option value="autre">Autre chose</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="message">Votre message</label>
+              <textarea id="message" name="message" placeholder="Dites-moi ce qui vous amène… tout est bienvenu." required></textarea>
+            </div>
+
+            <button type="submit" class="form-submit">Envoyer mon message</button>
+            <p class="form-note">Vos informations restent confidentielles et ne sont jamais partagées.<br>Alicia vous répond personnellement.</p>
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <hr class="iris-divider">
+
+  <!-- CITATION -->
+  <div class="citation-section">
+    <blockquote>
+      « Chacun porte en lui les ressources nécessaires à sa propre transformation. Mon rôle est d'ouvrir l'espace pour les laisser émerger. »
+    </blockquote>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-grid">
+      <div>
+        <div class="footer-logo">Esprit irisé</div>
+        <p class="footer-tagline">École de vie intérieure · Formations holistiques<br>Science, Corps & Sens de la vie<br><br>Tresson, 72440 · Sarthe</p>
+      </div>
+      <div class="footer-col">
+        <h5>Pages</h5>
+        <a href="index.html">Accueil</a>
+        <a href="reservation.html">Réserver une séance</a>
+        <a href="formations.html">Commander une formation</a>
+        <a href="livres.html">Livres</a>
+        <a href="contact.html">Contact</a>
+      </div>
+      <div class="footer-col">
+        <h5>Contact</h5>
+        <a href="mailto:espritirise@gmail.com">espritirise@gmail.com</a>
+        <a href="tel:0672634154">06 72 63 41 54</a>
+      </div>
+      <div class="footer-col">
+        <h5>Légal</h5>
+        <a href="cgv.html">CGV</a>
+        <a href="confidentialite.html">Confidentialité</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2025 Esprit 

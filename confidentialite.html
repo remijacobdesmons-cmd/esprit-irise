@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Politique de Confidentialité — Esprit Irisé · Alicia Desmons</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Raleway:wght@200;300;400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --marine:#1B3A5C;--deep:#0F2540;--canard:#2A7F8A;
+      --turquoise:#6ECECE;--turquoise-2:#3A9E9E;
+      --or:#C4A35A;--iris-4:#C9B8E8;--light:#F0F7FA;--muted:#6B8CAE;
+    }
+    *{margin:0;padding:0;box-sizing:border-box;}
+    html{scroll-behavior:smooth;}
+    body{font-family:'Raleway',sans-serif;font-weight:300;color:var(--marine);background:#fff;overflow-x:hidden;}
+
+    nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:1.2rem 4rem;background:rgba(255,255,255,0.92);backdrop-filter:blur(18px);border-bottom:1px solid rgba(110,206,206,0.2);}
+    .nav-logo{font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:300;letter-spacing:.12em;text-decoration:none;background:linear-gradient(120deg,var(--marine),var(--turquoise));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+    .nav-links{display:flex;gap:2.5rem;list-style:none;align-items:center;}
+    .nav-links a{text-decoration:none;font-size:.75rem;font-weight:400;letter-spacing:.18em;text-transform:uppercase;color:var(--marine);transition:color .3s;}
+    .nav-links a:hover{color:var(--turquoise);}
+    .nav-cta{background:linear-gradient(135deg,var(--turquoise),var(--turquoise-2))!important;color:var(--marine)!important;padding:.5rem 1.4rem;border-radius:2rem;font-weight:500!important;-webkit-text-fill-color:var(--marine)!important;}
+
+    .page-hero{min-height:40vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:10rem 2rem 4rem;position:relative;overflow:hidden;background:linear-gradient(160deg,var(--deep) 0%,var(--marine) 55%,var(--canard) 100%);}
+    .hero-orb{position:absolute;border-radius:50%;filter:blur(80px);pointer-events:none;}
+    .orb-1{width:400px;height:400px;background:radial-gradient(circle,rgba(110,206,206,.18),transparent 70%);top:-10%;left:-10%;animation:float 8s ease-in-out infinite;}
+    .orb-2{width:300px;height:300px;background:radial-gradient(circle,rgba(196,163,90,.12),transparent 70%);bottom:0;right:-5%;animation:float 10s ease-in-out infinite reverse;}
+    @keyframes float{0%,100%{transform:translateY(0);}50%{transform:translateY(-20px);}}
+    .page-hero-content{position:relative;z-index:2;max-width:600px;}
+    .hero-eyebrow{font-size:.68rem;font-weight:300;letter-spacing:.45em;text-transform:uppercase;color:rgba(110,206,206,.7);margin-bottom:1.2rem;opacity:0;animation:fadeUp .9s ease .1s forwards;}
+    .page-hero h1{font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,4.5vw,3.2rem);font-weight:300;line-height:1.15;color:white;margin-bottom:1rem;opacity:0;animation:fadeUp .9s ease .3s forwards;}
+    .page-hero h1 em{font-style:italic;background:linear-gradient(135deg,var(--turquoise),var(--or));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+    .page-hero p{font-size:.88rem;font-weight:200;color:rgba(255,255,255,.6);opacity:0;animation:fadeUp .9s ease .5s forwards;}
+    @keyframes fadeUp{from{opacity:0;transform:translateY(18px);}to{opacity:1;transform:translateY(0);}}
+
+    .iris-divider{height:2px;background:linear-gradient(90deg,transparent,var(--deep),var(--turquoise),var(--iris-4),var(--or),transparent);opacity:.6;border:none;}
+
+    .legal-section{padding:5rem 2rem 6rem;}
+    .legal-container{max-width:820px;margin:0 auto;}
+
+    .sommaire{background:linear-gradient(135deg,rgba(110,206,206,.07),rgba(201,184,232,.06));border:1px solid rgba(110,206,206,.18);border-radius:1.2rem;padding:2rem 2.5rem;margin-bottom:4rem;}
+    .sommaire-titre{font-size:.65rem;font-weight:500;letter-spacing:.3em;text-transform:uppercase;color:var(--muted);margin-bottom:1.2rem;}
+    .sommaire ol{list-style:none;display:flex;flex-direction:column;gap:.5rem;}
+    .sommaire ol li a{font-size:.85rem;font-weight:300;color:var(--canard);text-decoration:none;transition:color .2s;display:flex;align-items:center;gap:.6rem;}
+    .sommaire ol li a::before{content:'→';font-size:.75rem;color:var(--turquoise);}
+    .sommaire ol li a:hover{color:var(--marine);}
+
+    .legal-article{margin-bottom:3.5rem;scroll-margin-top:100px;}
+    .article-num{font-family:'Cormorant Garamond',serif;font-size:.75rem;font-weight:400;letter-spacing:.3em;text-transform:uppercase;color:var(--turquoise);margin-bottom:.5rem;display:block;}
+    .article-titre{font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:400;color:var(--marine);margin-bottom:1.2rem;padding-bottom:.8rem;border-bottom:1px solid rgba(110,206,206,.2);}
+    .legal-article p{font-size:.9rem;font-weight:300;color:#3a5070;line-height:1.85;margin-bottom:.8rem;}
+    .legal-article ul{margin:.6rem 0 1rem;padding-left:0;list-style:none;display:flex;flex-direction:column;gap:.5rem;}
+    .legal-article li{font-size:.88rem;font-weight:300;color:#3a5070;line-height:1.7;display:flex;align-items:flex-start;gap:.7rem;}
+    .legal-article li::before{content:'·';color:var(--turquoise);font-size:1.2rem;line-height:1.4;flex-shrink:0;}
+    .legal-article strong{font-weight:500;color:var(--marine);}
+
+    .encart{background:linear-gradient(135deg,rgba(196,163,90,.07),rgba(110,206,206,.05));border-left:3px solid var(--or);border-radius:0 .8rem .8rem 0;padding:1.2rem 1.5rem;margin:1.5rem 0;}
+    .encart p{font-size:.85rem;font-weight:300;color:var(--muted);line-height:1.7;margin:0;}
+
+    .legal-update{display:inline-block;font-size:.7rem;font-weight:300;letter-spacing:.12em;color:var(--muted);background:rgba(110,206,206,.08);border:1px solid rgba(110,206,206,.2);border-radius:2rem;padding:.3rem 1rem;margin-bottom:3rem;}
+
+    footer{background:var(--deep);color:rgba(255,255,255,.85);padding:4rem 2rem 2rem;}
+    .footer-grid{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:2fr 1fr 1fr;gap:4rem;padding-bottom:3rem;border-bottom:1px solid rgba(255,255,255,.08);margin-bottom:2rem;}
+    .footer-logo{font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:300;letter-spacing:.12em;background:linear-gradient(120deg,var(--turquoise),var(--or));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:.8rem;}
+    .footer-tagline{font-size:.75rem;font-weight:200;color:rgba(255,255,255,.45);line-height:1.8;letter-spacing:.05em;}
+    .footer-col h5{font-size:.65rem;font-weight:400;letter-spacing:.3em;text-transform:uppercase;color:rgba(255,255,255,.4);margin-bottom:1.2rem;}
+    .footer-col a{display:block;font-size:.82rem;font-weight:200;color:rgba(255,255,255,.75);text-decoration:none;margin-bottom:.6rem;transition:color .2s;}
+    .footer-col a:hover{color:var(--turquoise);}
+    .footer-bottom{max-width:1100px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;font-size:.72rem;font-weight:200;color:rgba(255,255,255,.3);flex-wrap:wrap;gap:.5rem;}
+
+    @media(max-width:768px){nav{padding:1rem 1.5rem;}.nav-links{gap:1rem;}.footer-grid{grid-template-columns:1fr;gap:2rem;}.sommaire{padding:1.5rem;}}
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="index.html" class="nav-logo">Esprit irisé</a>
+    <ul class="nav-links">
+      <li><a href="formations.html">Formations</a></li>
+      <li><a href="livres.html">Livres</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a href="reservation.html" class="nav-cta">Réserver</a></li>
+    </ul>
+  </nav>
+
+  <section class="page-hero">
+    <div class="hero-orb orb-1"></div>
+    <div class="hero-orb orb-2"></div>
+    <div class="page-hero-content">
+      <p class="hero-eyebrow">Esprit irisé · Légal</p>
+      <h1>Charte de<br><em>Confidentialité</em></h1>
+      <p>Protection de la vie privée — comment vos données sont collectées, utilisées et protégées</p>
+    </div>
+  </section>
+
+  <hr class="iris-divider">
+
+  <section class="legal-section">
+    <div class="legal-container">
+
+      <span class="legal-update">Dernière mise à jour : 2025 · SIRET 90419149100011</span>
+
+      <!-- INTRO -->
+      <div class="legal-article">
+        <p>Bienvenue sur le site <em>Esprit Irisé</em>, géré par Alicia Desmons. La protection de votre vie privée est essentielle. Cette politique de confidentialité décrit comment nous collectons, utilisons, stockons et protégeons vos informations personnelles lorsque vous visitez notre site ou utilisez nos services, en accord avec les réglementations en vigueur (RGPD).</p>
+      </div>
+
+      <!-- SOMMAIRE -->
+      <div class="sommaire">
+        <div class="sommaire-titre">Sommaire</div>
+        <ol>
+          <li><a href="#art1">1. Collecte des informations</a></li>
+          <li><a href="#art2">2. Utilisation des informations</a></li>
+          <li><a href="#art3">3. Partage des informations</a></li>
+          <li><a href="#art4">4. Protection des données</a></li>
+          <li><a href="#art5">5. Vos droits</a></li>
+          <li><a href="#art6">6. Cookies</a></li>
+          <li><a href="#art7">7. Modifications de la politique</a></li>
+          <li><a href="#art8">8. Contact</a></li>
+        </ol>
+      </div>
+
+      <!-- ARTICLE 1 -->
+      <div class="legal-article" id="art1">
+        <span class="article-num">Article 1</span>
+        <h2 class="article-titre">Collecte des informations</h2>
+        <p>Nous collectons des informations personnelles et techniques lorsque vous interagissez avec notre site ou nos services. Cela inclut :</p>
+        <ul>
+          <li><strong>Informations personnelles</strong> : votre nom, adresse e-mail, numéro de téléphone, et autres données que vous nous fournissez volontairement via les formulaires de réservation, d'inscription ou de contact.</li>
+          <li><strong>Données de navigation</strong> : adresse IP, type de navigateur, pages visitées, et autres informations techniques utilisées pour améliorer votre expérience sur le site.</li>
+        </ul>
+      </div>
+
+      <!-- ARTICLE 2 -->
+      <div class="legal-article" id="art2">
+        <span class="article-num">Article 2</span>
+        <h2 class="article-titre">Utilisation des informations</h2>
+        <p>Les informations que nous collectons sont utilisées pour :</p>
+        <ul>
+          <li><strong>Fournir nos services</strong> : gestion des rendez-vous, envoi de communications liées à nos prestations, amélioration du contenu du site.</li>
+          <li><strong>Communication</strong> : vous informer des nouveautés, des événements ou des offres, si vous y avez consenti.</li>
+          <li><strong>Analyse et amélioration</strong> : les données techniques sont analysées pour comprendre les besoins des visiteurs et améliorer nos services.</li>
+        </ul>
+      </div>
+
+      <!-- ARTICLE 3 -->
+      <div class="legal-article" id="art3">
+        <span class="article-num">Article 3</span>
+        <h2 class="article-titre">Partage des informations</h2>
+        <p>Vos informations personnelles ne sont jamais vendues ni louées à des tiers. Nous pouvons partager vos données uniquement dans les situations suivantes :</p>
+        <ul>
+          <li><strong>Prestataires techniques</strong> : nous pouvons faire appel à des prestataires (hébergeur, outils de paiement) qui accèdent à certaines données dans le strict cadre de leur mission technique.</li>
+          <li><strong>Conformité légale</strong> : nous pouvons divulguer vos informations en réponse à une obligation légale ou pour protéger nos droits et ceux de nos utilisateurs.</li>
+        </ul>
+        <div class="encart">
+          <p>Aucune donnée personnelle n'est utilisée à des fins publicitaires ou revendue à des tiers.</p>
+        </div>
+      </div>
+
+      <!-- ARTICLE 4 -->
+      <div class="legal-article" id="art4">
+        <span class="article-num">Article 4</span>
+        <h2 class="article-titre">Protection des données</h2>
+        <p>Nous mettons en œuvre des mesures de sécurité appropriées pour protéger vos données personnelles contre toute perte, accès non autorisé, divulgation, altération ou destruction, notamment :</p>
+        <ul>
+          <li>Protocoles de sécurité robustes, incluant le chiffrement SSL pour les échanges en ligne.</li>
+          <li>Accès aux données limité aux seules personnes ayant besoin d'y accéder dans le cadre de leurs missions.</li>
+          <li>Conservation des données pour la durée strictement nécessaire aux finalités décrites dans la présente politique.</li>
+        </ul>
+      </div>
+
+      <!-- ARTICLE 5 -->
+      <div class="legal-article" id="art5">
+        <span class="article-num">Article 5</span>
+        <h2 class="article-titre">Vos droits</h2>
+        <p>Conformément au Règlement Général sur la Protection des Données (RGPD), vous disposez des droits suivants :</p>
+        <ul>
+          <li><strong>Accès</strong> : vous pouvez demander l'accès aux informations personnelles que nous détenons à votre sujet.</li>
+          <li><strong>Rectification</strong> : si vos informations sont inexactes ou incomplètes, vous pouvez en demander la correction.</li>
+          <li><strong>Suppression</strong> : vous pouvez demander la suppression de vos données, sous réserve de nos obligations légales de conservation.</li>
+          <li><strong>Retrait du consentement</strong> : vous pouvez retirer votre consentement à tout moment, ce qui peut limiter l'accès à certains services.</li>
+          <li><strong>Réclamation</strong> : vous avez le droit d'introduire une réclamation auprès de la CNIL (www.cnil.fr).</li>
+        </ul>
+        <p>Pour exercer vos droits, contactez-nous à l'adresse indiquée à l'article 8.</p>
+      </div>
+
+      <!-- ARTICLE 6 -->
+      <div class="legal-article" id="art6">
+        <span class="article-num">Article 6</span>
+        <h2 class="article-titre">Cookies</h2>
+        <p>Notre site peut utiliser des cookies pour améliorer votre navigation. Les cookies sont de petits fichiers stockés sur votre appareil qui nous aident à analyser l'utilisation du site et à personnaliser votre expérience.</p>
+        <ul>
+          <li>Vous pouvez configurer votre navigateur pour refuser les cookies ou être alerté lorsqu'un cookie est déposé.</li>
+          <li>Le refus des cookies peut affecter certaines fonctionnalités du site.</li>
+          <li>Les cookies strictement nécessaires au fonctionnement du site ne requièrent pas votre consentement.</li>
+        </ul>
+      </div>
+
+      <!-- ARTICLE 7 -->
+      <div class="legal-article" id="art7">
+        <span class="article-num">Article 7</span>
+        <h2 class="article-titre">Modifications de la politique</h2>
+        <p>Cette politique de confidentialité peut être mise à jour à tout moment pour refléter les changements dans nos pratiques ou les exigences légales. Les modifications seront publiées sur cette page avec la date de révision. Nous vous encourageons à la consulter régulièrement.</p>
+      </div>
+
+      <!-- ARTICLE 8 -->
+      <div class="legal-article" id="art8">
+        <span class="article-num">Article 8</span>
+        <h2 class="article-titre">Contact</h2>
+        <p>Pour toute question relative à cette politique de confidentialité ou à vos données personnelles :</p>
+        <div class="encart">
+          <p>
+            <strong>Alicia Desmons · Esprit irisé</strong><br>
+            <a href="mailto:espritirise@gmail.com">espritirise@gmail.com</a> · 06 72 63 41 54<br>
+            Tresson, 72440 · SIRET 90419149100011
+          </p>
+        </div>
+        <p>En utilisant le site <em>Esprit Irisé</em>, vous acceptez la présente politique de confidentialité et l'utilisation de vos données conformément à ses termes.</p>
+      </div>
+
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-grid">
+      <div>
+        <div class="footer-logo">Esprit irisé</div>
+        <p class="footer-tagline">École de vie intérieure · Formations holistiques<br>Science, Corps & Sens de la vie<br><br>Tresson, 72440 · Sarthe</p>
+      </div>
+      <div class="footer-col">
+        <h5>Explorer</h5>
+        <a href="reservation.html">Réserver une séance</a>
+        <a href="formations.html">Formations & Ateliers</a>
+        <a href="livres.html">Livres & Outils</a>
+        <a href="https://espritirise.substack.com/" target="_blank" rel="noopener">La Lettre · Substack</a>
+      </div>
+      <div class="footer-col">
+        <h5>Légal</h5>
+        <a href="cgv.html">Conditions Générales de Vente</a>
+        <a href="confidentialite.html">Politique de confidentialité</a>
+        <a href="contact.html">Contact</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2025 Esprit irisé · Alicia

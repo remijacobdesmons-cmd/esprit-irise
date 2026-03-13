@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Conditions Générales de Vente — Esprit Irisé · Alicia Desmons</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Raleway:wght@200;300;400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --marine:      #1B3A5C;
+      --deep:        #0F2540;
+      --canard:      #2A7F8A;
+      --turquoise:   #6ECECE;
+      --turquoise-2: #3A9E9E;
+      --or:          #C4A35A;
+      --or-deep:     #B8963E;
+      --iris-4:      #C9B8E8;
+      --light:       #F0F7FA;
+      --muted:       #6B8CAE;
+      --text:        #1B3A5C;
+      --white:       #FFFFFF;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Raleway', sans-serif; font-weight: 300; color: var(--text); background: var(--white); overflow-x: hidden; }
+
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1.2rem 4rem;
+      background: rgba(255,255,255,0.92);
+      backdrop-filter: blur(18px);
+      border-bottom: 1px solid rgba(110,206,206,0.2);
+    }
+    .nav-logo { font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; font-weight: 300; letter-spacing: 0.12em; text-decoration: none; background: linear-gradient(120deg, var(--marine), var(--turquoise)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .nav-links { display: flex; gap: 2.5rem; list-style: none; align-items: center; }
+    .nav-links a { text-decoration: none; font-size: 0.75rem; font-weight: 400; letter-spacing: 0.18em; text-transform: uppercase; color: var(--marine); transition: color 0.3s; }
+    .nav-links a:hover { color: var(--turquoise); }
+    .nav-cta { background: linear-gradient(135deg, var(--turquoise), var(--turquoise-2)) !important; color: var(--marine) !important; padding: 0.5rem 1.4rem; border-radius: 2rem; font-weight: 500 !important; -webkit-text-fill-color: var(--marine) !important; }
+
+    /* ─── HERO ────────────────────────────── */
+    .page-hero {
+      min-height: 40vh;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      text-align: center;
+      padding: 10rem 2rem 4rem;
+      position: relative; overflow: hidden;
+      background: linear-gradient(160deg, var(--deep) 0%, var(--marine) 55%, var(--canard) 100%);
+    }
+    .hero-orb { position: absolute; border-radius: 50%; filter: blur(80px); pointer-events: none; }
+    .orb-1 { width: 400px; height: 400px; background: radial-gradient(circle, rgba(110,206,206,0.18), transparent 70%); top: -10%; left: -10%; animation: float 8s ease-in-out infinite; }
+    .orb-2 { width: 300px; height: 300px; background: radial-gradient(circle, rgba(196,163,90,0.12), transparent 70%); bottom: 0; right: -5%; animation: float 10s ease-in-out infinite reverse; }
+    @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-20px); } }
+    .page-hero-content { position: relative; z-index: 2; max-width: 600px; }
+    .hero-eyebrow { font-size: 0.68rem; font-weight: 300; letter-spacing: 0.45em; text-transform: uppercase; color: rgba(110,206,206,0.7); margin-bottom: 1.2rem; opacity: 0; animation: fadeUp 0.9s ease 0.1s forwards; }
+    .page-hero h1 { font-family: 'Cormorant Garamond', serif; font-size: clamp(2rem, 4.5vw, 3.2rem); font-weight: 300; line-height: 1.15; color: white; margin-bottom: 1rem; opacity: 0; animation: fadeUp 0.9s ease 0.3s forwards; }
+    .page-hero h1 em { font-style: italic; background: linear-gradient(135deg, var(--turquoise), var(--or)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .page-hero p { font-size: 0.88rem; font-weight: 200; color: rgba(255,255,255,0.6); opacity: 0; animation: fadeUp 0.9s ease 0.5s forwards; }
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: translateY(0); } }
+
+    .iris-divider { height: 2px; background: linear-gradient(90deg, transparent, var(--deep), var(--turquoise), var(--iris-4), var(--or), transparent); opacity: 0.6; border: none; }
+
+    /* ─── CONTENU LÉGAL ──────────────────── */
+    .legal-section { padding: 5rem 2rem 6rem; }
+    .legal-container { max-width: 820px; margin: 0 auto; }
+
+    /* Sommaire */
+    .sommaire {
+      background: linear-gradient(135deg, rgba(110,206,206,0.07), rgba(201,184,232,0.06));
+      border: 1px solid rgba(110,206,206,0.18);
+      border-radius: 1.2rem;
+      padding: 2rem 2.5rem;
+      margin-bottom: 4rem;
+    }
+    .sommaire-titre { font-size: 0.65rem; font-weight: 500; letter-spacing: 0.3em; text-transform: uppercase; color: var(--muted); margin-bottom: 1.2rem; }
+    .sommaire ol { list-style: none; display: flex; flex-direction: column; gap: 0.5rem; }
+    .sommaire ol li a {
+      font-size: 0.85rem; font-weight: 300; color: var(--canard);
+      text-decoration: none; transition: color 0.2s;
+      display: flex; align-items: center; gap: 0.6rem;
+    }
+    .sommaire ol li a::before { content: '→'; font-size: 0.75rem; color: var(--turquoise); }
+    .sommaire ol li a:hover { color: var(--marine); }
+
+    /* Articles */
+    .legal-article { margin-bottom: 3.5rem; scroll-margin-top: 100px; }
+    .article-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 0.75rem; font-weight: 400;
+      letter-spacing: 0.3em; text-transform: uppercase;
+      color: var(--turquoise); margin-bottom: 0.5rem; display: block;
+    }
+    .article-titre {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.5rem; font-weight: 400;
+      color: var(--marine); margin-bottom: 1.2rem;
+      padding-bottom: 0.8rem;
+      border-bottom: 1px solid rgba(110,206,206,0.2);
+    }
+    .article-sous-titre {
+      font-size: 0.82rem; font-weight: 500;
+      color: var(--text); letter-spacing: 0.05em;
+      margin: 1.4rem 0 0.6rem;
+    }
+    .legal-article p {
+      font-size: 0.9rem; font-weight: 300;
+      color: #3a5070; line-height: 1.85;
+      margin-bottom: 0.8rem;
+    }
+    .legal-article ul, .legal-article ol {
+      margin: 0.6rem 0 1rem 0;
+      padding-left: 0;
+      list-style: none;
+      display: flex; flex-direction: column; gap: 0.5rem;
+    }
+    .legal-article li {
+      font-size: 0.88rem; font-weight: 300;
+      color: #3a5070; line-height: 1.7;
+      display: flex; align-items: flex-start; gap: 0.7rem;
+    }
+    .legal-article li::before { content: '·'; color: var(--turquoise); font-size: 1.2rem; line-height: 1.4; flex-shrink: 0; }
+    .legal-article strong { font-weight: 500; color: var(--marine); }
+
+    /* Encart info */
+    .encart {
+      background: linear-gradient(135deg, rgba(196,163,90,0.07), rgba(110,206,206,0.05));
+      border-left: 3px solid var(--or);
+      border-radius: 0 0.8rem 0.8rem 0;
+      padding: 1.2rem 1.5rem;
+      margin: 1.5rem 0;
+    }
+    .encart p { font-size: 0.85rem; font-weight: 300; color: var(--muted); line-height: 1.7; margin: 0; }
+
+    /* Date MàJ */
+    .legal-update {
+      display: inline-block;
+      font-size: 0.7rem; font-weight: 300;
+      letter-spacing: 0.12em; color: var(--muted);
+      background: rgba(110,206,206,0.08);
+      border: 1px solid rgba(110,206,206,0.2);
+      border-radius: 2rem; padding: 0.3rem 1rem;
+      margin-bottom: 3rem;
+    }
+
+    /* ─── FOOTER ──────────────────────────── */
+    footer { background: var(--deep); color: rgba(255,255,255,0.85); padding: 4rem 2rem 2rem; }
+    .footer-grid { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 4rem; padding-bottom: 3rem; border-bottom: 1px solid rgba(255,255,255,0.08); margin-bottom: 2rem; }
+    .footer-logo { font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; font-weight: 300; letter-spacing: 0.12em; background: linear-gradient(120deg, var(--turquoise), var(--or)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin-bottom: 0.8rem; }
+    .footer-tagline { font-size: 0.75rem; font-weight: 200; color: rgba(255,255,255,0.45); line-height: 1.8; letter-spacing: 0.05em; }
+    .footer-col h5 { font-size: 0.65rem; font-weight: 400; letter-spacing: 0.3em; text-transform: uppercase; color: rgba(255,255,255,0.4); margin-bottom: 1.2rem; }
+    .footer-col a { display: block; font-size: 0.82rem; font-weight: 200; color: rgba(255,255,255,0.75); text-decoration: none; margin-bottom: 0.6rem; transition: color 0.2s; }
+    .footer-col a:hover { color: var(--turquoise); }
+    .footer-bottom { max-width: 1100px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; font-size: 0.72rem; font-weight: 200; color: rgba(255,255,255,0.3); flex-wrap: wrap; gap: 0.5rem; }
+
+    @media (max-width: 768px) {
+      nav { padding: 1rem 1.5rem; }
+      .nav-links { gap: 1rem; }
+      .footer-grid { grid-template-columns: 1fr; gap: 2rem; }
+      .sommaire { padding: 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="index.html" class="nav-logo">Esprit irisé</a>
+    <ul class="nav-links">
+      <li><a href="formations.html">Formations</a></li>
+      <li><a href="livres.html">Livres</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a href="reservation.html" class="nav-cta">Réserver</a></li>
+    </ul>
+  </nav>
+
+  <section class="page-hero">
+    <div class="hero-orb orb-1"></div>
+    <div class="hero-orb orb-2"></div>
+    <div class="page-hero-content">
+      <p class="hero-eyebrow">Esprit irisé · Légal</p>
+      <h1>Conditions Générales<br><em>de Vente</em></h1>
+      <p>Applicables aux programmes d'accompagnement et aux séances individuelles</p>
+    </div>
+  </section>
+
+  <hr class="iris-divider">
+
+  <section class="legal-section">
+    <div class="legal-container">
+
+      <span class="legal-update">Dernière mise à jour : 2025 · SIRET 90419149100011</span>
+
+      <!-- SOMMAIRE -->
+      <div class="sommaire">
+        <div class="sommaire-titre">Sommaire</div>
+        <ol>
+          <li><a href="#art1">1. Objet</a></li>
+          <li><a href="#art2">2. Types de prestations</a></li>
+          <li><a href="#art3">3. Tarifs</a></li>
+          <li><a href="#art4">4. Devis et engagement</a></li>
+          <li><a href="#art5">5. Réservation et paiement</a></li>
+          <li><a href="#art6">6. Annulation et report</a></li>
+          <li><a href="#art7">7. Droit de rétractation</a></li>
+          <li><a href="#art8">8. Engagements et responsabilités</a></li>
+          <li><a href="#art9">9. Confidentialité</a></li>
+          <li><a href="#art10">10. Propriété intellectuelle</a></li>
+          <li><a href="#art11">11. Force majeure</a></li>
+          <li><a href="#art12">12. Litiges et médiation</a></li>
+          <li><a href="#art13">13. Acceptation des CGV</a></li>
+        </ol>
+      </div>
+
+      <!-- ARTICLE 1 -->
+      <div class="legal-article" id="art1">
+        <span class="article-num">Article 1</span>
+        <h2 class="article-titre">Objet</h2>
+        <p>Les présentes Conditions Générales de Vente (CGV) définissent les modalités et conditions des prestations proposées par Alicia Desmons, éducatrice à la vie et animatrice en santé & bien-être, comprenant :</p>
+        <ul>
+          <li><strong>Les programmes d'accompagnement personnalisés</strong> : prestations établies sur mesure, formalisées par un devis signé, avec engagement.</li>
+          <li><strong>Les séances individuelles spécifiques</strong> : prestations ponctuelles sans engagement contractuel.</li>
+        </ul>
+      </div>
+
+      <!-- ARTICLE 2 -->
+      <div class="legal-article" id="art2">
+        <span class="article-num">Article 2</span>
+        <h2 class="article-titre">Types de prestations</h2>
+        <p class="article-sous-titre">2.1. Programmes d'accompagnement personnalisés</p>
+        <p>Ces programmes incluent plusieurs séances et outils adaptés aux besoins du Client, dans une démarche globale et progressive. Ils sont formalisés par un devis détaillé précisant les objectifs, les modalités, le calendrier et les facilités de paiement, le cas échéant.</p>
+        <p class="article-sous-titre">2.2. Séances individuelles spécifiques</p>
+        <p>Ces séances sont proposées à la demande et indépendamment de tout programme. Elles ne nécessitent pas de devis préalable ni d'engagement sur la durée.</p>
+      </div>
+
+      <!-- ARTICLE 3 -->
+      <div class="legal-article" id="art3">
+        <span class="article-num">Article 3</span>
+        <h2 class="article-titre">Tarifs</h2>
+        <ul>
+          <li><strong>Programmes personnalisés</strong> : les tarifs sont définis dans le devis signé par le Client. Le prix reste ferme et définitif pour la durée du programme.</li>
+          <li><strong>Séances individuelles</strong> : les tarifs unitaires sont communiqués au Client au moment de la réservation.</li>
+        </ul>
+        <p>Tous les tarifs sont exprimés en euros et incluent les taxes applicables. Alicia Desmons se réserve le droit de modifier ses tarifs, mais les montants convenus pour une prestation restent inchangés après validation.</p>
+      </div>
+
+      <!-- ARTICLE 4 -->
+      <div class="legal-article" id="art4">
+        <span class="article-num">Article 4</span>
+        <h2 class="article-titre">Devis et engagement (programmes personnalisés)</h2>
+        <p>Pour les programmes personnalisés, un devis détaillé est établi et doit être signé par le Client. La signature du devis vaut engagement contractuel entre les deux parties. Elle précise :</p>
+        <ul>
+          <li>Le contenu des prestations.</li>
+          <li>Les modalités de paiement (paiement en une seule fois ou en plusieurs échéances mensuelles).</li>
+          <li>La durée du programme et les conditions d'annulation.</li>
+        </ul>
+      </div>
+
+      <!-- ARTICLE 5 -->
+      <div class="legal-article" id="art5">
+        <span class="article-num">Article 5</span>
+        <h2 class="article-titre">Réservation et paiement</h2>
+        <p class="article-sous-titre">5.1. Programmes personnalisés</p>
+        <ul>
+          <li>Le paiement peut être effectué en totalité à la signature du devis ou selon l'échéancier convenu.</li>
+          <li>Les paiements peuvent être réalisés par virement bancaire, chèque ou espèces.</li>
+        </ul>
+        <p class="article-sous-titre">5.2. Séances individuelles</p>
+        <ul>
+          <li>Le règlement des séances individuelles s'effectue en totalité avant ou le jour de la séance.</li>
+          <li>Aucune réservation ne sera confirmée sans paiement préalable si cela est demandé.</li>
+        </ul>
+      </div>
+
+      <!-- ARTICLE 6 -->
+      <div class="legal-article" id="art6">
+        <span class="article-num">Article 6</span>
+        <h2 class="article-titre">Annulation et report de rendez-vous</h2>
+        <p class="article-sous-titre">6.1. Programmes personnalisés</p>
+        <ul>
+          <li>Toute annulation ou report doit être notifié par écrit au moins <strong>48 heures</strong> à l'avance.</li>
+          <li>En cas d'annulation unilatérale par le Client, les sommes déjà versées ne pourront être remboursées, sauf cas de force majeure.</li>
+        </ul>
+        <p class="article-sous-titre">6.2. Séances individuelles</p>
+        <ul>
+          <li>Toute annulation ou report doit être notifié au moins <strong>24 heures</strong> avant la séance.</li>
+          <li>En cas d'annulation tardive ou d'absence, la séance sera due et non remboursable.</li>
+        </ul>
+      </div>
+
+      <!-- ARTICLE 7 -->
+      <div class="legal-article" id="art7">
+        <span class="article-num">Article 7</span>
+        <h2 class="article-titre">Droit de rétractation</h2>
+        <ul>
+          <li><strong>Programmes personnalisés</strong> : le Client dispose d'un délai légal de rétractation de <strong>14 jours</strong> à compter de la signature du devis, sauf si les prestations commencent avant la fin de ce délai, avec l'accord express du Client.</li>
+          <li><strong>Séances individuelles</strong> : le droit de rétractation ne s'applique pas aux prestations ponctuelles réalisées immédiatement après la réservation.</li>
+        </ul>
+      </div>
+
+      <!-- ARTICLE 8 -->
+      <div class="legal-article" id="art8">
+        <span class="article-num">Article 8</span>
+        <h2 class="article-titre">Engagements et responsabilités</h2>
+        <ul>
+          <li>Alicia Desmons s'engage à offrir un service adapté aux besoins exprimés par le Client.</li>
+          <li>Les prestations ne remplacent pas un suivi médical ou psychologique et le Client reste responsable des décisions prises suite aux séances.</li>
+        </ul>
+        <div class="encart">
+          <p>Les séances et formations proposées par Esprit irisé s'inscrivent dans une démarche éducative et de développement personnel. Elles ne constituent pas un acte médical, thérapeutique ou psychologique au sens légal du terme.</p>
+        </div>
+      </div>
+
+      <!-- ARTICLE 9 -->
+      <div class="legal-article" id="art9">
+        <span class="article-num">Article 9</span>
+        <h2 class="article-titre">Confidentialité</h2>
+        <p>Toutes les informations échangées lors des séances ou des programmes sont strictement confidentielles. Elles ne pourront en aucun cas être divulguées à des tiers sans l'accord express du Client.</p>
+      </div>
+
+      <!-- ARTICLE 10 -->
+      <div class="legal-article" id="art10">
+        <span class="article-num">Article 10</span>
+        <h2 class="article-titre">Propriété intellectuelle</h2>
+        <p>Les supports et outils fournis dans le cadre des prestations (documents, méthodes, contenus pédagogiques) restent la propriété exclusive d'Alicia Desmons. Toute reproduction, diffusion ou utilisation commerciale est interdite sans autorisation préalable écrite.</p>
+      </div>
+
+      <!-- ARTICLE 11 -->
+      <div class="legal-article" id="art11">
+        <span class="article-num">Article 11</span>
+        <h2 class="article-titre">Force majeure</h2>
+        <p>Alicia Desmons ne pourra être tenue responsable de l'impossibilité de fournir une prestation en cas de force majeure (problèmes techniques, accidents, catastrophe naturelle, maladie, etc.). Dans ce cas, un report ou un remboursement sera proposé au Client.</p>
+      </div>
+
+      <!-- ARTICLE 12 -->
+      <div class="legal-article" id="art12">
+        <span class="article-num">Article 12</span>
+        <h2 class="article-titre">Litiges et médiation</h2>
+        <p>En cas de litige, les parties s'engagent à rechercher une solution amiable. Si aucune solution n'est trouvée, le litige sera soumis aux juridictions compétentes du ressort du domicile d'Alicia Desmons.</p>
+        <p>Le Client peut également recourir à un médiateur de la consommation, conformément aux articles L.611-1 et suivants du Code de la consommation.</p>
+      </div>
+
+      <!-- ARTICLE 13 -->
+      <div class="legal-article" id="art13">
+        <span class="article-num">Article 13</span>
+        <h2 class="article-titre">Acceptation des CGV</h2>
+        <ul>
+          <li>La signature du devis pour les programmes personnalisés vaut acceptation pleine et entière des présentes CGV.</li>
+          <li>La réservation d'une séance individuelle implique l'acceptation tacite des présentes CGV.</li>
+        </ul>
+        <div class="encart">
+          <p>Pour toute question relative aux présentes CGV : <strong><a href="mailto:espritirise@gmail.com">espritirise@gmail.com</a></strong> · 06 72 63 41 54<br>Alicia Desmons · Esprit irisé · Tresson, 72440 · SIRET 90419149100011</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-grid">
+      <div>
+        <div class="footer-logo">Esprit irisé</div>
+        <p class="footer-tagline">École de vie intérieure · Formations holistiques<br>Science, Corps & Sens de la vie<br><br>Tresson, 72440 · Sarthe</p>
+      </div>
+      <div class="footer-col">
+        <h5>Explorer</h5>
+        <a href="reservation.html">Réserver une séance</a>
+        <a href="formations.html">Formations & Ateliers</a>
+        <a href="livres.html">Livres & Outils</a>
+        <a href="https://espritirise.substack.com/" target="_blank" rel="noopener">La Lettre · Substack</a>
+      </div>
+      <div class="footer-col">
+        <h5>Légal</h5>
+        <a href="cgv.html">Conditions Générales de Vente</a>
+        <a href="confidentialite.html">Politique de confidentialité</a>
+        <a href="contact.html">Contact</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2025 Esprit irisé · Alicia

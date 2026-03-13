@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Formations — Esprit Irisé · Alicia Desmons</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Raleway:wght@200;300;400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --marine:      #1B3A5C;
+      --deep:        #0F2540;
+      --canard:      #2A7F8A;
+      --turquoise:   #6ECECE;
+      --turquoise-2: #3A9E9E;
+      --or:          #C4A35A;
+      --or-deep:     #B8963E;
+      --iris-3:      #B8C4E8;
+      --iris-4:      #C9B8E8;
+      --light:       #F0F7FA;
+      --muted:       #6B8CAE;
+      --text:        #1B3A5C;
+      --white:       #FFFFFF;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Raleway', sans-serif; font-weight: 300; color: var(--text); background: var(--white); overflow-x: hidden; }
+
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1.2rem 4rem;
+      background: rgba(255,255,255,0.92);
+      backdrop-filter: blur(18px);
+      border-bottom: 1px solid rgba(110,206,206,0.2);
+    }
+    .nav-logo { font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; font-weight: 300; letter-spacing: 0.12em; text-decoration: none; background: linear-gradient(120deg, var(--marine), var(--turquoise)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .nav-links { display: flex; gap: 2.5rem; list-style: none; align-items: center; }
+    .nav-links a { text-decoration: none; font-size: 0.75rem; font-weight: 400; letter-spacing: 0.18em; text-transform: uppercase; color: var(--marine); transition: color 0.3s; }
+    .nav-links a:hover { color: var(--turquoise); }
+    .nav-cta { background: linear-gradient(135deg, var(--turquoise), var(--turquoise-2)) !important; color: var(--marine) !important; padding: 0.5rem 1.4rem; border-radius: 2rem; font-weight: 500 !important; -webkit-text-fill-color: var(--marine) !important; }
+
+    .page-hero {
+      min-height: 52vh;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      text-align: center;
+      padding: 10rem 2rem 5rem;
+      position: relative; overflow: hidden;
+      background: linear-gradient(160deg, var(--deep) 0%, var(--marine) 55%, var(--canard) 100%);
+    }
+    .hero-orb { position: absolute; border-radius: 50%; filter: blur(80px); pointer-events: none; }
+    .orb-1 { width: 500px; height: 500px; background: radial-gradient(circle, rgba(110,206,206,0.2), transparent 70%); top: -10%; left: -10%; animation: float 8s ease-in-out infinite; }
+    .orb-2 { width: 350px; height: 350px; background: radial-gradient(circle, rgba(196,163,90,0.15), transparent 70%); bottom: 0; right: -5%; animation: float 10s ease-in-out infinite reverse; }
+    @keyframes float { 0%, 100% { transform: translateY(0) scale(1); } 50% { transform: translateY(-25px) scale(1.04); } }
+    .page-hero-content { position: relative; z-index: 2; max-width: 700px; }
+    .hero-eyebrow { font-size: 0.68rem; font-weight: 300; letter-spacing: 0.45em; text-transform: uppercase; color: rgba(110,206,206,0.7); margin-bottom: 1.5rem; opacity: 0; animation: fadeUp 0.9s ease 0.1s forwards; }
+    .page-hero h1 { font-family: 'Cormorant Garamond', serif; font-size: clamp(2.5rem, 5.5vw, 4rem); font-weight: 300; line-height: 1.15; color: white; margin-bottom: 1.5rem; opacity: 0; animation: fadeUp 0.9s ease 0.3s forwards; }
+    .page-hero h1 em { font-style: italic; background: linear-gradient(135deg, var(--turquoise), var(--iris-4), var(--or)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .page-hero p { font-size: 0.95rem; font-weight: 200; line-height: 1.85; color: rgba(255,255,255,0.7); opacity: 0; animation: fadeUp 0.9s ease 0.5s forwards; }
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: translateY(0); } }
+
+    .iris-divider { height: 2px; background: linear-gradient(90deg, transparent, var(--deep), var(--turquoise), var(--iris-4), var(--or), transparent); opacity: 0.6; border: none; }
+
+    section { padding: 6rem 2rem; }
+    .container { max-width: 1100px; margin: 0 auto; }
+    .section-label { font-size: 0.65rem; font-weight: 400; letter-spacing: 0.35em; text-transform: uppercase; color: var(--muted); display: block; margin-bottom: 0.8rem; }
+    .section-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(2rem, 4vw, 3rem); font-weight: 300; color: var(--marine); line-height: 1.2; margin-bottom: 1rem; }
+    .section-title em { font-style: italic; background: linear-gradient(135deg, var(--turquoise), var(--or)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .section-sub { font-size: 0.95rem; font-weight: 300; color: var(--muted); line-height: 1.8; max-width: 560px; margin-bottom: 3rem; }
+
+    /* ─── FORMATIONS GRID ─────────────────── */
+    .formations-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+      gap: 2rem;
+    }
+    .formation-card {
+      border: 1px solid rgba(110,206,206,0.2);
+      border-radius: 1.4rem;
+      overflow: hidden;
+      background: white;
+      transition: transform 0.3s, box-shadow 0.3s;
+      display: flex;
+      flex-direction: column;
+    }
+    .formation-card:hover { transform: translateY(-6px); box-shadow: 0 24px 60px rgba(27,58,92,0.1); }
+    .formation-header {
+      padding: 2.5rem 2.5rem 1.5rem;
+      position: relative;
+    }
+    .formation-header.gradient-1 { background: linear-gradient(135deg, rgba(110,206,206,0.12), rgba(201,184,232,0.1)); }
+    .formation-header.gradient-2 { background: linear-gradient(135deg, rgba(196,163,90,0.1), rgba(110,206,206,0.08)); }
+    .formation-header.gradient-3 { background: linear-gradient(135deg, rgba(201,184,232,0.12), rgba(110,206,206,0.1)); }
+    .formation-header.gradient-4 { background: linear-gradient(135deg, rgba(42,127,138,0.1), rgba(196,163,90,0.1)); }
+    .formation-icon { font-size: 2.5rem; margin-bottom: 1.2rem; }
+    .badge-duree {
+      display: inline-block;
+      background: rgba(255,255,255,0.7);
+      backdrop-filter: blur(4px);
+      color: var(--canard);
+      font-size: 0.65rem;
+      font-weight: 500;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      padding: 0.3rem 0.8rem;
+      border-radius: 2rem;
+      border: 1px solid rgba(110,206,206,0.25);
+      margin-bottom: 1rem;
+    }
+    .formation-titre { font-family: 'Cormorant Garamond', serif; font-size: 1.7rem; font-weight: 300; color: var(--marine); margin-bottom: 0.5rem; line-height: 1.2; }
+    .formation-sous-titre { font-size: 0.72rem; font-weight: 400; letter-spacing: 0.15em; text-transform: uppercase; color: var(--muted); }
+    .formation-body { padding: 2rem 2.5rem; flex: 1; display: flex; flex-direction: column; }
+    .formation-desc { font-size: 0.88rem; font-weight: 300; color: var(--muted); line-height: 1.75; margin-bottom: 1.8rem; flex: 1; }
+    .formation-modules { margin-bottom: 1.8rem; }
+    .modules-label { font-size: 0.65rem; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; color: var(--canard); margin-bottom: 0.8rem; }
+    .module-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.6rem;
+      font-size: 0.8rem;
+      font-weight: 300;
+      color: var(--text);
+      margin-bottom: 0.5rem;
+      line-height: 1.5;
+    }
+    .module-item::before { content: '→'; color: var(--turquoise); flex-shrink: 0; }
+    .formation-footer { padding: 0 2.5rem 2.5rem; border-top: 1px solid rgba(110,206,206,0.12); padding-top: 1.5rem; display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap; }
+    .formation-prix { font-family: 'Cormorant Garamond', serif; font-size: 2.2rem; font-weight: 300; color: var(--marine); }
+    .formation-prix-note { font-size: 0.7rem; font-weight: 300; color: var(--muted); margin-top: 0.1rem; }
+    .btn-commander {
+      display: inline-block;
+      padding: 0.85rem 2rem;
+      border-radius: 3rem;
+      text-decoration: none;
+      font-size: 0.72rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      font-weight: 500;
+      background: linear-gradient(135deg, var(--turquoise), var(--turquoise-2));
+      color: var(--marine);
+      box-shadow: 0 4px 20px rgba(110,206,206,0.3);
+      transition: transform 0.25s, box-shadow 0.25s;
+      cursor: pointer;
+      border: none;
+      font-family: 'Raleway', sans-serif;
+    }
+    .btn-commander:hover { transform: translateY(-2px); box-shadow: 0 8px 32px rgba(110,206,206,0.5); }
+    .btn-commander-or { background: linear-gradient(135deg, var(--or), var(--or-deep)); color: white; box-shadow: 0 4px 20px rgba(196,163,90,0.3); }
+    .btn-commander-or:hover { box-shadow: 0 8px 32px rgba(196,163,90,0.5); }
+
+    /* ─── COMMENT ÇA MARCHE STRIPE ────────── */
+    .stripe-info {
+      background: linear-gradient(160deg, var(--deep) 0%, var(--marine) 60%, var(--canard) 100%);
+      color: white;
+      position: relative;
+      overflow: hidden;
+    }
+    .stripe-orb-1 { position: absolute; width: 400px; height: 400px; background: radial-gradient(circle, rgba(110,206,206,0.12), transparent); border-radius: 50%; filter: blur(80px); top: -20%; right: -10%; pointer-events: none; }
+    .stripe-orb-2 { position: absolute; width: 300px; height: 300px; background: radial-gradient(circle, rgba(196,163,90,0.1), transparent); border-radius: 50%; filter: blur(80px); bottom: -10%; left: 20%; pointer-events: none; }
+    .stripe-label { color: rgba(110,206,206,0.7); }
+    .stripe-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(2rem, 4vw, 3rem); font-weight: 300; color: white; line-height: 1.2; margin-bottom: 3rem; }
+    .stripe-title em { font-style: italic; background: linear-gradient(135deg, var(--turquoise), var(--or)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .stripe-steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 2rem; position: relative; z-index: 2; }
+    .stripe-step { background: rgba(255,255,255,0.05); border: 1px solid rgba(110,206,206,0.12); border-radius: 1.2rem; padding: 2rem 1.8rem; transition: background 0.3s; }
+    .stripe-step:hover { background: rgba(255,255,255,0.09); }
+    .step-num { font-family: 'Cormorant Garamond', serif; font-size: 3rem; font-weight: 300; background: linear-gradient(135deg, var(--turquoise), var(--or)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; line-height: 1; margin-bottom: 1rem; }
+    .step-titre { font-size: 0.85rem; font-weight: 400; color: white; letter-spacing: 0.05em; margin-bottom: 0.6rem; }
+    .step-texte { font-size: 0.82rem; font-weight: 200; color: rgba(255,255,255,0.6); line-height: 1.7; }
+    .stripe-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(110,206,206,0.2);
+      border-radius: 2rem;
+      padding: 0.5rem 1.2rem;
+      font-size: 0.72rem;
+      font-weight: 300;
+      color: rgba(255,255,255,0.7);
+      margin-top: 3rem;
+      position: relative; z-index: 2;
+    }
+    .stripe-badge span { color: var(--turquoise); font-weight: 400; }
+
+    /* ─── MODAL COMMANDE ─────────────────── */
+    .modal-overlay {
+      display: none;
+      position: fixed; inset: 0; z-index: 200;
+      background: rgba(15,37,64,0.7);
+      backdrop-filter: blur(6px);
+      align-items: center; justify-content: center;
+      padding: 2rem;
+    }
+    .modal-overlay.open { display: flex; }
+    .modal {
+      background: white;
+      border-radius: 1.5rem;
+      padding: 3rem;
+      max-width: 560px;
+      width: 100%;
+      position: relative;
+      box-shadow: 0 40px 100px rgba(15,37,64,0.3);
+      animation: slideUp 0.35s ease;
+    }
+    @keyframes slideUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+    .modal-close {
+      position: absolute; top: 1.2rem; right: 1.5rem;
+      background: none; border: none;
+      font-size: 1.4rem; cursor: pointer;
+      color: var(--muted); transition: color 0.2s;
+      line-height: 1;
+    }
+    .modal-close:hover { color: var(--marine); }
+    .modal-titre { font-family: 'Cormorant Garamond', serif; font-size: 1.8rem; font-weight: 300; color: var(--marine); margin-bottom: 0.4rem; }
+    .modal-titre em { font-style: italic; background: linear-gradient(135deg, var(--turquoise), var(--or)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .modal-desc { font-size: 0.85rem; font-weight: 300; color: var(--muted); margin-bottom: 2rem; line-height: 1.6; }
+    .modal-prix-recap {
+      background: linear-gradient(135deg, rgba(110,206,206,0.08), rgba(196,163,90,0.06));
+      border: 1px solid rgba(110,206,206,0.2);
+      border-radius: 1rem;
+      padding: 1.2rem 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 2rem;
+    }
+    .modal-formation-nom { font-size: 0.85rem; font-weight: 400; color: var(--text); }
+    .modal-prix-val { font-family: 'Cormorant Garamond', serif; font-size: 2rem; font-weight: 300; color: var(--marine); }
+    .modal form { display: flex; flex-direction: column; gap: 1rem; }
+    .modal label { font-size: 0.7rem; font-weight: 400; letter-spacing: 0.15em; text-transform: uppercase; color: var(--muted); display: block; margin-bottom: 0.4rem; }
+    .modal input { width: 100%; padding: 0.85rem 1.1rem; border: 1px solid rgba(110,206,206,0.25); border-radius: 0.75rem; font-family: 'Raleway', sans-serif; font-size: 0.9rem; font-weight: 300; color: var(--text); background: rgba(240,247,250,0.5); outline: none; transition: border-color 0.25s, box-shadow 0.25s; }
+    .modal input:focus { border-color: var(--turquoise); box-shadow: 0 0 0 3px rgba(110,206,206,0.12); background: white; }
+    .modal-submit {
+      padding: 1rem;
+      border-radius: 3rem;
+      border: none;
+      font-family: 'Raleway', sans-serif;
+      font-size: 0.78rem;
+      font-weight: 500;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      background: linear-gradient(135deg, var(--or), var(--or-deep));
+      color: white;
+      cursor: pointer;
+      box-shadow: 0 4px 20px rgba(196,163,90,0.35);
+      transition: transform 0.25s, box-shadow 0.25s;
+      margin-top: 0.5rem;
+    }
+    .modal-submit:hover { transform: translateY(-2px); box-shadow: 0 8px 32px rgba(196,163,90,0.5); }
+    .modal-note { text-align: center; font-size: 0.72rem; font-weight: 300; color: var(--muted); margin-top: 0.8rem; line-height: 1.6; }
+    .modal-stripe-logo { display: flex; align-items: center; justify-content: center; gap: 0.4rem; font-size: 0.7rem; font-weight: 300; color: var(--muted); margin-top: 0.8rem; }
+    .modal-stripe-logo::before { content: '🔒'; }
+
+    /* ─── FOOTER ──────────────────────────── */
+    footer { background: var(--deep); color: rgba(255,255,255,0.85); padding: 4rem 2rem 2rem; }
+    .footer-grid { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 4rem; padding-bottom: 3rem; border-bottom: 1px solid rgba(255,255,255,0.08); margin-bottom: 2rem; }
+    .footer-logo { font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; font-weight: 300; letter-spacing: 0.12em; background: linear-gradient(120deg, var(--turquoise), var(--or)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin-bottom: 0.8rem; }
+    .footer-tagline { font-size: 0.75rem; font-weight: 200; color: rgba(255,255,255,0.45); line-height: 1.8; letter-spacing: 0.05em; }
+    .footer-col h5 { font-size: 0.65rem; font-weight: 400; letter-spacing: 0.3em; text-transform: uppercase; color: rgba(255,255,255,0.4); margin-bottom: 1.2rem; }
+    .footer-col a { display: block; font-size: 0.82rem; font-weight: 200; color: rgba(255,255,255,0.75); text-decoration: none; margin-bottom: 0.6rem; transition: color 0.2s; }
+    .footer-col a:hover { color: var(--turquoise); }
+    .footer-bottom { max-width: 1100px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; font-size: 0.72rem; font-weight: 200; color: rgba(255,255,255,0.3); }
+
+    @media (max-width: 768px) {
+      nav { padding: 1rem 1.5rem; }
+      .nav-links { gap: 1rem; }
+      .footer-grid { grid-template-columns: 1fr; gap: 2rem; }
+      .modal { padding: 2rem 1.5rem; }
+      .formations-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- MODAL COMMANDE -->
+  <div class="modal-overlay" id="modalCommande">
+    <div class="modal">
+      <button class="modal-close" onclick="closeModal()">×</button>
+      <h2 class="modal-titre">Commander <em id="modalNom">cette formation</em></h2>
+      <p class="modal-desc">Entrez votre e-mail. Alicia vous envoie ensuite le lien de paiement Stripe sécurisé, et vous recevrez accès à la formation dès confirmation.</p>
+      <div class="modal-prix-recap">
+        <span class="modal-formation-nom" id="modalFormationNom">Formation</span>
+        <span class="modal-prix-val" id="modalPrix">—</span>
+      </div>
+      <form onsubmit="submitCommande(event)">
+        <div>
+          <label for="modalPrenom">Prénom</label>
+          <input type="text" id="modalPrenom" placeholder="Votre prénom" required>
+        </div>
+        <div>
+          <label for="modalNomField">Nom</label>
+          <input type="text" id="modalNomField" placeholder="Votre nom" required>
+        </div>
+        <div>
+          <label for="modalEmail">E-mail</label>
+          <input type="email" id="modalEmail" placeholder="votre@email.com" required>
+        </div>
+        <button type="submit" class="modal-submit">Valider ma commande →</button>
+        <p class="modal-note">Alicia vous enverra le lien de paiement Stripe sous 24h.<br>Accès à la formation confirmé après paiement.</p>
+        <div class="modal-stripe-logo">Paiement 100 % sécurisé par Stripe</div>
+      </form>
+    </div>
+  </div>
+
+  <!-- NAV -->
+  <nav>
+    <a href="index.html" class="nav-logo">Esprit irisé</a>
+    <ul class="nav-links">
+      <li><a href="formations.html">Formations</a></li>
+      <li><a href="livres.html">Livres</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a href="reservation.html" class="nav-cta">Réserver</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section class="page-hero">
+    <div class="hero-orb orb-1"></div>
+    <div class="hero-orb orb-2"></div>
+    <div class="page-hero-content">
+      <p class="hero-eyebrow">Esprit irisé · Formations</p>
+      <h1>Des parcours pour<br><em>se connaître</em></h1>
+      <p>Formations en ligne et présentiel — corps, émotions, relations, sens de la vie.<br>Choisissez votre parcours, payez en sécurité, commencez à votre rythme.</p>
+    </div>
+  </section>
+
+  <hr class="iris-divider">
+
+  <!-- FORMATIONS -->
+  <section>
+    <div class="container">
+      <span class="section-label">Les formations disponibles</span>
+      <h2 class="section-title">Explorer, apprendre,<br><em>se transformer</em></h2>
+      <p class="section-sub">Chaque formation est conçue pour vous accompagner là où vous en êtes — en profondeur, à votre rythme, avec des outils concrets.</p>
+
+      <div class="formations-grid">
+
+        <div class="formation-card">
+          <div class="formation-header gradient-1">
+            <div class="formation-icon">🌿</div>
+            <span class="badge-duree">6 semaines · En ligne</span>
+            <div class="formation-titre">Découvrir son<br>monde intérieur</div>
+            <div class="formation-sous-titre">Formation d'introduction · Tous niveaux</div>
+          </div>
+          <div class="formation-body">
+            <p class="formation-desc">Un voyage structuré pour commencer à se connaître — émotions, besoins, mécanismes intérieurs. La formation idéale pour poser les premières fondations en conscience.</p>
+            <div class="formation-modules">
+              <div class="modules-label">Au programme</div>
+              <div class="module-item">Les émotions : langage et intelligence</div>
+              <div class="module-item">Le corps comme lieu de connaissance</div>
+              <div class="module-item">Besoins fondamentaux & communication</div>
+              <div class="module-item">Outils pratiques du quotidien</div>
+            </div>
+          </div>
+          <div class="formation-footer">
+            <div>
+              <div class="formation-prix">197 €</div>
+              <div class="formation-prix-note">Accès 12 mois · PDF & vidéos</div>
+            </div>
+            <button class="btn-commander" onclick="openModal('Découvrir son monde intérieur', '197 €')">Commander →</button>
+          </div>
+        </div>
+
+        <div class="formation-card">
+          <div class="formation-header gradient-2">
+            <div class="formation-icon">🔬</div>
+            <span class="badge-duree">10 semaines · En ligne</span>
+            <div class="formation-titre">La Méthode<br>Holistique</div>
+            <div class="formation-sous-titre">Formation complète · Certifiante</div>
+          </div>
+          <div class="formation-body">
+            <p class="formation-desc">Le cœur de la pédagogie d'Alicia. Une formation approfondie qui réunit science, sagesse des traditions et intelligence du corps pour vous guider vers une compréhension globale de vous-même.</p>
+            <div class="formation-modules">
+              <div class="modules-label">Au programme</div>
+              <div class="module-item">Psychologie & neurosciences du comportement</div>
+              <div class="module-item">Corps, respiration, ancrage somatique</div>
+              <div class="module-item">Sens, symbolique & dimensions spirituelles</div>
+              <div class="module-item">Lien, relation, dynamiques interpersonnelles</div>
+              <div class="module-item">Intégration pratique & plan de vie</div>
+            </div>
+          </div>
+          <div class="formation-footer">
+            <div>
+              <div class="formation-prix">490 €</div>
+              <div class="formation-prix-note">Accès à vie · Certificat inclus</div>
+            </div>
+            <button class="btn-commander btn-commander-or" onclick="openModal('La Méthode Holistique', '490 €')">Commander →</button>
+          </div>
+        </div>
+
+        <div class="formation-card">
+          <div class="formation-header gradient-3">
+            <div class="formation-icon">👶</div>
+            <span class="badge-duree">8 semaines · En ligne</span>
+            <div class="formation-titre">Parentalité<br>consciente</div>
+            <div class="formation-sous-titre">Famille & Enfant · Parents</div>
+          </div>
+          <div class="formation-body">
+            <p class="formation-desc">Un programme dédié à la relation parent-enfant — comprendre les besoins de l'enfant, désamorcer les conflits, poser des limites saines et nourrir un lien de confiance durable.</p>
+            <div class="formation-modules">
+              <div class="modules-label">Au programme</div>
+              <div class="module-item">Les lois naturelles du développement de l'enfant</div>
+              <div class="module-item">Communication bienveillante & non-violente</div>
+              <div class="module-item">Limites saines & cadre sécurisant</div>
+              <div class="module-item">Gérer ses propres réactions de parent</div>
+            </div>
+          </div>
+          <div class="formation-footer">
+            <div>
+              <div class="formation-prix">297 €</div>
+              <div class="formation-prix-note">Accès 18 mois · Workbooks inclus</div>
+            </div>
+            <button class="btn-commander" onclick="openModal('Parentalité consciente', '297 €')">Commander →</button>
+          </div>
+        </div>
+
+        <div class="formation-card">
+          <div class="formation-header gradient-4">
+            <div class="formation-icon">✨</div>
+            <span class="badge-duree">12 semaines · Présentiel + En ligne</span>
+            <div class="formation-titre">Parcours<br>Immersif Annuel</div>
+            <div class="formation-sous-titre">Accompagnement complet · Sur candidature</div>
+          </div>
+          <div class="formation-body">
+            <p class="formation-desc">Le parcours signature d'Alicia. Une année complète d'exploration et de transformation, avec séances individuelles, ateliers collectifs, formations en ligne et suivi personnalisé.</p>
+            <div class="formation-modules">
+              <div class="modules-label">Ce qui est inclus</div>
+              <div class="module-item">Accès à toutes les formations en ligne</div>
+              <div class="module-item">8 séances individuelles avec Alicia</div>
+              <div class="module-item">Ateliers collectifs mensuels (présentiel)</div>
+              <div class="module-item">Groupe de soutien privé</div>
+              <div class="module-item">Certificat de formation holistique</div>
+            </div>
+          </div>
+          <div class="formation-footer">
+            <div>
+              <div class="formation-prix">1 490 €</div>
+              <div class="formation-prix-note">Paiement en 3× · Sur candidature</div>
+            </div>
+            <button class="btn-commander btn-commander-or" onclick="openModal('Parcours Immersif Annuel', '1 490 €')">Commander →</button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <hr class="iris-divider">
+
+  <!-- PROCESSUS STRIPE -->
+  <section class="stripe-info">
+    <div class="stripe-orb-1"></div>
+    <div class="stripe-orb-2"></div>
+    <div class="container">
+      <span class="section-label stripe-label">Le processus de commande</span>
+      <h2 class="stripe-title">Simple, sécurisé,<br><em>humain</em></h2>
+      <div class="stripe-steps">
+        <div class="stripe-step">
+          <div class="step-num">01</div>
+          <div class="step-titre">Vous choisissez votre formation</div>
+          <div class="step-texte">Cliquez sur "Commander" et renseignez vos coordonnées. Alicia reçoit votre demande directement.</div>
+        </div>
+        <div class="stripe-step">
+          <div class="step-num">02</div>
+          <div class="step-titre">Alicia vous envoie le lien Stripe</div>
+          <div class="step-texte">Sous 24h, vous recevez un lien de paiement sécurisé Stripe, personnalisé pour votre formation.</div>
+        </div>
+        <div class="stripe-step">
+          <div class="step-num">03</div>
+          <div class="step-titre">Paiement sécurisé</div>
+          <div class="step-texte">Vous payez en toute sécurité via Stripe — carte bancaire ou virement. Aucune donnée bancaire n'est conservée.</div>
+        </div>
+        <div class="stripe-step">
+          <div class="step-num">04</div>
+          <div class="step-titre">Accès immédiat</div>
+          <div class="step-texte">Dès confirmation du paiement, vous recevez accès complet à votre formation. C'est parti ✨</div>
+        </div>
+      </div>
+      <div class="stripe-badge"><span>🔒</span> Paiement 100 % sécurisé par <span>Stripe</span> · Données chiffrées · Remboursement 14 jours</div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-grid">
+      <div>
+        <div class="footer-logo">Esprit irisé</div>
+        <p class="footer-tagline">École de vie intérieure · Formations holistiques<br>Science, Corps & Sens de la vie<br><br>Tresson, 72440 · Sarthe</p>
+      </div>
+      <div class="footer-col">
+        <h5>Pages</h5>
+        <a href="index.html">Accueil</a>
+        <a href="reservation.html">Réserver une séance</a>
+        <a href="formations.html">Commander une formation</a>
+        <a href="livres.html">Livres</a>
+        <a href="contact.html">Contact</a>
+      </div>
+      <div class="footer-col">
+        <h5>Contact</h5>
+        <a href="mailto:espritirise@gmail.com">espritirise@gmail.com</a>
+        <a href="tel:0672634154">06 72 63 41 54</a>
+        <a href="index.html#alicia">À propos d'Alicia</a>
+      </div>
+    </div>
+          <div class="footer-col">
+        <h5>Légal</h5>
+        <a href="cgv.html">CGV</a>
+        <a href="confidentialite.html">Confidentialité</a>
+      </div>
+      <div class="footer-bottom">
+      <span>© 2025 Esprit irisé · Alicia Desmons · SIRET 90419149100011</span>
+      <span>Tresson, 72440 · France</span>
+    </div>
+  </footer>
+
+  <script>
+    function openModal(nom, prix) {
+      document.getElementById('modalNom').textContent = nom;
+      document.getElementById('modalFormationNom').textContent = nom;
+      document.getElementById('modalPrix').textContent = prix;
+      document.getElementById('modalCommande').classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+    function closeModal() {
+      document.getElementById('modalCommande').classList.remove('open');
+      document.body.style.overflow = '';
+    }
+    document.getElementById('modalCommande').addEventListener('click', function(e) {
+      if (e.target === this) closeModal();
+    });
+    function submitCommande(e) {
+      e.preventDefault();
+      const prenom = document.getElementById('modalPrenom').value;
+      const nom = document.getElementById('modalNomField').value;
+      const email = document.getElementById('modalEmail').value;
+      const formation = document.getElementById('modalFormationNom').textContent;
+      const prix = document.getElementById('modalPrix').textContent;
+      // Redirection vers mailto avec pré-remplissage
+      const sujet = encodeURIComponent(`Commande formation — ${formation}`);
+      const corps = encodeURIComponent(`Bonjour Alicia,\n\nJe souhaite commander la formation "${formation}" (${prix}).\n\nPrénom : ${prenom}\nNom : ${nom
