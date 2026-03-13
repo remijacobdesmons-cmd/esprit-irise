@@ -146,10 +146,48 @@
 
   <hr class="iris-divider">
 
-  <!-- choix-flux supprimé : le flux est choisi depuis livres.html -->
+  <!-- ÉTAPE 0 : CHOIX DU FLUX -->
+  <section id="choix-flux">
+    <div class="container">
+      <div style="text-align:center;margin-bottom:1rem;">
+        <span style="font-size:0.65rem;font-weight:400;letter-spacing:0.35em;text-transform:uppercase;color:var(--muted);">Comment souhaitez-vous procéder ?</span>
+        <h2 style="font-family:'Cormorant Garamond',serif;font-size:clamp(1.8rem,3.5vw,2.6rem);font-weight:300;color:var(--marine);margin-top:0.5rem;">Choisissez <em style="font-style:italic;background:linear-gradient(135deg,var(--canard),var(--iris-4));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">votre parcours</em></h2>
+      </div>
+      <div class="flux-grid">
+
+        <div class="flux-card" onclick="choisirFlux('moi')">
+          <div class="flux-icon">🌿</div>
+          <div class="flux-titre">Pour moi</div>
+          <p class="flux-desc">Vous commandez votre propre guide Destin en Main. Vous remplissez le questionnaire et réglez en ligne.</p>
+          <div class="flux-prix">185 €</div>
+          <div class="flux-prix-note">PDF haute définition · 3 à 5 semaines</div>
+          <button class="btn-flux">Commander →</button>
+        </div>
+
+        <div class="flux-card cadeau-card" onclick="choisirFlux('offrir')">
+          <div class="flux-icon">🎁</div>
+          <div class="flux-titre">Offrir à quelqu'un</div>
+          <p class="flux-desc">Vous offrez le guide à un proche. Vous réglez, il reçoit un code par e-mail et remplit lui-même son questionnaire.</p>
+          <div class="flux-prix">185 €</div>
+          <div class="flux-prix-note">Un beau cadeau · Livré directement au bénéficiaire</div>
+          <button class="btn-flux btn-flux-or">Offrir →</button>
+        </div>
+
+        <div class="flux-card" onclick="choisirFlux('code')">
+          <div class="flux-icon">✉️</div>
+          <div class="flux-titre">J'ai reçu un code</div>
+          <p class="flux-desc">Quelqu'un vous a offert un Destin en Main. Saisissez votre code pour accéder au questionnaire.</p>
+          <div class="flux-prix" style="font-size:1.3rem;color:var(--canard);">Accès gratuit</div>
+          <div class="flux-prix-note">Le paiement a déjà été effectué par votre proche</div>
+          <button class="btn-flux" style="background:linear-gradient(135deg,var(--iris-4),var(--iris-3));color:var(--marine);">Saisir mon code →</button>
+        </div>
+
+      </div>
+    </div>
+  </section>
 
   <!-- ÉTAPE CODE CADEAU -->
-  <section id="bloc-code">
+  <section id="bloc-code" style="display:none;">
     <div class="container">
       <button class="btn-retour" onclick="retourChoix()">← Retour</button>
       <div class="code-wrapper">
@@ -215,7 +253,7 @@
   </section>
 
   <!-- ÉTAPE QUESTIONNAIRE -->
-  <section id="bloc-questionnaire">
+  <section id="bloc-questionnaire" style="display:none;">
     <div class="container">
       <button class="btn-retour" onclick="retourChoix()">← Retour</button>
       <div class="form-wrapper">
@@ -389,13 +427,22 @@
 
     // ── Détection URL au chargement ───────────────────────────────────
     document.addEventListener('DOMContentLoaded', function() {
-      const flux = new URLSearchParams(window.location.search).get('flux') || 'moi';
-      choisirFlux(flux);
+      const params = new URLSearchParams(window.location.search);
+      const flux   = params.get('flux');
+      if (flux === 'moi' || flux === 'offrir' || flux === 'code') {
+        choisirFlux(flux);
+      } else {
+        choisirFlux('moi');
+      }
     });
 
     // ── Navigation ────────────────────────────────────────────────────
     function choisirFlux(flux) {
       fluxActuel = flux;
+
+      document.getElementById('bloc-code').style.display          = 'none';
+      document.getElementById('bloc-offrir').style.display        = 'none';
+      document.getElementById('bloc-questionnaire').style.display = 'none';
 
       if (flux === 'code') {
         document.getElementById('bloc-code').style.display = 'block';
