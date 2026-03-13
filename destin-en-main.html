@@ -197,7 +197,7 @@
         <input type="text" id="code-input" placeholder="Ex : MARIE-DUPONT-POUR-SOPHIE-MARTIN" autocomplete="off" oninput="this.value=this.value.toUpperCase()">
         <p id="code-error">Ce code ne correspond à aucune commande. Vérifiez l'orthographe ou contactez Alicia.</p>
         <button class="btn-valider-code" onclick="validerCode()">Valider mon code →</button>
-        <p style="font-size:0.72rem;color:var(--muted);margin-top:1.5rem;line-height:1.6;">Un problème avec votre code ? Écrivez à <a href="mailto:espritirise@gmail.com" style="color:var(--canard);">espritirise@gmail.com</a></p>
+        <p style="font-size:0.72rem;color:var(--muted);margin-top:1.5rem;line-height:1.6;">Un problème avec votre code ? Écrivez à <a href="/cdn-cgi/l/email-protection#b1d4c2c1c3d8c5d8c3d8c2d4f1d6dcd0d8dd9fd2dedc" style="color:var(--canard);"><span class="__cf_email__" data-cfemail="37524447455e435e455e445277505a565e5b1954585a">[email&#160;protected]</span></a></p>
       </div>
     </div>
   </section>
@@ -399,7 +399,7 @@
       </div>
       <div class="footer-col">
         <h5>Contact</h5>
-        <a href="mailto:espritirise@gmail.com">espritirise@gmail.com</a>
+        <a href="/cdn-cgi/l/email-protection#cbaeb8bbb9a2bfa2b9a2b8ae8baca6aaa2a7e5a8a4a6"><span class="__cf_email__" data-cfemail="b2d7c1c2c0dbc6dbc0dbc1d7f2d5dfd3dbde9cd1dddf">[email&#160;protected]</span></a>
         <a href="tel:0672634154">06 72 63 41 54</a>
         <a href="index.html#alicia">À propos d'Alicia</a>
       </div>
@@ -410,7 +410,7 @@
     </div>
   </footer>
 
-  <script>
+  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
     const STRIPE_DEM = 'https://buy.stripe.com/9B6dRa7z2e8M2At6NG1wY0e';
     const FORMSPREE  = 'https://formspree.io/f/xlgpnynd';
 
@@ -424,6 +424,15 @@
         .replace(/[^A-Z0-9]/g, '-').replace(/-+/g, '-').replace(/^-|-$/g, '');
       return `${clean(prenomAcheteur)}-${clean(nomAcheteur)}-POUR-${clean(prenomBenef)}-${clean(nomBenef)}`;
     }
+
+    // ── Détection URL au chargement ───────────────────────────────────
+    document.addEventListener('DOMContentLoaded', function() {
+      const params = new URLSearchParams(window.location.search);
+      const flux   = params.get('flux');
+      if (flux === 'moi' || flux === 'offrir' || flux === 'code') {
+        choisirFlux(flux);
+      }
+    });
 
     // ── Navigation ────────────────────────────────────────────────────
     function choisirFlux(flux) {
@@ -683,15 +692,4 @@
     }
 
     function fermerPopup() {
-      document.getElementById('popupConfirm').style.display = 'none';
-    }
-
-    // ── Pré-sélection via ?cadeau=1 (depuis livres.html) ─────────────
-    window.addEventListener('DOMContentLoaded', () => {
-      const params = new URLSearchParams(window.location.search);
-      if (params.get('cadeau') === '1') choisirFlux('offrir');
-    });
-  </script>
-
-</body>
-</html>
+      document.getElementById(
