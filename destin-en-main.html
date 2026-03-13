@@ -7,220 +7,123 @@
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Raleway:wght@200;300;400;500&display=swap" rel="stylesheet">
   <style>
     :root {
-      --marine:      #1B3A5C;
-      --deep:        #0F2540;
-      --canard:      #2A7F8A;
-      --turquoise:   #6ECECE;
-      --turquoise-2: #3A9E9E;
-      --or:          #C4A35A;
-      --or-deep:     #B8963E;
-      --iris-3:      #B8C4E8;
-      --iris-4:      #C9B8E8;
-      --light:       #F0F7FA;
-      --muted:       #6B8CAE;
-      --text:        #1B3A5C;
-      --white:       #FFFFFF;
+      --marine:#1B3A5C;--deep:#0F2540;--canard:#2A7F8A;--turquoise:#6ECECE;
+      --turquoise-2:#3A9E9E;--or:#C4A35A;--or-deep:#B8963E;--iris-3:#B8C4E8;
+      --iris-4:#C9B8E8;--light:#F0F7FA;--muted:#6B8CAE;--text:#1B3A5C;--white:#FFFFFF;
     }
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
-    body { font-family: 'Raleway', sans-serif; font-weight: 300; color: var(--text); background: var(--white); overflow-x: hidden; }
+    *{margin:0;padding:0;box-sizing:border-box;}
+    html{scroll-behavior:smooth;}
+    body{font-family:'Raleway',sans-serif;font-weight:300;color:var(--text);background:var(--white);overflow-x:hidden;}
 
-    nav {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-      display: flex; align-items: center; justify-content: space-between;
-      padding: 1.2rem 4rem;
-      background: rgba(255,255,255,0.92);
-      backdrop-filter: blur(18px);
-      border-bottom: 1px solid rgba(110,206,206,0.2);
-    }
-    .nav-logo { font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; font-weight: 300; letter-spacing: 0.12em; text-decoration: none; background: linear-gradient(120deg, var(--marine), var(--turquoise)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
-    .nav-links { display: flex; gap: 2.5rem; list-style: none; align-items: center; }
-    .nav-links a { text-decoration: none; font-size: 0.75rem; font-weight: 400; letter-spacing: 0.18em; text-transform: uppercase; color: var(--marine); transition: color 0.3s; }
-    .nav-links a:hover { color: var(--turquoise); }
-    .nav-cta { background: linear-gradient(135deg, var(--turquoise), var(--turquoise-2)) !important; color: var(--marine) !important; padding: 0.5rem 1.4rem; border-radius: 2rem; font-weight: 500 !important; -webkit-text-fill-color: var(--marine) !important; }
+    nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:1.2rem 4rem;background:rgba(255,255,255,0.92);backdrop-filter:blur(18px);border-bottom:1px solid rgba(110,206,206,0.2);}
+    .nav-logo{font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:300;letter-spacing:0.12em;text-decoration:none;background:linear-gradient(120deg,var(--marine),var(--turquoise));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+    .nav-links{display:flex;gap:2.5rem;list-style:none;align-items:center;}
+    .nav-links a{text-decoration:none;font-size:0.75rem;font-weight:400;letter-spacing:0.18em;text-transform:uppercase;color:var(--marine);transition:color 0.3s;}
+    .nav-links a:hover{color:var(--turquoise);}
+    .nav-cta{background:linear-gradient(135deg,var(--turquoise),var(--turquoise-2))!important;color:var(--marine)!important;padding:0.5rem 1.4rem;border-radius:2rem;font-weight:500!important;-webkit-text-fill-color:var(--marine)!important;}
 
-    /* ─── HERO ────────────────────────────── */
-    .page-hero {
-      min-height: 56vh;
-      display: flex; flex-direction: column;
-      align-items: center; justify-content: center;
-      text-align: center;
-      padding: 10rem 2rem 5rem;
-      position: relative; overflow: hidden;
-      background: linear-gradient(160deg, var(--deep) 0%, var(--marine) 55%, var(--canard) 100%);
-    }
-    .hero-orb { position: absolute; border-radius: 50%; filter: blur(80px); pointer-events: none; }
-    .orb-1 { width: 500px; height: 500px; background: radial-gradient(circle, rgba(201,184,232,0.25), transparent 70%); top: -10%; left: -10%; animation: float 8s ease-in-out infinite; }
-    .orb-2 { width: 350px; height: 350px; background: radial-gradient(circle, rgba(196,163,90,0.2), transparent 70%); bottom: 0; right: -5%; animation: float 10s ease-in-out infinite reverse; }
-    .orb-3 { width: 250px; height: 250px; background: radial-gradient(circle, rgba(110,206,206,0.15), transparent 70%); top: 30%; right: 15%; animation: float 12s ease-in-out infinite; }
-    @keyframes float { 0%, 100% { transform: translateY(0) scale(1); } 50% { transform: translateY(-25px) scale(1.04); } }
-    .page-hero-content { position: relative; z-index: 2; max-width: 700px; }
-    .hero-eyebrow { font-size: 0.68rem; font-weight: 300; letter-spacing: 0.45em; text-transform: uppercase; color: rgba(201,184,232,0.8); margin-bottom: 1.5rem; opacity: 0; animation: fadeUp 0.9s ease 0.1s forwards; }
-    .page-hero h1 { font-family: 'Cormorant Garamond', serif; font-size: clamp(2.5rem, 5.5vw, 4rem); font-weight: 300; line-height: 1.15; color: white; margin-bottom: 1.5rem; opacity: 0; animation: fadeUp 0.9s ease 0.3s forwards; }
-    .page-hero h1 em { font-style: italic; background: linear-gradient(135deg, var(--iris-4), var(--turquoise), var(--or)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
-    .page-hero p { font-size: 0.95rem; font-weight: 200; line-height: 1.85; color: rgba(255,255,255,0.7); opacity: 0; animation: fadeUp 0.9s ease 0.5s forwards; }
-    @keyframes fadeUp { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: translateY(0); } }
+    .page-hero{min-height:52vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:10rem 2rem 5rem;position:relative;overflow:hidden;background:linear-gradient(160deg,var(--deep) 0%,var(--marine) 55%,var(--canard) 100%);}
+    .hero-orb{position:absolute;border-radius:50%;filter:blur(80px);pointer-events:none;}
+    .orb-1{width:500px;height:500px;background:radial-gradient(circle,rgba(201,184,232,0.25),transparent 70%);top:-10%;left:-10%;animation:float 8s ease-in-out infinite;}
+    .orb-2{width:350px;height:350px;background:radial-gradient(circle,rgba(196,163,90,0.2),transparent 70%);bottom:0;right:-5%;animation:float 10s ease-in-out infinite reverse;}
+    @keyframes float{0%,100%{transform:translateY(0) scale(1);}50%{transform:translateY(-25px) scale(1.04);}}
+    .page-hero-content{position:relative;z-index:2;max-width:700px;}
+    .hero-eyebrow{font-size:0.68rem;font-weight:300;letter-spacing:0.45em;text-transform:uppercase;color:rgba(201,184,232,0.8);margin-bottom:1.5rem;opacity:0;animation:fadeUp 0.9s ease 0.1s forwards;}
+    .page-hero h1{font-family:'Cormorant Garamond',serif;font-size:clamp(2.5rem,5.5vw,4rem);font-weight:300;line-height:1.15;color:white;margin-bottom:1.5rem;opacity:0;animation:fadeUp 0.9s ease 0.3s forwards;}
+    .page-hero h1 em{font-style:italic;background:linear-gradient(135deg,var(--iris-4),var(--turquoise),var(--or));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+    .page-hero p{font-size:0.95rem;font-weight:200;line-height:1.85;color:rgba(255,255,255,0.7);opacity:0;animation:fadeUp 0.9s ease 0.5s forwards;}
+    @keyframes fadeUp{from{opacity:0;transform:translateY(18px);}to{opacity:1;transform:translateY(0);}}
+    .iris-divider{height:2px;background:linear-gradient(90deg,transparent,var(--deep),var(--iris-4),var(--turquoise),var(--or),transparent);opacity:0.6;border:none;}
 
-    .iris-divider { height: 2px; background: linear-gradient(90deg, transparent, var(--deep), var(--iris-4), var(--turquoise), var(--or), transparent); opacity: 0.6; border: none; }
+    .container{max-width:820px;margin:0 auto;}
 
-    /* ─── INTRO ───────────────────────────── */
-    .intro-section { padding: 5rem 2rem; background: linear-gradient(135deg, rgba(201,184,232,0.06), rgba(196,163,90,0.04)); }
-    .container { max-width: 820px; margin: 0 auto; }
-    .intro-badge {
-      display: inline-flex; align-items: center; gap: 0.5rem;
-      background: linear-gradient(135deg, rgba(201,184,232,0.15), rgba(196,163,90,0.1));
-      border: 1px solid rgba(201,184,232,0.3);
-      color: var(--or-deep);
-      font-size: 0.68rem; font-weight: 400; letter-spacing: 0.25em; text-transform: uppercase;
-      padding: 0.45rem 1.2rem; border-radius: 2rem; margin-bottom: 2rem;
-    }
-    .intro-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.8rem, 3.5vw, 2.6rem); font-weight: 300; color: var(--marine); line-height: 1.25; margin-bottom: 1.5rem; }
-    .intro-title em { font-style: italic; background: linear-gradient(135deg, var(--canard), var(--iris-4)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
-    .intro-text { font-size: 0.92rem; font-weight: 300; color: var(--muted); line-height: 1.9; margin-bottom: 1.2rem; }
-    .intro-note {
-      margin-top: 2rem;
-      padding: 1.4rem 1.8rem;
-      background: linear-gradient(135deg, rgba(110,206,206,0.08), rgba(201,184,232,0.08));
-      border: 1px solid rgba(110,206,206,0.2);
-      border-left: 3px solid var(--turquoise);
-      border-radius: 0 1rem 1rem 0;
-    }
-    .intro-note p { font-size: 0.85rem; font-weight: 300; color: var(--text); line-height: 1.75; }
-    .intro-note strong { color: var(--marine); font-weight: 500; }
+    /* ── CHOIX FLUX ──────────────────────── */
+    #choix-flux{padding:5rem 2rem;}
+    .flux-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1.5rem;margin-top:3rem;}
+    .flux-card{border:1px solid rgba(110,206,206,0.2);border-radius:1.4rem;padding:2.2rem 1.8rem;background:white;cursor:pointer;transition:transform 0.25s,box-shadow 0.25s,border-color 0.25s;text-align:center;}
+    .flux-card:hover{transform:translateY(-5px);box-shadow:0 20px 50px rgba(110,206,206,0.18);border-color:var(--turquoise);}
+    .flux-card.cadeau-card{border-color:rgba(196,163,90,0.3);}
+    .flux-card.cadeau-card:hover{border-color:var(--or);box-shadow:0 20px 50px rgba(196,163,90,0.18);}
+    .flux-icon{font-size:2.2rem;margin-bottom:1rem;}
+    .flux-titre{font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:300;color:var(--marine);margin-bottom:0.5rem;}
+    .flux-desc{font-size:0.78rem;font-weight:300;color:var(--muted);line-height:1.7;margin-bottom:1.5rem;}
+    .flux-prix{font-family:'Cormorant Garamond',serif;font-size:2rem;font-weight:300;color:var(--marine);margin-bottom:0.3rem;}
+    .flux-prix-note{font-size:0.68rem;color:var(--muted);font-weight:300;}
+    .btn-flux{display:block;width:100%;margin-top:1.2rem;padding:0.8rem;border-radius:3rem;border:none;font-family:'Raleway',sans-serif;font-size:0.7rem;font-weight:500;letter-spacing:0.15em;text-transform:uppercase;background:linear-gradient(135deg,var(--turquoise),var(--turquoise-2));color:var(--marine);cursor:pointer;transition:transform 0.2s,box-shadow 0.2s;}
+    .btn-flux:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(110,206,206,0.4);}
+    .btn-flux-or{background:linear-gradient(135deg,var(--or),var(--or-deep));color:white;}
 
-    /* ─── FORMULAIRE ──────────────────────── */
-    .form-section { padding: 2rem 2rem 6rem; }
-    .form-wrapper {
-      background: white;
-      border-radius: 2rem;
-      padding: 3.5rem;
-      border: 1px solid rgba(110,206,206,0.2);
-      box-shadow: 0 12px 60px rgba(27,58,92,0.07);
-    }
-    .form-section-title {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.3rem; font-weight: 400;
-      color: var(--marine);
-      letter-spacing: 0.05em;
-      margin: 2.5rem 0 1.5rem;
-      padding-bottom: 0.6rem;
-      border-bottom: 1px solid rgba(110,206,206,0.2);
-      display: flex; align-items: center; gap: 0.6rem;
-    }
-    .form-section-title:first-of-type { margin-top: 0; }
-    .form-group { margin-bottom: 1.4rem; }
-    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
-    label { display: block; font-size: 0.7rem; font-weight: 400; letter-spacing: 0.15em; text-transform: uppercase; color: var(--muted); margin-bottom: 0.45rem; }
-    label span.req { color: var(--or); }
-    input[type="text"], input[type="email"], input[type="tel"], select, textarea {
-      width: 100%; padding: 0.85rem 1.1rem;
-      border: 1px solid rgba(110,206,206,0.25);
-      border-radius: 0.75rem;
-      font-family: 'Raleway', sans-serif; font-size: 0.88rem; font-weight: 300;
-      color: var(--text); background: rgba(240,247,250,0.5);
-      outline: none; transition: border-color 0.25s, box-shadow 0.25s;
-    }
-    input:focus, select:focus, textarea:focus { border-color: var(--turquoise); box-shadow: 0 0 0 3px rgba(110,206,206,0.12); background: white; }
-    textarea { resize: vertical; min-height: 110px; }
+    /* ── CODE CADEAU ─────────────────────── */
+    #bloc-code{padding:3rem 2rem 5rem;display:none;}
+    .code-wrapper{background:white;border-radius:1.5rem;padding:3rem;border:1px solid rgba(196,163,90,0.25);box-shadow:0 8px 40px rgba(27,58,92,0.06);max-width:520px;margin:0 auto;text-align:center;}
+    .code-title{font-family:'Cormorant Garamond',serif;font-size:1.8rem;font-weight:300;color:var(--marine);margin-bottom:0.5rem;}
+    .code-title em{font-style:italic;background:linear-gradient(135deg,var(--or),var(--iris-4));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+    .code-sub{font-size:0.82rem;font-weight:300;color:var(--muted);line-height:1.7;margin-bottom:2rem;}
+    #code-input{width:100%;padding:1rem 1.2rem;border:2px solid rgba(196,163,90,0.3);border-radius:0.75rem;font-family:'Raleway',sans-serif;font-size:1rem;font-weight:400;text-align:center;letter-spacing:0.1em;color:var(--marine);background:rgba(240,247,250,0.5);outline:none;transition:border-color 0.25s;}
+    #code-input:focus{border-color:var(--or);box-shadow:0 0 0 3px rgba(196,163,90,0.12);background:white;}
+    #code-error{font-size:0.75rem;color:#e05252;margin-top:0.5rem;display:none;}
+    .btn-valider-code{width:100%;margin-top:1.2rem;padding:0.9rem;border-radius:3rem;border:none;font-family:'Raleway',sans-serif;font-size:0.75rem;font-weight:500;letter-spacing:0.2em;text-transform:uppercase;background:linear-gradient(135deg,var(--or),var(--or-deep));color:white;cursor:pointer;box-shadow:0 4px 20px rgba(196,163,90,0.3);transition:transform 0.2s,box-shadow 0.2s;}
+    .btn-valider-code:hover{transform:translateY(-2px);box-shadow:0 8px 32px rgba(196,163,90,0.45);}
 
-    /* civilité radio */
-    .radio-group { display: flex; gap: 0.8rem; flex-wrap: wrap; }
-    .radio-option { display: none; }
-    .radio-label {
-      display: inline-flex; align-items: center; gap: 0.5rem;
-      padding: 0.55rem 1.2rem;
-      border: 1px solid rgba(110,206,206,0.25);
-      border-radius: 2rem;
-      font-size: 0.82rem; font-weight: 300; color: var(--muted);
-      cursor: pointer; transition: all 0.2s;
-    }
-    .radio-option:checked + .radio-label {
-      background: linear-gradient(135deg, rgba(110,206,206,0.12), rgba(201,184,232,0.12));
-      border-color: var(--turquoise);
-      color: var(--marine); font-weight: 400;
-    }
+    /* ── FORMULAIRE ──────────────────────── */
+    #bloc-questionnaire{padding:2rem 2rem 6rem;display:none;}
+    .form-wrapper{background:white;border-radius:2rem;padding:3.5rem;border:1px solid rgba(110,206,206,0.2);box-shadow:0 12px 60px rgba(27,58,92,0.07);}
+    .form-flux-badge{display:inline-flex;align-items:center;gap:0.5rem;background:linear-gradient(135deg,rgba(201,184,232,0.15),rgba(196,163,90,0.1));border:1px solid rgba(201,184,232,0.3);color:var(--or-deep);font-size:0.68rem;font-weight:400;letter-spacing:0.25em;text-transform:uppercase;padding:0.45rem 1.2rem;border-radius:2rem;margin-bottom:1.5rem;}
+    .form-section-title{font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:400;color:var(--marine);letter-spacing:0.05em;margin:2.5rem 0 1.5rem;padding-bottom:0.6rem;border-bottom:1px solid rgba(110,206,206,0.2);display:flex;align-items:center;gap:0.6rem;}
+    .form-section-title:first-of-type{margin-top:0;}
+    .form-group{margin-bottom:1.4rem;}
+    .form-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem;}
+    label{display:block;font-size:0.7rem;font-weight:400;letter-spacing:0.15em;text-transform:uppercase;color:var(--muted);margin-bottom:0.45rem;}
+    label span.req{color:var(--or);}
+    input[type="text"],input[type="email"],input[type="tel"],select,textarea{width:100%;padding:0.85rem 1.1rem;border:1px solid rgba(110,206,206,0.25);border-radius:0.75rem;font-family:'Raleway',sans-serif;font-size:0.88rem;font-weight:300;color:var(--text);background:rgba(240,247,250,0.5);outline:none;transition:border-color 0.25s,box-shadow 0.25s;}
+    input:focus,select:focus,textarea:focus{border-color:var(--turquoise);box-shadow:0 0 0 3px rgba(110,206,206,0.12);background:white;}
+    textarea{resize:vertical;min-height:110px;}
+    .radio-group{display:flex;gap:0.8rem;flex-wrap:wrap;}
+    .radio-option{display:none;}
+    .radio-label{display:inline-flex;align-items:center;gap:0.5rem;padding:0.55rem 1.2rem;border:1px solid rgba(110,206,206,0.25);border-radius:2rem;font-size:0.82rem;font-weight:300;color:var(--muted);cursor:pointer;transition:all 0.2s;}
+    .radio-option:checked+.radio-label{background:linear-gradient(135deg,rgba(110,206,206,0.12),rgba(201,184,232,0.12));border-color:var(--turquoise);color:var(--marine);font-weight:400;}
+    .form-submit{width:100%;padding:1.1rem;border-radius:3rem;border:none;font-family:'Raleway',sans-serif;font-size:0.8rem;font-weight:500;letter-spacing:0.2em;text-transform:uppercase;background:linear-gradient(135deg,var(--iris-4),var(--turquoise),var(--turquoise-2));color:var(--marine);cursor:pointer;box-shadow:0 4px 24px rgba(110,206,206,0.35);transition:transform 0.25s,box-shadow 0.25s;margin-top:1.5rem;}
+    .form-submit:hover{transform:translateY(-2px);box-shadow:0 8px 36px rgba(110,206,206,0.5);}
+    .form-submit:disabled{opacity:0.6;cursor:not-allowed;transform:none;}
+    .form-note{text-align:center;font-size:0.72rem;font-weight:300;color:var(--muted);margin-top:1.2rem;line-height:1.7;}
+    .intro-note{margin-top:2rem;padding:1.4rem 1.8rem;background:linear-gradient(135deg,rgba(110,206,206,0.08),rgba(201,184,232,0.08));border:1px solid rgba(110,206,206,0.2);border-left:3px solid var(--turquoise);border-radius:0 1rem 1rem 0;margin-bottom:2rem;}
+    .intro-note p{font-size:0.85rem;font-weight:300;color:var(--text);line-height:1.75;}
+    .intro-note strong{color:var(--marine);font-weight:500;}
+    .btn-retour{background:none;border:1px solid rgba(110,206,206,0.3);color:var(--muted);font-family:'Raleway',sans-serif;font-size:0.7rem;font-weight:400;letter-spacing:0.15em;text-transform:uppercase;padding:0.6rem 1.4rem;border-radius:3rem;cursor:pointer;transition:all 0.2s;margin-bottom:2rem;}
+    .btn-retour:hover{border-color:var(--turquoise);color:var(--marine);}
 
-    /* achat pour radio */
-    .achat-group { display: flex; gap: 1rem; flex-wrap: wrap; }
-    .achat-option { display: none; }
-    .achat-label {
-      display: inline-flex; align-items: center; gap: 0.6rem;
-      padding: 0.75rem 1.5rem;
-      border: 1px solid rgba(110,206,206,0.25);
-      border-radius: 0.75rem;
-      font-size: 0.85rem; font-weight: 300; color: var(--muted);
-      cursor: pointer; transition: all 0.2s;
-    }
-    .achat-option:checked + .achat-label {
-      background: linear-gradient(135deg, rgba(196,163,90,0.1), rgba(201,184,232,0.1));
-      border-color: var(--or);
-      color: var(--marine); font-weight: 400;
-    }
+    /* ── POPUP ───────────────────────────── */
+    #popupConfirm{display:none;position:fixed;inset:0;z-index:200;background:rgba(15,37,64,0.75);backdrop-filter:blur(6px);align-items:center;justify-content:center;padding:2rem;}
+    .popup-inner{background:white;border-radius:2rem;padding:3.5rem 3rem;max-width:520px;width:100%;text-align:center;box-shadow:0 40px 100px rgba(15,37,64,0.3);animation:slideUp 0.35s ease;}
+    @keyframes slideUp{from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:translateY(0);}}
+    .popup-icon{font-size:3rem;margin-bottom:1.2rem;}
+    .popup-title{font-family:'Cormorant Garamond',serif;font-size:2rem;font-weight:300;color:var(--marine);margin-bottom:0.8rem;line-height:1.2;}
+    .popup-title em{font-style:italic;background:linear-gradient(135deg,var(--iris-4),var(--or));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+    .popup-text{font-size:0.88rem;font-weight:300;color:var(--muted);line-height:1.8;margin-bottom:0.8rem;}
+    .popup-code-box{background:linear-gradient(135deg,rgba(196,163,90,0.08),rgba(201,184,232,0.08));border:1px solid rgba(196,163,90,0.25);border-radius:1rem;padding:1.2rem 1.5rem;margin:1.2rem 0;font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:400;color:var(--marine);letter-spacing:0.08em;word-break:break-all;}
+    .popup-btn{padding:0.9rem 2.5rem;border-radius:3rem;border:none;font-family:'Raleway',sans-serif;font-size:0.78rem;font-weight:500;letter-spacing:0.18em;text-transform:uppercase;background:linear-gradient(135deg,var(--iris-4),var(--turquoise-2));color:var(--marine);cursor:pointer;box-shadow:0 4px 20px rgba(110,206,206,0.35);margin-top:1rem;}
 
-    .form-submit {
-      width: 100%; padding: 1.1rem;
-      border-radius: 3rem; border: none;
-      font-family: 'Raleway', sans-serif; font-size: 0.8rem; font-weight: 500;
-      letter-spacing: 0.2em; text-transform: uppercase;
-      background: linear-gradient(135deg, var(--iris-4), var(--turquoise), var(--turquoise-2));
-      color: var(--marine);
-      cursor: pointer;
-      box-shadow: 0 4px 24px rgba(110,206,206,0.35);
-      transition: transform 0.25s, box-shadow 0.25s;
-      margin-top: 1.5rem;
-    }
-    .form-submit:hover { transform: translateY(-2px); box-shadow: 0 8px 36px rgba(110,206,206,0.5); }
-    .form-submit:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
-    .form-note { text-align: center; font-size: 0.72rem; font-weight: 300; color: var(--muted); margin-top: 1.2rem; line-height: 1.7; }
+    /* ── FOOTER ──────────────────────────── */
+    footer{background:var(--deep);color:rgba(255,255,255,0.85);padding:4rem 2rem 2rem;}
+    .footer-grid{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:2fr 1fr 1fr;gap:4rem;padding-bottom:3rem;border-bottom:1px solid rgba(255,255,255,0.08);margin-bottom:2rem;}
+    .footer-logo{font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:300;letter-spacing:0.12em;background:linear-gradient(120deg,var(--turquoise),var(--or));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:0.8rem;}
+    .footer-tagline{font-size:0.75rem;font-weight:200;color:rgba(255,255,255,0.45);line-height:1.8;}
+    .footer-col h5{font-size:0.65rem;font-weight:400;letter-spacing:0.3em;text-transform:uppercase;color:rgba(255,255,255,0.4);margin-bottom:1.2rem;}
+    .footer-col a{display:block;font-size:0.82rem;font-weight:200;color:rgba(255,255,255,0.75);text-decoration:none;margin-bottom:0.6rem;transition:color 0.2s;}
+    .footer-col a:hover{color:var(--turquoise);}
+    .footer-bottom{max-width:1100px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;font-size:0.72rem;font-weight:200;color:rgba(255,255,255,0.3);}
 
-    /* ─── POPUP ───────────────────────────── */
-    #popupConfirm {
-      display: none; position: fixed; inset: 0; z-index: 200;
-      background: rgba(15,37,64,0.75); backdrop-filter: blur(6px);
-      align-items: center; justify-content: center; padding: 2rem;
-    }
-    .popup-inner {
-      background: white; border-radius: 2rem;
-      padding: 3.5rem 3rem; max-width: 520px; width: 100%;
-      text-align: center; box-shadow: 0 40px 100px rgba(15,37,64,0.3);
-      animation: slideUp 0.35s ease;
-    }
-    @keyframes slideUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
-    .popup-icon { font-size: 3rem; margin-bottom: 1.2rem; }
-    .popup-title { font-family: 'Cormorant Garamond', serif; font-size: 2rem; font-weight: 300; color: var(--marine); margin-bottom: 0.8rem; line-height: 1.2; }
-    .popup-title em { font-style: italic; background: linear-gradient(135deg, var(--iris-4), var(--or)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
-    .popup-text { font-size: 0.88rem; font-weight: 300; color: var(--muted); line-height: 1.8; margin-bottom: 2rem; }
-    .popup-btn {
-      padding: 0.9rem 2.5rem; border-radius: 3rem; border: none;
-      font-family: 'Raleway', sans-serif; font-size: 0.78rem; font-weight: 500;
-      letter-spacing: 0.18em; text-transform: uppercase;
-      background: linear-gradient(135deg, var(--iris-4), var(--turquoise-2));
-      color: var(--marine); cursor: pointer;
-      box-shadow: 0 4px 20px rgba(110,206,206,0.35);
-    }
-
-    /* ─── FOOTER ──────────────────────────── */
-    footer { background: var(--deep); color: rgba(255,255,255,0.85); padding: 4rem 2rem 2rem; }
-    .footer-grid { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 4rem; padding-bottom: 3rem; border-bottom: 1px solid rgba(255,255,255,0.08); margin-bottom: 2rem; }
-    .footer-logo { font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; font-weight: 300; letter-spacing: 0.12em; background: linear-gradient(120deg, var(--turquoise), var(--or)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin-bottom: 0.8rem; }
-    .footer-tagline { font-size: 0.75rem; font-weight: 200; color: rgba(255,255,255,0.45); line-height: 1.8; }
-    .footer-col h5 { font-size: 0.65rem; font-weight: 400; letter-spacing: 0.3em; text-transform: uppercase; color: rgba(255,255,255,0.4); margin-bottom: 1.2rem; }
-    .footer-col a { display: block; font-size: 0.82rem; font-weight: 200; color: rgba(255,255,255,0.75); text-decoration: none; margin-bottom: 0.6rem; transition: color 0.2s; }
-    .footer-col a:hover { color: var(--turquoise); }
-    .footer-bottom { max-width: 1100px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; font-size: 0.72rem; font-weight: 200; color: rgba(255,255,255,0.3); }
-
-    @media (max-width: 768px) {
-      nav { padding: 1rem 1.5rem; }
-      .nav-links { gap: 1rem; }
-      .form-wrapper { padding: 2rem 1.5rem; }
-      .form-row { grid-template-columns: 1fr; }
-      .footer-grid { grid-template-columns: 1fr; gap: 2rem; }
+    @media(max-width:768px){
+      nav{padding:1rem 1.5rem;}
+      .nav-links{gap:1rem;}
+      .form-wrapper{padding:2rem 1.5rem;}
+      .form-row{grid-template-columns:1fr;}
+      .footer-grid{grid-template-columns:1fr;gap:2rem;}
     }
   </style>
 </head>
 <body>
 
-  <!-- NAV -->
   <nav>
     <a href="index.html" class="nav-logo">Esprit irisé</a>
     <ul class="nav-links">
@@ -231,82 +134,117 @@
     </ul>
   </nav>
 
-  <!-- HERO -->
   <section class="page-hero">
     <div class="hero-orb orb-1"></div>
     <div class="hero-orb orb-2"></div>
-    <div class="hero-orb orb-3"></div>
     <div class="page-hero-content">
       <p class="hero-eyebrow">Esprit irisé · Destin en Main</p>
       <h1>Votre guide spirituel<br><em>100% personnalisé</em></h1>
-      <p>Remplissez ce questionnaire avec soin — chaque réponse<br>nourrira la création de votre œuvre unique.</p>
+      <p>Choisissez votre parcours — pour vous, pour offrir,<br>ou remplissez le questionnaire avec votre code cadeau.</p>
     </div>
   </section>
 
   <hr class="iris-divider">
 
-  <!-- INTRO -->
-  <section class="intro-section">
+  <!-- ÉTAPE 0 : CHOIX DU FLUX -->
+  <section id="choix-flux">
     <div class="container">
-      <span class="intro-badge">🪄 Mon livre exclusif · Édition limitée</span>
-      <h2 class="intro-title">Merci pour votre <em>confiance</em></h2>
-      <p class="intro-text">Remplissez les champs pour la personne à qui est destiné l'offre. Prenez le temps de les remplir sérieusement afin qu'Alicia dispose des informations nécessaires pour vous offrir un livre spécial et personnel de qualité.</p>
-      <p class="intro-text">Si vous ne disposez pas de tous les renseignements précis demandés, précisez-le et partagez uniquement les informations dont vous disposez.</p>
-      <div class="intro-note">
-        <p>🔮 <strong>Pour le Design Humain</strong>, l'heure exacte, la date et le lieu de naissance sont <strong>indispensables</strong>. Ces trois éléments permettent à Alicia de générer votre carte énergétique complète.</p>
+      <div style="text-align:center;margin-bottom:1rem;">
+        <span style="font-size:0.65rem;font-weight:400;letter-spacing:0.35em;text-transform:uppercase;color:var(--muted);">Comment souhaitez-vous procéder ?</span>
+        <h2 style="font-family:'Cormorant Garamond',serif;font-size:clamp(1.8rem,3.5vw,2.6rem);font-weight:300;color:var(--marine);margin-top:0.5rem;">Choisissez <em style="font-style:italic;background:linear-gradient(135deg,var(--canard),var(--iris-4));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">votre parcours</em></h2>
+      </div>
+      <div class="flux-grid">
+
+        <div class="flux-card" onclick="choisirFlux('moi')">
+          <div class="flux-icon">🌿</div>
+          <div class="flux-titre">Pour moi</div>
+          <p class="flux-desc">Vous commandez votre propre guide Destin en Main. Vous remplissez le questionnaire et réglez en ligne.</p>
+          <div class="flux-prix">185 €</div>
+          <div class="flux-prix-note">PDF haute définition · 3 à 5 semaines</div>
+          <button class="btn-flux">Commander →</button>
+        </div>
+
+        <div class="flux-card cadeau-card" onclick="choisirFlux('offrir')">
+          <div class="flux-icon">🎁</div>
+          <div class="flux-titre">Offrir à quelqu'un</div>
+          <p class="flux-desc">Vous offrez le guide à un proche. Vous réglez, il reçoit un code par e-mail et remplit lui-même son questionnaire.</p>
+          <div class="flux-prix">185 €</div>
+          <div class="flux-prix-note">Un beau cadeau · Livré directement au bénéficiaire</div>
+          <button class="btn-flux btn-flux-or">Offrir →</button>
+        </div>
+
+        <div class="flux-card" onclick="choisirFlux('code')">
+          <div class="flux-icon">✉️</div>
+          <div class="flux-titre">J'ai reçu un code</div>
+          <p class="flux-desc">Quelqu'un vous a offert un Destin en Main. Saisissez votre code pour accéder au questionnaire.</p>
+          <div class="flux-prix" style="font-size:1.3rem;color:var(--canard);">Accès gratuit</div>
+          <div class="flux-prix-note">Le paiement a déjà été effectué par votre proche</div>
+          <button class="btn-flux" style="background:linear-gradient(135deg,var(--iris-4),var(--iris-3));color:var(--marine);">Saisir mon code →</button>
+        </div>
+
       </div>
     </div>
   </section>
 
-  <!-- POPUP CONFIRMATION -->
-  <div id="popupConfirm">
-    <div class="popup-inner">
-      <div class="popup-icon">🪄</div>
-      <h2 class="popup-title">Questionnaire envoyé<br><em>avec succès</em></h2>
-      <p class="popup-text">Alicia a bien reçu vos informations et va commencer à créer votre guide unique. Vous recevrez votre <em>Destin en Main</em> sous 3 à 5 semaines. Merci pour votre confiance ✨</p>
-      <button class="popup-btn" onclick="document.getElementById('popupConfirm').style.display='none'">Merci, j'ai hâte !</button>
-    </div>
-  </div>
-
-  <!-- FORMULAIRE -->
-  <section class="form-section">
+  <!-- ÉTAPE CODE CADEAU -->
+  <section id="bloc-code">
     <div class="container">
+      <button class="btn-retour" onclick="retourChoix()">← Retour</button>
+      <div class="code-wrapper">
+        <div style="font-size:2.5rem;margin-bottom:1rem;">🎁</div>
+        <h2 class="code-title">Votre <em>code cadeau</em></h2>
+        <p class="code-sub">Saisissez le code que vous avez reçu par e-mail.<br>Il est au format <strong>PRENOM-NOM-POUR-PRENOM-NOM</strong>.</p>
+        <input type="text" id="code-input" placeholder="Ex : MARIE-DUPONT-POUR-SOPHIE-MARTIN" autocomplete="off" oninput="this.value=this.value.toUpperCase()">
+        <p id="code-error">Ce code ne correspond à aucune commande. Vérifiez l'orthographe ou contactez Alicia.</p>
+        <button class="btn-valider-code" onclick="validerCode()">Valider mon code →</button>
+        <p style="font-size:0.72rem;color:var(--muted);margin-top:1.5rem;line-height:1.6;">Un problème avec votre code ? Écrivez à <a href="mailto:espritirise@gmail.com" style="color:var(--canard);">espritirise@gmail.com</a></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ÉTAPE QUESTIONNAIRE -->
+  <section id="bloc-questionnaire">
+    <div class="container">
+      <button class="btn-retour" onclick="retourChoix()">← Retour</button>
       <div class="form-wrapper">
 
+        <div class="form-flux-badge" id="flux-badge">✦ Destin en Main</div>
+
+        <div class="intro-note">
+          <p>🔮 <strong>Pour le Design Humain</strong>, l'heure exacte, la date et le lieu de naissance sont <strong>indispensables</strong>. Ces trois éléments permettent à Alicia de générer votre carte énergétique complète. Si vous ne disposez pas de toutes les informations, précisez-le.</p>
+        </div>
+
         <form id="formDestin">
+          <input type="hidden" id="hidden_flux" name="flux" value="">
+          <input type="hidden" id="hidden_code" name="code_cadeau" value="">
 
-          <!-- BLOC 1 : IDENTITÉ -->
-          <div class="form-section-title">✦ Vos informations</div>
-
-          <div class="form-group">
-            <label>Civilité <span class="req">*</span></label>
-            <div class="radio-group">
-              <input type="radio" name="civilite" id="civ-mme" value="Madame" class="radio-option" required>
-              <label for="civ-mme" class="radio-label">👩 Madame</label>
-              <input type="radio" name="civilite" id="civ-mr" value="Monsieur" class="radio-option">
-              <label for="civ-mr" class="radio-label">👨 Monsieur</label>
-              <input type="radio" name="civilite" id="civ-enf" value="Enfant" class="radio-option">
-              <label for="civ-enf" class="radio-label">🧒 Enfant</label>
+          <!-- BLOC 1 : ACHETEUR (masqué en mode code) -->
+          <div id="bloc-acheteur">
+            <div class="form-section-title">✦ Vos informations</div>
+            <div class="form-group">
+              <label>Civilité <span class="req">*</span></label>
+              <div class="radio-group">
+                <input type="radio" name="civilite" id="civ-mme" value="Madame" class="radio-option">
+                <label for="civ-mme" class="radio-label">👩 Madame</label>
+                <input type="radio" name="civilite" id="civ-mr" value="Monsieur" class="radio-option">
+                <label for="civ-mr" class="radio-label">👨 Monsieur</label>
+                <input type="radio" name="civilite" id="civ-enf" value="Enfant" class="radio-option">
+                <label for="civ-enf" class="radio-label">🧒 Enfant</label>
+              </div>
             </div>
-          </div>
-
-          <div class="form-group">
-            <label for="email">Votre e-mail <span class="req">*</span></label>
-            <input type="email" id="email" name="email" placeholder="votre@email.com" required>
-          </div>
-
-          <div class="form-group">
-            <label for="adresse">Adresse postale <span class="req">*</span></label>
-            <input type="text" id="adresse" name="adresse" placeholder="Rue, ville, code postal, pays" required>
-          </div>
-
-          <div class="form-group">
-            <label>Cet achat est <span class="req">*</span></label>
-            <div class="achat-group">
-              <input type="radio" name="achat_pour" id="achat-moi" value="Pour moi" class="achat-option" required>
-              <label for="achat-moi" class="achat-label">💝 Pour moi</label>
-              <input type="radio" name="achat_pour" id="achat-proche" value="Offert par un proche" class="achat-option">
-              <label for="achat-proche" class="achat-label">🎁 Offert par un proche</label>
+            <div class="form-group">
+              <label for="email-acheteur">Votre e-mail <span class="req">*</span></label>
+              <input type="email" id="email-acheteur" name="email_acheteur" placeholder="votre@email.com">
+            </div>
+            <div class="form-group">
+              <label for="adresse">Adresse postale <span class="req">*</span></label>
+              <input type="text" id="adresse" name="adresse" placeholder="Rue, ville, code postal, pays">
+            </div>
+            <!-- Champ email bénéficiaire visible uniquement pour "offrir" -->
+            <div class="form-group" id="bloc-email-beneficiaire" style="display:none;">
+              <label for="email-beneficiaire">E-mail de la personne à qui vous offrez <span class="req">*</span></label>
+              <input type="email" id="email-beneficiaire" name="email_beneficiaire" placeholder="prenom@email.com">
+              <p style="font-size:0.72rem;color:var(--muted);margin-top:0.4rem;">Elle recevra son code cadeau pour remplir le questionnaire.</p>
             </div>
           </div>
 
@@ -317,17 +255,14 @@
             <label for="nom_usage">Nom d'usage (époux/adoption) et prénom(s) <span class="req">*</span></label>
             <input type="text" id="nom_usage" name="nom_usage" placeholder="Ex : Marie DUPONT" required>
           </div>
-
           <div class="form-group">
             <label for="nom_naissance">Nom de naissance</label>
             <input type="text" id="nom_naissance" name="nom_naissance" placeholder="Ex : Marie MARTIN (si différent du nom d'usage)">
           </div>
-
           <div class="form-group">
             <label for="naissance">Date, heure et lieu de naissance <span class="req">*</span></label>
             <textarea id="naissance" name="naissance" placeholder="Ex : 15 mars 1987, 14h30, Lyon (France)&#10;Si l'heure n'est pas connue, précisez-le." required></textarea>
           </div>
-
           <div class="form-group">
             <label for="fratrie">Rang dans la fratrie</label>
             <input type="text" id="fratrie" name="fratrie" placeholder="Ex : Aîné(e) de 3 enfants, enfant unique…">
@@ -348,22 +283,18 @@
               <option value="Sans activité">Sans activité</option>
             </select>
           </div>
-
           <div class="form-group">
             <label for="metier_actuel">Métier actuel</label>
             <input type="text" id="metier_actuel" name="metier_actuel" placeholder="Ex : Infirmière, comptable, artisan plombier…">
           </div>
-
           <div class="form-group">
             <label for="metiers_exerces">Métiers exercés par le passé (optionnel)</label>
-            <textarea id="metiers_exerces" name="metiers_exerces" placeholder="Listez les métiers ou domaines que vous avez exercés au cours de votre vie…"></textarea>
+            <textarea id="metiers_exerces" name="metiers_exerces" placeholder="Listez les métiers ou domaines exercés au cours de la vie…"></textarea>
           </div>
-
           <div class="form-group">
             <label for="animal">Animal préféré</label>
             <input type="text" id="animal" name="animal" placeholder="Ex : Le loup, le dauphin, l'aigle…">
           </div>
-
           <div class="form-group">
             <label for="couleur">Couleur préférée</label>
             <input type="text" id="couleur" name="couleur" placeholder="Ex : Le bleu nuit, le vert forêt, le rouge…">
@@ -373,26 +304,35 @@
           <div class="form-section-title">🔮 Vos attentes</div>
 
           <div class="form-group">
-            <label for="attentes">Vos attentes par rapport à votre achat <span class="req">*</span></label>
+            <label for="attentes">Vos attentes par rapport à ce guide <span class="req">*</span></label>
             <textarea id="attentes" name="attentes" placeholder="Qu'espérez-vous trouver dans ce guide ? Quelles questions vous habitent ? Qu'est-ce qui vous a amené(e) à commander ?" required></textarea>
           </div>
-
           <div class="form-group">
             <label for="complementaires">Informations complémentaires (optionnel)</label>
             <textarea id="complementaires" name="complementaires" placeholder="Tout ce qui vous semble important à partager avec Alicia pour personnaliser au mieux votre guide…"></textarea>
           </div>
 
-          <button type="submit" class="form-submit">🪄 Envoyer mon questionnaire</button>
-          <p class="form-note">Vos informations restent strictement confidentielles et seront exclusivement utilisées<br>pour créer votre guide <em>Destin en Main</em>.</p>
-
+          <button type="submit" class="form-submit" id="btn-submit">🪄 Envoyer mon questionnaire</button>
+          <p class="form-note" id="form-note-text">Vos informations restent strictement confidentielles.</p>
         </form>
       </div>
     </div>
   </section>
 
+  <!-- POPUP -->
+  <div id="popupConfirm">
+    <div class="popup-inner">
+      <div class="popup-icon" id="popup-icon">🪄</div>
+      <h2 class="popup-title" id="popup-title">Questionnaire envoyé<br><em>avec succès</em></h2>
+      <p class="popup-text" id="popup-text">Alicia a bien reçu vos informations et va commencer à créer votre guide unique. Vous recevrez votre <em>Destin en Main</em> sous 3 à 5 semaines.</p>
+      <div id="popup-code-box" class="popup-code-box" style="display:none;"></div>
+      <p class="popup-text" id="popup-text2" style="display:none;"></p>
+      <button class="popup-btn" id="popup-btn" onclick="fermerPopup()">Merci, j'ai hâte !</button>
+    </div>
+  </div>
+
   <hr class="iris-divider">
 
-  <!-- FOOTER -->
   <footer>
     <div class="footer-grid">
       <div>
@@ -416,74 +356,251 @@
     </div>
     <div class="footer-bottom">
       <span>© 2025 Esprit irisé · Alicia Desmons · SIRET 90419149100011</span>
-      <span><a href="cgv.html" style="color:rgba(255,255,255,0.3); text-decoration:none;">CGV</a> · <a href="confidentialite.html" style="color:rgba(255,255,255,0.3); text-decoration:none;">Confidentialité</a></span>
+      <span><a href="cgv.html" style="color:rgba(255,255,255,0.3);text-decoration:none;">CGV</a> · <a href="confidentialite.html" style="color:rgba(255,255,255,0.3);text-decoration:none;">Confidentialité</a></span>
     </div>
   </footer>
 
   <script>
-    const errStyle = '1px solid #e05252';
-    const okStyle  = '1px solid rgba(110,206,206,0.25)';
+    const STRIPE_DEM = 'https://buy.stripe.com/9B6dRa7z2e8M2At6NG1wY0e';
+    const FORMSPREE  = 'https://formspree.io/f/xlgpnynd';
 
+    let fluxActuel = null; // 'moi' | 'offrir' | 'code'
+    let codeValide = false;
+
+    // ── Génération du code cadeau ─────────────────────────────────────
+    function genererCode(nomAcheteur, prenomAcheteur, nomBenef, prenomBenef) {
+      const clean = s => s.trim().toUpperCase()
+        .normalize('NFD').replace(/[\u0300-\u036f]/g, '')
+        .replace(/[^A-Z0-9]/g, '-').replace(/-+/g, '-').replace(/^-|-$/g, '');
+      return `${clean(prenomAcheteur)}-${clean(nomAcheteur)}-POUR-${clean(prenomBenef)}-${clean(nomBenef)}`;
+    }
+
+    // ── Navigation ────────────────────────────────────────────────────
+    function choisirFlux(flux) {
+      fluxActuel = flux;
+      document.getElementById('choix-flux').style.display = 'none';
+
+      if (flux === 'code') {
+        document.getElementById('bloc-code').style.display = 'block';
+        window.scrollTo({top:0, behavior:'smooth'});
+        return;
+      }
+
+      // Flux 'moi' ou 'offrir' → afficher directement le questionnaire
+      afficherQuestionnaire(flux);
+    }
+
+    function afficherQuestionnaire(flux) {
+      document.getElementById('hidden_flux').value = flux;
+      document.getElementById('bloc-questionnaire').style.display = 'block';
+
+      const badge = document.getElementById('flux-badge');
+      const blocAcheteur = document.getElementById('bloc-acheteur');
+      const blocEmailBenef = document.getElementById('bloc-email-beneficiaire');
+      const btnSubmit = document.getElementById('btn-submit');
+      const noteText = document.getElementById('form-note-text');
+
+      if (flux === 'moi') {
+        badge.textContent = '✦ Destin en Main — Pour moi';
+        blocAcheteur.style.display = 'block';
+        blocEmailBenef.style.display = 'none';
+        btnSubmit.textContent = '🪄 Valider et régler ma commande';
+        noteText.textContent = 'Vous serez redirigé vers le paiement sécurisé Stripe. Alicia reçoit votre questionnaire dès validation.';
+      } else if (flux === 'offrir') {
+        badge.textContent = '✦ Destin en Main — Offrir à un proche';
+        blocAcheteur.style.display = 'block';
+        blocEmailBenef.style.display = 'block';
+        btnSubmit.textContent = '🎁 Valider et régler le cadeau';
+        noteText.textContent = 'Après paiement, Alicia enverra le code cadeau à votre proche pour qu\'il remplisse son questionnaire.';
+      } else if (flux === 'code') {
+        badge.textContent = '✦ Destin en Main — Questionnaire cadeau';
+        blocAcheteur.style.display = 'none';
+        blocEmailBenef.style.display = 'none';
+        btnSubmit.textContent = '🪄 Envoyer mon questionnaire';
+        noteText.textContent = 'Vos informations restent strictement confidentielles et seront utilisées uniquement par Alicia.';
+      }
+
+      window.scrollTo({top:0, behavior:'smooth'});
+    }
+
+    function retourChoix() {
+      document.getElementById('choix-flux').style.display = 'block';
+      document.getElementById('bloc-code').style.display = 'none';
+      document.getElementById('bloc-questionnaire').style.display = 'none';
+      fluxActuel = null;
+      codeValide = false;
+      window.scrollTo({top:0, behavior:'smooth'});
+    }
+
+    // ── Validation code cadeau ────────────────────────────────────────
+    function validerCode() {
+      const val = document.getElementById('code-input').value.trim().toUpperCase();
+      const err = document.getElementById('code-error');
+      // Format attendu : MOT-MOT-POUR-MOT-MOT (au moins)
+      if (!val || !val.includes('-POUR-') || val.length < 10) {
+        err.style.display = 'block';
+        return;
+      }
+      err.style.display = 'none';
+      codeValide = true;
+      document.getElementById('hidden_code').value = val;
+      document.getElementById('bloc-code').style.display = 'none';
+      afficherQuestionnaire('code');
+    }
+
+    // Valider code avec Entrée
+    document.getElementById('code-input').addEventListener('keydown', function(e) {
+      if (e.key === 'Enter') { e.preventDefault(); validerCode(); }
+    });
+
+    // ── Soumission formulaire ─────────────────────────────────────────
     document.getElementById('formDestin').addEventListener('submit', function(e) {
       e.preventDefault();
 
-      const email    = document.getElementById('email');
-      const adresse  = document.getElementById('adresse');
-      const nom      = document.getElementById('nom_usage');
-      const naiss    = document.getElementById('naissance');
-      const attentes = document.getElementById('attentes');
-      const civilite = document.querySelector('input[name="civilite"]:checked');
-      const achat    = document.querySelector('input[name="achat_pour"]:checked');
+      const nom    = document.getElementById('nom_usage');
+      const naiss  = document.getElementById('naissance');
+      const att    = document.getElementById('attentes');
 
       let valid = true;
-      [email, adresse, nom, naiss, attentes].forEach(el => {
-        if (!el.value.trim()) { el.style.border = errStyle; valid = false; }
-        else { el.style.border = okStyle; }
-      });
-      if (!civilite || !achat) { valid = false; }
-      if (!valid) { document.querySelector('[style*="border: 1px solid rgb(224"]') && document.querySelector('[style*="border: 1px solid rgb(224"]').focus(); return; }
+      const errStyle = '1px solid #e05252';
+      const okStyle  = '1px solid rgba(110,206,206,0.25)';
 
-      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value)) {
-        email.style.border = errStyle; email.focus(); return;
+      [nom, naiss, att].forEach(el => {
+        if (!el.value.trim()) { el.style.border = errStyle; valid = false; }
+        else el.style.border = okStyle;
+      });
+
+      // Champs acheteur obligatoires sauf flux 'code'
+      if (fluxActuel !== 'code') {
+        const emailAch = document.getElementById('email-acheteur');
+        const adr      = document.getElementById('adresse');
+        const civ      = document.querySelector('input[name="civilite"]:checked');
+        [emailAch, adr].forEach(el => {
+          if (!el.value.trim()) { el.style.border = errStyle; valid = false; }
+          else el.style.border = okStyle;
+        });
+        if (!civ) valid = false;
+        if (fluxActuel === 'offrir') {
+          const emailBenef = document.getElementById('email-beneficiaire');
+          if (!emailBenef.value.trim()) { emailBenef.style.border = errStyle; valid = false; }
+          else emailBenef.style.border = okStyle;
+        }
       }
 
-      const btn = document.querySelector('.form-submit');
+      if (!valid) return;
+
+      const btn = document.getElementById('btn-submit');
       btn.disabled = true;
       btn.textContent = 'Envoi en cours…';
 
-      fetch('https://formspree.io/f/xlgpnynd', {
+      // Construction payload
+      const payload = {
+        flux:             fluxActuel,
+        code_cadeau:      document.getElementById('hidden_code').value,
+        nom_usage:        nom.value,
+        nom_naissance:    document.getElementById('nom_naissance').value,
+        naissance:        naiss.value,
+        fratrie:          document.getElementById('fratrie').value,
+        situation:        document.getElementById('situation').value,
+        metier_actuel:    document.getElementById('metier_actuel').value,
+        metiers_exerces:  document.getElementById('metiers_exerces').value,
+        animal:           document.getElementById('animal').value,
+        couleur:          document.getElementById('couleur').value,
+        attentes:         att.value,
+        complementaires:  document.getElementById('complementaires').value,
+      };
+
+      if (fluxActuel !== 'code') {
+        const civ = document.querySelector('input[name="civilite"]:checked');
+        payload.civilite       = civ ? civ.value : '';
+        payload.email_acheteur = document.getElementById('email-acheteur').value;
+        payload.adresse        = document.getElementById('adresse').value;
+        if (fluxActuel === 'offrir') {
+          payload.email_beneficiaire = document.getElementById('email-beneficiaire').value;
+          // Générer le code cadeau
+          const parts = nom.value.trim().split(/\s+/);
+          const prenomBenef = parts[0] || '';
+          const nomBenef    = parts.slice(1).join('-') || parts[0];
+          const achParts    = payload.email_acheteur.split('@')[0].split('.');
+          payload.code_genere = genererCode(achParts[1]||achParts[0], achParts[0], nomBenef, prenomBenef);
+        }
+      }
+
+      fetch(FORMSPREE, {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-        body: JSON.stringify({
-          civilite:              civilite.value,
-          email:                 email.value,
-          adresse:               adresse.value,
-          achat_pour:            achat.value,
-          nom_usage:             document.getElementById('nom_usage').value,
-          nom_naissance:         document.getElementById('nom_naissance').value,
-          naissance:             naiss.value,
-          fratrie:               document.getElementById('fratrie').value,
-          situation:             document.getElementById('situation').value,
-          metier_actuel:         document.getElementById('metier_actuel').value,
-          metiers_exerces:       document.getElementById('metiers_exerces').value,
-          animal:                document.getElementById('animal').value,
-          couleur:               document.getElementById('couleur').value,
-          attentes:              attentes.value,
-          complementaires:       document.getElementById('complementaires').value
-        })
+        headers: {'Content-Type':'application/json','Accept':'application/json'},
+        body: JSON.stringify(payload)
       })
       .then(res => {
         if (res.ok) {
-          document.getElementById('popupConfirm').style.display = 'flex';
+          afficherPopup(payload);
           document.getElementById('formDestin').reset();
-          [email, adresse, nom, naiss, attentes].forEach(el => el.style.border = okStyle);
         } else {
-          alert('Une erreur est survenue. Merci d\'écrire directement à espritirise@gmail.com');
+          alert('Une erreur est survenue. Merci d\'écrire à espritirise@gmail.com');
         }
       })
-      .catch(() => {
-        alert('Une erreur est survenue. Merci d\'écrire directement à espritirise@gmail.com');
-      })
+      .catch(() => alert('Une erreur est survenue. Merci d\'écrire à espritirise@gmail.com'))
       .finally(() => {
         btn.disabled = false;
-        btn
+        btn.textContent = fluxActuel === 'code' ? '🪄 Envoyer mon questionnaire' : '🪄 Valider et régler ma commande';
+      });
+    });
+
+    function afficherPopup(payload) {
+      const icon  = document.getElementById('popup-icon');
+      const title = document.getElementById('popup-title');
+      const text  = document.getElementById('popup-text');
+      const codeBox = document.getElementById('popup-code-box');
+      const text2 = document.getElementById('popup-text2');
+      const popBtn = document.getElementById('popup-btn');
+
+      if (fluxActuel === 'moi') {
+        icon.textContent  = '🪄';
+        title.innerHTML   = 'Questionnaire envoyé —<br><em>on y est !</em>';
+        text.innerHTML    = 'Vous allez être redirigé vers le paiement sécurisé Stripe dans quelques secondes…';
+        codeBox.style.display = 'none';
+        text2.style.display   = 'none';
+        popBtn.textContent    = 'Régler maintenant →';
+        popBtn.onclick = () => { window.location.href = STRIPE_DEM; };
+        document.getElementById('popupConfirm').style.display = 'flex';
+        setTimeout(() => { window.location.href = STRIPE_DEM; }, 3000);
+
+      } else if (fluxActuel === 'offrir') {
+        const code = payload.code_genere || '(voir e-mail)';
+        icon.textContent  = '🎁';
+        title.innerHTML   = 'Cadeau enregistré —<br><em>merci !</em>';
+        text.innerHTML    = 'Vous allez être redirigé vers le paiement Stripe. Une fois réglé, Alicia enverra ce code à votre proche :';
+        codeBox.style.display = 'block';
+        codeBox.textContent   = code;
+        text2.style.display   = 'block';
+        text2.innerHTML       = 'Votre proche recevra une invitation par e-mail pour remplir son questionnaire.';
+        popBtn.textContent    = 'Régler le cadeau →';
+        popBtn.onclick = () => { window.location.href = STRIPE_DEM; };
+        document.getElementById('popupConfirm').style.display = 'flex';
+        setTimeout(() => { window.location.href = STRIPE_DEM; }, 4000);
+
+      } else {
+        icon.textContent  = '✨';
+        title.innerHTML   = 'Questionnaire envoyé<br><em>avec succès</em>';
+        text.innerHTML    = 'Alicia a bien reçu vos informations et va commencer à créer votre guide unique. Vous recevrez votre <em>Destin en Main</em> sous 3 à 5 semaines.';
+        codeBox.style.display = 'none';
+        text2.style.display   = 'none';
+        popBtn.textContent    = 'Merci, j\'ai hâte !';
+        popBtn.onclick = fermerPopup;
+        document.getElementById('popupConfirm').style.display = 'flex';
+      }
+    }
+
+    function fermerPopup() {
+      document.getElementById('popupConfirm').style.display = 'none';
+    }
+
+    // ── Pré-sélection via ?cadeau=1 (depuis livres.html) ─────────────
+    window.addEventListener('DOMContentLoaded', () => {
+      const params = new URLSearchParams(window.location.search);
+      if (params.get('cadeau') === '1') choisirFlux('offrir');
+    });
+  </script>
+
+</body>
+</html>
