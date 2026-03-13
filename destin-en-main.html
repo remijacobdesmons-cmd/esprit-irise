@@ -202,6 +202,56 @@
     </div>
   </section>
 
+  <!-- ÉTAPE OFFRIR (formulaire court) -->
+  <section id="bloc-offrir" style="display:none;padding:3rem 2rem 6rem;">
+    <div class="container">
+      <button class="btn-retour" onclick="retourChoix()">← Retour</button>
+      <div class="form-wrapper">
+        <div class="form-flux-badge">🎁 Offrir Destin en Main</div>
+        <h2 style="font-family:'Cormorant Garamond',serif;font-size:1.8rem;font-weight:300;color:var(--marine);margin-bottom:0.4rem;">Un beau <em style="font-style:italic;background:linear-gradient(135deg,var(--or),var(--iris-4));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">cadeau</em></h2>
+        <p style="font-size:0.82rem;font-weight:300;color:var(--muted);line-height:1.7;margin-bottom:2rem;">Renseignez vos coordonnées et celles de votre proche. Après paiement, Alicia leur enverra un code personnalisé pour remplir leur questionnaire.</p>
+
+        <form id="formOffrir">
+          <div class="form-section-title">✦ Vous — l'acheteur</div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="ach-prenom">Votre prénom <span class="req">*</span></label>
+              <input type="text" id="ach-prenom" name="ach_prenom" placeholder="Marie" required>
+            </div>
+            <div class="form-group">
+              <label for="ach-nom">Votre nom <span class="req">*</span></label>
+              <input type="text" id="ach-nom" name="ach_nom" placeholder="DUPONT" required>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="ach-email">Votre e-mail <span class="req">*</span></label>
+            <input type="email" id="ach-email" name="ach_email" placeholder="votre@email.com" required>
+          </div>
+
+          <div class="form-section-title">🌿 Votre proche — le bénéficiaire</div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="ben-prenom">Son prénom <span class="req">*</span></label>
+              <input type="text" id="ben-prenom" name="ben_prenom" placeholder="Sophie" required>
+            </div>
+            <div class="form-group">
+              <label for="ben-nom">Son nom <span class="req">*</span></label>
+              <input type="text" id="ben-nom" name="ben_nom" placeholder="MARTIN" required>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="ben-email">Son e-mail <span class="req">*</span></label>
+            <input type="email" id="ben-email" name="ben_email" placeholder="sophie@email.com" required>
+            <p style="font-size:0.72rem;color:var(--muted);margin-top:0.4rem;">Il·elle recevra son code cadeau et une invitation à remplir son questionnaire.</p>
+          </div>
+
+          <button type="submit" class="form-submit">🎁 Valider et régler le cadeau →</button>
+          <p class="form-note">Vous serez redirigé vers le paiement Stripe sécurisé (185 €).<br>Alicia enverra ensuite le code cadeau à votre proche.</p>
+        </form>
+      </div>
+    </div>
+  </section>
+
   <!-- ÉTAPE QUESTIONNAIRE -->
   <section id="bloc-questionnaire">
     <div class="container">
@@ -382,55 +432,96 @@
 
       if (flux === 'code') {
         document.getElementById('bloc-code').style.display = 'block';
-        window.scrollTo({top:0, behavior:'smooth'});
-        return;
+      } else if (flux === 'offrir') {
+        document.getElementById('bloc-offrir').style.display = 'block';
+      } else {
+        afficherQuestionnaire(flux);
       }
-
-      // Flux 'moi' ou 'offrir' → afficher directement le questionnaire
-      afficherQuestionnaire(flux);
+      window.scrollTo({top:0, behavior:'smooth'});
     }
 
     function afficherQuestionnaire(flux) {
       document.getElementById('hidden_flux').value = flux;
       document.getElementById('bloc-questionnaire').style.display = 'block';
 
-      const badge = document.getElementById('flux-badge');
-      const blocAcheteur = document.getElementById('bloc-acheteur');
-      const blocEmailBenef = document.getElementById('bloc-email-beneficiaire');
+      const badge     = document.getElementById('flux-badge');
+      const blocAch   = document.getElementById('bloc-acheteur');
       const btnSubmit = document.getElementById('btn-submit');
-      const noteText = document.getElementById('form-note-text');
+      const noteText  = document.getElementById('form-note-text');
 
       if (flux === 'moi') {
-        badge.textContent = '✦ Destin en Main — Pour moi';
-        blocAcheteur.style.display = 'block';
-        blocEmailBenef.style.display = 'none';
+        badge.textContent   = '✦ Destin en Main — Pour moi';
+        blocAch.style.display = 'block';
         btnSubmit.textContent = '🪄 Valider et régler ma commande';
-        noteText.textContent = 'Vous serez redirigé vers le paiement sécurisé Stripe. Alicia reçoit votre questionnaire dès validation.';
-      } else if (flux === 'offrir') {
-        badge.textContent = '✦ Destin en Main — Offrir à un proche';
-        blocAcheteur.style.display = 'block';
-        blocEmailBenef.style.display = 'block';
-        btnSubmit.textContent = '🎁 Valider et régler le cadeau';
-        noteText.textContent = 'Après paiement, Alicia enverra le code cadeau à votre proche pour qu\'il remplisse son questionnaire.';
+        noteText.textContent  = 'Vous serez redirigé vers le paiement sécurisé Stripe. Alicia reçoit votre questionnaire dès validation.';
       } else if (flux === 'code') {
-        badge.textContent = '✦ Destin en Main — Questionnaire cadeau';
-        blocAcheteur.style.display = 'none';
-        blocEmailBenef.style.display = 'none';
+        badge.textContent   = '✦ Destin en Main — Questionnaire cadeau';
+        blocAch.style.display = 'none';
         btnSubmit.textContent = '🪄 Envoyer mon questionnaire';
-        noteText.textContent = 'Vos informations restent strictement confidentielles et seront utilisées uniquement par Alicia.';
+        noteText.textContent  = 'Vos informations restent strictement confidentielles.';
       }
-
       window.scrollTo({top:0, behavior:'smooth'});
     }
 
     function retourChoix() {
-      document.getElementById('choix-flux').style.display = 'block';
-      document.getElementById('bloc-code').style.display = 'none';
+      document.getElementById('choix-flux').style.display   = 'block';
+      document.getElementById('bloc-code').style.display    = 'none';
+      document.getElementById('bloc-offrir').style.display  = 'none';
       document.getElementById('bloc-questionnaire').style.display = 'none';
-      fluxActuel = null;
-      codeValide = false;
+      fluxActuel  = null;
+      codeValide  = false;
       window.scrollTo({top:0, behavior:'smooth'});
     }
+
+    // ── Formulaire court OFFRIR ───────────────────────────────────────
+    document.getElementById('formOffrir').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const achPrenom = document.getElementById('ach-prenom').value.trim();
+      const achNom    = document.getElementById('ach-nom').value.trim();
+      const achEmail  = document.getElementById('ach-email').value.trim();
+      const benPrenom = document.getElementById('ben-prenom').value.trim();
+      const benNom    = document.getElementById('ben-nom').value.trim();
+      const benEmail  = document.getElementById('ben-email').value.trim();
+
+      if (!achPrenom||!achNom||!achEmail||!benPrenom||!benNom||!benEmail) return;
+
+      const code = genererCode(achNom, achPrenom, benNom, benPrenom);
+      const btn  = this.querySelector('.form-submit');
+      btn.disabled    = true;
+      btn.textContent = 'Envoi en cours…';
+
+      fetch(FORMSPREE, {
+        method: 'POST',
+        headers: {'Content-Type':'application/json','Accept':'application/json'},
+        body: JSON.stringify({
+          flux:           'offrir',
+          ach_prenom:     achPrenom, ach_nom: achNom, ach_email: achEmail,
+          ben_prenom:     benPrenom, ben_nom: benNom, ben_email: benEmail,
+          code_genere:    code
+        })
+      })
+      .then(res => {
+        if (res.ok) {
+          // Popup cadeau puis Stripe
+          document.getElementById('popup-icon').textContent    = '🎁';
+          document.getElementById('popup-title').innerHTML     = 'Cadeau enregistré —<br><em>merci !</em>';
+          document.getElementById('popup-text').innerHTML      = 'Vous allez être redirigé vers le paiement. Une fois réglé, Alicia enverra ce code à ' + benPrenom + ' :';
+          document.getElementById('popup-code-box').style.display = 'block';
+          document.getElementById('popup-code-box').textContent   = code;
+          document.getElementById('popup-text2').style.display    = 'block';
+          document.getElementById('popup-text2').innerHTML        = benPrenom + ' recevra une invitation par e-mail pour remplir son questionnaire.';
+          document.getElementById('popup-btn').textContent        = 'Régler le cadeau →';
+          document.getElementById('popup-btn').onclick = () => { window.location.href = STRIPE_DEM; };
+          document.getElementById('popupConfirm').style.display   = 'flex';
+          setTimeout(() => { window.location.href = STRIPE_DEM; }, 4000);
+          this.reset();
+        } else {
+          alert('Une erreur est survenue. Merci d\'écrire à espritirise@gmail.com');
+        }
+      })
+      .catch(() => alert('Une erreur est survenue. Merci d\'écrire à espritirise@gmail.com'))
+      .finally(() => { btn.disabled = false; btn.textContent = '🎁 Valider et régler le cadeau →'; });
+    });
 
     // ── Validation code cadeau ────────────────────────────────────────
     function validerCode() {
