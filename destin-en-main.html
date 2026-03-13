@@ -161,7 +161,7 @@
           <p class="flux-desc">Vous commandez votre propre guide Destin en Main. Vous remplissez le questionnaire et réglez en ligne.</p>
           <div class="flux-prix">185 €</div>
           <div class="flux-prix-note">PDF haute définition · 3 à 5 semaines</div>
-          <button class="btn-flux">Commander →</button>
+          <button class="btn-flux" onclick="event.stopPropagation();choisirFlux('moi')">Commander →</button>
         </div>
 
         <div class="flux-card cadeau-card" onclick="choisirFlux('offrir')">
@@ -170,7 +170,7 @@
           <p class="flux-desc">Vous offrez le guide à un proche. Vous réglez, il reçoit un code par e-mail et remplit lui-même son questionnaire.</p>
           <div class="flux-prix">185 €</div>
           <div class="flux-prix-note">Un beau cadeau · Livré directement au bénéficiaire</div>
-          <button class="btn-flux btn-flux-or">Offrir →</button>
+          <button class="btn-flux btn-flux-or" onclick="event.stopPropagation();choisirFlux('offrir')">Offrir →</button>
         </div>
 
         <div class="flux-card" onclick="choisirFlux('code')">
@@ -179,7 +179,7 @@
           <p class="flux-desc">Quelqu'un vous a offert un Destin en Main. Saisissez votre code pour accéder au questionnaire.</p>
           <div class="flux-prix" style="font-size:1.3rem;color:var(--canard);">Accès gratuit</div>
           <div class="flux-prix-note">Le paiement a déjà été effectué par votre proche</div>
-          <button class="btn-flux" style="background:linear-gradient(135deg,var(--iris-4),var(--iris-3));color:var(--marine);">Saisir mon code →</button>
+          <button class="btn-flux" style="background:linear-gradient(135deg,var(--iris-4),var(--iris-3));color:var(--marine);" onclick="event.stopPropagation();choisirFlux('code')">Saisir mon code →</button>
         </div>
 
       </div>
