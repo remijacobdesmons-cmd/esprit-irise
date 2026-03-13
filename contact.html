@@ -213,11 +213,11 @@
           <p class="contact-intro-text">Que vous ayez une question sur une formation, que vous souhaitiez réserver une séance, ou simplement que quelque chose résonne en vous sans que vous sachiez encore quoi — Alicia lit chaque message personnellement et répond avec soin.</p>
 
           <div class="contact-cards">
-            <a href="/cdn-cgi/l/email-protection#a7c2d4d7d5ced3ced5ced4c2e7c0cac6cecb89c4c8ca" class="contact-card">
+            <a href="/cdn-cgi/l/email-protection#b5d0c6c5c7dcc1dcc7dcc6d0f5d2d8d4dcd99bd6dad8" class="contact-card">
               <div class="contact-card-icon">✉️</div>
               <div>
                 <div class="contact-card-label">E-mail</div>
-                <div class="contact-card-value"><span class="__cf_email__" data-cfemail="9ffaecefedf6ebf6edf6ecfadff8f2fef6f3b1fcf0f2">[email&#160;protected]</span></div>
+                <div class="contact-card-value"><span class="__cf_email__" data-cfemail="3e5b4d4e4c574a574c574d5b7e59535f5752105d5153">[email&#160;protected]</span></div>
               </div>
             </a>
             <a href="tel:0672634154" class="contact-card">
@@ -252,7 +252,17 @@
           <h2 class="form-title">Envoyer un <em>message</em></h2>
           <p class="form-sous-titre">Réponse personnelle sous 48h, souvent bien avant.</p>
 
-          <form action="https://formspree.io/f/xdawzvvo" method="POST">
+          <!-- POPUP CONFIRMATION -->
+          <div id="popupConfirm" style="display:none; position:fixed; inset:0; z-index:200; background:rgba(15,37,64,0.72); backdrop-filter:blur(6px); align-items:center; justify-content:center; padding:2rem;">
+            <div style="background:white; border-radius:1.5rem; padding:3rem 2.5rem; max-width:480px; width:100%; text-align:center; box-shadow:0 40px 100px rgba(15,37,64,0.3);">
+              <div style="font-size:2.5rem; margin-bottom:1.2rem;">✉️</div>
+              <h2 style="font-family:'Cormorant Garamond',serif; font-size:1.9rem; font-weight:300; color:#1B3A5C; margin-bottom:0.6rem;">Message envoyé <em style="font-style:italic; background:linear-gradient(135deg,#6ECECE,#C4A35A); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;">avec succès</em></h2>
+              <p style="font-size:0.88rem; font-weight:300; color:#6B8CAE; line-height:1.75; margin-bottom:2rem;">Alicia a bien reçu votre message et vous répondra personnellement sous 48h.</p>
+              <button onclick="document.getElementById('popupConfirm').style.display='none'" style="padding:0.85rem 2.5rem; border-radius:3rem; border:none; font-family:'Raleway',sans-serif; font-size:0.78rem; font-weight:500; letter-spacing:0.18em; text-transform:uppercase; background:linear-gradient(135deg,#6ECECE,#3A9E9E); color:#1B3A5C; cursor:pointer; box-shadow:0 4px 20px rgba(110,206,206,0.35);">Parfait, merci !</button>
+            </div>
+          </div>
+
+          <form id="formContact">
             <div class="form-row">
               <div class="form-group">
                 <label for="prenom">Prénom</label>
@@ -289,6 +299,54 @@
             <button type="submit" class="form-submit">Envoyer mon message</button>
             <p class="form-note">Vos informations restent confidentielles et ne sont jamais partagées.<br>Alicia vous répond personnellement.</p>
           </form>
+
+          <script>
+            document.getElementById('formContact').addEventListener('submit', function(e) {
+              e.preventDefault();
+
+              const prenom  = document.getElementById('prenom');
+              const email   = document.getElementById('email');
+              const message = document.getElementById('message');
+
+              if (!prenom.value.trim() || !email.value.trim() || !message.value.trim()) return;
+              if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value)) { email.focus(); return; }
+
+              const btn = document.querySelector('.form-submit');
+              btn.disabled = true;
+              btn.textContent = 'Envoi en cours…';
+
+              fetch('https://formspree.io/f/xdawzvvo', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+                body: JSON.stringify({
+                  prenom: prenom.value,
+                  nom: document.getElementById('nom').value,
+                  email: email.value,
+                  sujet: document.getElementById('sujet').value,
+                  message: message.value
+                })
+              })
+              .then(res => {
+                if (res.ok) {
+                  document.getElementById('popupConfirm').style.display = 'flex';
+                  document.getElementById('formContact').reset();
+                } else {
+                  alert('Une erreur est survenue. Merci d\'écrire directement à espritirise@gmail.com');
+                }
+              })
+              .catch(() => {
+                alert('Une erreur est survenue. Merci d\'écrire directement à espritirise@gmail.com');
+              })
+              .finally(() => {
+                btn.disabled = false;
+                btn.textContent = 'Envoyer mon message';
+              });
+            });
+
+            document.getElementById('popupConfirm').addEventListener('click', function(e) {
+              if (e.target === this) this.style.display = 'none';
+            });
+          </script>
         </div>
 
       </div>
@@ -321,5 +379,5 @@
       </div>
       <div class="footer-col">
         <h5>Contact</h5>
-        <a href="/cdn-cgi/l/email-protection#92f7e1e2e0fbe6fbe0fbe1f7d2f5fff3fbfebcf1fdff"><span class="__cf_email__" data-cfemail="17726467657e637e657e647257707a767e7b3974787a">[email&#160;protected]</span></a>
+        <a href="/cdn-cgi/l/email-protection#c7a2b4b7b5aeb3aeb5aeb4a287a0aaa6aeabe9a4a8aa"><span class="__cf_email__" data-cfemail="a3c6d0d3d1cad7cad1cad0c6e3c4cec2cacf8dc0ccce">[email&#160;protected]</span></a>
         <a href="tel
