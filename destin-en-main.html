@@ -54,7 +54,7 @@
     .btn-flux-or{background:linear-gradient(135deg,var(--or),var(--or-deep));color:white;}
 
     /* ── CODE CADEAU ─────────────────────── */
-    #bloc-code{padding:3rem 2rem 5rem;display:none;}
+    #bloc-code{padding:3rem 2rem 5rem;}
     .code-wrapper{background:white;border-radius:1.5rem;padding:3rem;border:1px solid rgba(196,163,90,0.25);box-shadow:0 8px 40px rgba(27,58,92,0.06);max-width:520px;margin:0 auto;text-align:center;}
     .code-title{font-family:'Cormorant Garamond',serif;font-size:1.8rem;font-weight:300;color:var(--marine);margin-bottom:0.5rem;}
     .code-title em{font-style:italic;background:linear-gradient(135deg,var(--or),var(--iris-4));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
@@ -66,7 +66,7 @@
     .btn-valider-code:hover{transform:translateY(-2px);box-shadow:0 8px 32px rgba(196,163,90,0.45);}
 
     /* ── FORMULAIRE ──────────────────────── */
-    #bloc-questionnaire{padding:2rem 2rem 6rem;display:none;}
+    #bloc-questionnaire{padding:2rem 2rem 6rem;}
     .form-wrapper{background:white;border-radius:2rem;padding:3.5rem;border:1px solid rgba(110,206,206,0.2);box-shadow:0 12px 60px rgba(27,58,92,0.07);}
     .form-flux-badge{display:inline-flex;align-items:center;gap:0.5rem;background:linear-gradient(135deg,rgba(201,184,232,0.15),rgba(196,163,90,0.1));border:1px solid rgba(201,184,232,0.3);color:var(--or-deep);font-size:0.68rem;font-weight:400;letter-spacing:0.25em;text-transform:uppercase;padding:0.45rem 1.2rem;border-radius:2rem;margin-bottom:1.5rem;}
     .form-section-title{font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:400;color:var(--marine);letter-spacing:0.05em;margin:2.5rem 0 1.5rem;padding-bottom:0.6rem;border-bottom:1px solid rgba(110,206,206,0.2);display:flex;align-items:center;gap:0.6rem;}
@@ -187,7 +187,7 @@
   </section>
 
   <!-- ÉTAPE CODE CADEAU -->
-  <section id="bloc-code">
+  <section id="bloc-code" style="display:none;">
     <div class="container">
       <button class="btn-retour" onclick="retourChoix()">← Retour</button>
       <div class="code-wrapper">
@@ -253,7 +253,7 @@
   </section>
 
   <!-- ÉTAPE QUESTIONNAIRE -->
-  <section id="bloc-questionnaire">
+  <section id="bloc-questionnaire" style="display:none;">
     <div class="container">
       <button class="btn-retour" onclick="retourChoix()">← Retour</button>
       <div class="form-wrapper">
