@@ -185,11 +185,11 @@
       <div class="code-wrapper">
         <div style="font-size:2.5rem;margin-bottom:1rem;">🎁</div>
         <h2 class="code-title">Votre <em>code cadeau</em></h2>
-        <p class="code-sub">Saisissez le code que vous avez reçu par e-mail.<br>Il est au format <strong>PRENOM-NOM-POUR-PRENOM-NOM</strong>.</p>
-        <input type="text" id="code-input" placeholder="Ex : MARIE-DUPONT-POUR-SOPHIE-MARTIN" autocomplete="off">
+        <p class="code-sub">Saisissez le code que vous avez reçu par e-mail.</p>
+        <input type="text" id="code-input" placeholder="Votre code cadeau" autocomplete="off">
         <p id="code-error">Ce code ne correspond à aucune commande. Vérifiez l'orthographe ou contactez Alicia.</p>
         <button class="btn-valider-code" id="btn-valider-code">Valider mon code →</button>
-        <p style="font-size:0.72rem;color:var(--muted);margin-top:1.5rem;line-height:1.6;">Un problème ? Écrivez à <a href="mailto:espritirise@gmail.com" style="color:var(--canard);">espritirise@gmail.com</a></p>
+        <p style="font-size:0.72rem;color:var(--muted);margin-top:1.5rem;line-height:1.6;">Un problème ? Écrivez à <a href="/cdn-cgi/l/email-protection#b0d5c3c0c2d9c4d9c2d9c3d5f0d7ddd1d9dc9ed3dfdd" style="color:var(--canard);"><span class="__cf_email__" data-cfemail="37524447455e435e455e445277505a565e5b1954585a">[email&#160;protected]</span></a></p>
       </div>
     </div>
   </section>
@@ -310,7 +310,7 @@
       </div>
       <div class="footer-col">
         <h5>Contact</h5>
-        <a href="mailto:espritirise@gmail.com">espritirise@gmail.com</a>
+        <a href="/cdn-cgi/l/email-protection#dcb9afacaeb5a8b5aeb5afb99cbbb1bdb5b0f2bfb3b1"><span class="__cf_email__" data-cfemail="4e2b3d3e3c273a273c273d2b0e29232f2722602d2123">[email&#160;protected]</span></a>
         <a href="tel:0672634154">06 72 63 41 54</a>
         <a href="index.html#alicia">À propos d'Alicia</a>
       </div>
@@ -321,7 +321,7 @@
     </div>
   </footer>
 
-  <script>
+  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
     var STRIPE = 'https://buy.stripe.com/9B6dRa7z2e8M2At6NG1wY0e';
     var FORMSPREE = 'https://formspree.io/f/xlgpnynd';
     var fluxActuel = '';
@@ -487,13 +487,4 @@
             document.getElementById('popup-text2').style.display    = 'none';
             document.getElementById('popup-btn').textContent = "Merci, j'ai hâte !";
             document.getElementById('popup-btn').onclick = function() { document.getElementById('popupConfirm').style.display = 'none'; };
-            document.getElementById('popupConfirm').style.display = 'flex';
-          }
-        } else { alert('Erreur. Écrivez à espritirise@gmail.com'); }
-      }).catch(function() { alert('Erreur. Écrivez à espritirise@gmail.com'); })
-      .finally(function() { btn.disabled = false; btn.textContent = flux === 'code' ? '🪄 Envoyer mon questionnaire' : '🪄 Valider et régler ma commande'; });
-    });
-  </script>
-
-</body>
-</html>
+            document.getElementById('popupConfirm').style
