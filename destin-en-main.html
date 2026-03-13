@@ -427,8 +427,9 @@
 
     // ── Détection URL au chargement ───────────────────────────────────
     document.addEventListener('DOMContentLoaded', function() {
+      const hash = window.location.hash.replace('#', '');
       const params = new URLSearchParams(window.location.search);
-      const flux   = params.get('flux');
+      const flux = hash || params.get('flux');
       if (flux === 'moi' || flux === 'offrir' || flux === 'code') {
         choisirFlux(flux);
       }
