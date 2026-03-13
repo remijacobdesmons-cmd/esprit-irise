@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Destin en Main — Questionnaire · Esprit Irisé</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Raleway:wght@200;300;400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --marine:      #1B3A5C;
+      --deep:        #0F2540;
+      --canard:      #2A7F8A;
+      --turquoise:   #6ECECE;
+      --turquoise-2: #3A9E9E;
+      --or:          #C4A35A;
+      --or-deep:     #B8963E;
+      --iris-3:      #B8C4E8;
+      --iris-4:      #C9B8E8;
+      --light:       #F0F7FA;
+      --muted:       #6B8CAE;
+      --text:        #1B3A5C;
+      --white:       #FFFFFF;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Raleway', sans-serif; font-weight: 300; color: var(--text); background: var(--white); overflow-x: hidden; }
+
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1.2rem 4rem;
+      background: rgba(255,255,255,0.92);
+      backdrop-filter: blur(18px);
+      border-bottom: 1px solid rgba(110,206,206,0.2);
+    }
+    .nav-logo { font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; font-weight: 300; letter-spacing: 0.12em; text-decoration: none; background: linear-gradient(120deg, var(--marine), var(--turquoise)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .nav-links { display: flex; gap: 2.5rem; list-style: none; align-items: center; }
+    .nav-links a { text-decoration: none; font-size: 0.75rem; font-weight: 400; letter-spacing: 0.18em; text-transform: uppercase; color: var(--marine); transition: color 0.3s; }
+    .nav-links a:hover { color: var(--turquoise); }
+    .nav-cta { background: linear-gradient(135deg, var(--turquoise), var(--turquoise-2)) !important; color: var(--marine) !important; padding: 0.5rem 1.4rem; border-radius: 2rem; font-weight: 500 !important; -webkit-text-fill-color: var(--marine) !important; }
+
+    /* ─── HERO ────────────────────────────── */
+    .page-hero {
+      min-height: 56vh;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      text-align: center;
+      padding: 10rem 2rem 5rem;
+      position: relative; overflow: hidden;
+      background: linear-gradient(160deg, var(--deep) 0%, var(--marine) 55%, var(--canard) 100%);
+    }
+    .hero-orb { position: absolute; border-radius: 50%; filter: blur(80px); pointer-events: none; }
+    .orb-1 { width: 500px; height: 500px; background: radial-gradient(circle, rgba(201,184,232,0.25), transparent 70%); top: -10%; left: -10%; animation: float 8s ease-in-out infinite; }
+    .orb-2 { width: 350px; height: 350px; background: radial-gradient(circle, rgba(196,163,90,0.2), transparent 70%); bottom: 0; right: -5%; animation: float 10s ease-in-out infinite reverse; }
+    .orb-3 { width: 250px; height: 250px; background: radial-gradient(circle, rgba(110,206,206,0.15), transparent 70%); top: 30%; right: 15%; animation: float 12s ease-in-out infinite; }
+    @keyframes float { 0%, 100% { transform: translateY(0) scale(1); } 50% { transform: translateY(-25px) scale(1.04); } }
+    .page-hero-content { position: relative; z-index: 2; max-width: 700px; }
+    .hero-eyebrow { font-size: 0.68rem; font-weight: 300; letter-spacing: 0.45em; text-transform: uppercase; color: rgba(201,184,232,0.8); margin-bottom: 1.5rem; opacity: 0; animation: fadeUp 0.9s ease 0.1s forwards; }
+    .page-hero h1 { font-family: 'Cormorant Garamond', serif; font-size: clamp(2.5rem, 5.5vw, 4rem); font-weight: 300; line-height: 1.15; color: white; margin-bottom: 1.5rem; opacity: 0; animation: fadeUp 0.9s ease 0.3s forwards; }
+    .page-hero h1 em { font-style: italic; background: linear-gradient(135deg, var(--iris-4), var(--turquoise), var(--or)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .page-hero p { font-size: 0.95rem; font-weight: 200; line-height: 1.85; color: rgba(255,255,255,0.7); opacity: 0; animation: fadeUp 0.9s ease 0.5s forwards; }
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: translateY(0); } }
+
+    .iris-divider { height: 2px; background: linear-gradient(90deg, transparent, var(--deep), var(--iris-4), var(--turquoise), var(--or), transparent); opacity: 0.6; border: none; }
+
+    /* ─── INTRO ───────────────────────────── */
+    .intro-section { padding: 5rem 2rem; background: linear-gradient(135deg, rgba(201,184,232,0.06), rgba(196,163,90,0.04)); }
+    .container { max-width: 820px; margin: 0 auto; }
+    .intro-badge {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      background: linear-gradient(135deg, rgba(201,184,232,0.15), rgba(196,163,90,0.1));
+      border: 1px solid rgba(201,184,232,0.3);
+      color: var(--or-deep);
+      font-size: 0.68rem; font-weight: 400; letter-spacing: 0.25em; text-transform: uppercase;
+      padding: 0.45rem 1.2rem; border-radius: 2rem; margin-bottom: 2rem;
+    }
+    .intro-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.8rem, 3.5vw, 2.6rem); font-weight: 300; color: var(--marine); line-height: 1.25; margin-bottom: 1.5rem; }
+    .intro-title em { font-style: italic; background: linear-gradient(135deg, var(--canard), var(--iris-4)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .intro-text { font-size: 0.92rem; font-weight: 300; color: var(--muted); line-height: 1.9; margin-bottom: 1.2rem; }
+    .intro-note {
+      margin-top: 2rem;
+      padding: 1.4rem 1.8rem;
+      background: linear-gradient(135deg, rgba(110,206,206,0.08), rgba(201,184,232,0.08));
+      border: 1px solid rgba(110,206,206,0.2);
+      border-left: 3px solid var(--turquoise);
+      border-radius: 0 1rem 1rem 0;
+    }
+    .intro-note p { font-size: 0.85rem; font-weight: 300; color: var(--text); line-height: 1.75; }
+    .intro-note strong { color: var(--marine); font-weight: 500; }
+
+    /* ─── FORMULAIRE ──────────────────────── */
+    .form-section { padding: 2rem 2rem 6rem; }
+    .form-wrapper {
+      background: white;
+      border-radius: 2rem;
+      padding: 3.5rem;
+      border: 1px solid rgba(110,206,206,0.2);
+      box-shadow: 0 12px 60px rgba(27,58,92,0.07);
+    }
+    .form-section-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.3rem; font-weight: 400;
+      color: var(--marine);
+      letter-spacing: 0.05em;
+      margin: 2.5rem 0 1.5rem;
+      padding-bottom: 0.6rem;
+      border-bottom: 1px solid rgba(110,206,206,0.2);
+      display: flex; align-items: center; gap: 0.6rem;
+    }
+    .form-section-title:first-of-type { margin-top: 0; }
+    .form-group { margin-bottom: 1.4rem; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    label { display: block; font-size: 0.7rem; font-weight: 400; letter-spacing: 0.15em; text-transform: uppercase; color: var(--muted); margin-bottom: 0.45rem; }
+    label span.req { color: var(--or); }
+    input[type="text"], input[type="email"], input[type="tel"], select, textarea {
+      width: 100%; padding: 0.85rem 1.1rem;
+      border: 1px solid rgba(110,206,206,0.25);
+      border-radius: 0.75rem;
+      font-family: 'Raleway', sans-serif; font-size: 0.88rem; font-weight: 300;
+      color: var(--text); background: rgba(240,247,250,0.5);
+      outline: none; transition: border-color 0.25s, box-shadow 0.25s;
+    }
+    input:focus, select:focus, textarea:focus { border-color: var(--turquoise); box-shadow: 0 0 0 3px rgba(110,206,206,0.12); background: white; }
+    textarea { resize: vertical; min-height: 110px; }
+
+    /* civilité radio */
+    .radio-group { display: flex; gap: 0.8rem; flex-wrap: wrap; }
+    .radio-option { display: none; }
+    .radio-label {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      padding: 0.55rem 1.2rem;
+      border: 1px solid rgba(110,206,206,0.25);
+      border-radius: 2rem;
+      font-size: 0.82rem; font-weight: 300; color: var(--muted);
+      cursor: pointer; transition: all 0.2s;
+    }
+    .radio-option:checked + .radio-label {
+      background: linear-gradient(135deg, rgba(110,206,206,0.12), rgba(201,184,232,0.12));
+      border-color: var(--turquoise);
+      color: var(--marine); font-weight: 400;
+    }
+
+    /* achat pour radio */
+    .achat-group { display: flex; gap: 1rem; flex-wrap: wrap; }
+    .achat-option { display: none; }
+    .achat-label {
+      display: inline-flex; align-items: center; gap: 0.6rem;
+      padding: 0.75rem 1.5rem;
+      border: 1px solid rgba(110,206,206,0.25);
+      border-radius: 0.75rem;
+      font-size: 0.85rem; font-weight: 300; color: var(--muted);
+      cursor: pointer; transition: all 0.2s;
+    }
+    .achat-option:checked + .achat-label {
+      background: linear-gradient(135deg, rgba(196,163,90,0.1), rgba(201,184,232,0.1));
+      border-color: var(--or);
+      color: var(--marine); font-weight: 400;
+    }
+
+    .form-submit {
+      width: 100%; padding: 1.1rem;
+      border-radius: 3rem; border: none;
+      font-family: 'Raleway', sans-serif; font-size: 0.8rem; font-weight: 500;
+      letter-spacing: 0.2em; text-transform: uppercase;
+      background: linear-gradient(135deg, var(--iris-4), var(--turquoise), var(--turquoise-2));
+      color: var(--marine);
+      cursor: pointer;
+      box-shadow: 0 4px 24px rgba(110,206,206,0.35);
+      transition: transform 0.25s, box-shadow 0.25s;
+      margin-top: 1.5rem;
+    }
+    .form-submit:hover { transform: translateY(-2px); box-shadow: 0 8px 36px rgba(110,206,206,0.5); }
+    .form-submit:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
+    .form-note { text-align: center; font-size: 0.72rem; font-weight: 300; color: var(--muted); margin-top: 1.2rem; line-height: 1.7; }
+
+    /* ─── POPUP ───────────────────────────── */
+    #popupConfirm {
+      display: none; position: fixed; inset: 0; z-index: 200;
+      background: rgba(15,37,64,0.75); backdrop-filter: blur(6px);
+      align-items: center; justify-content: center; padding: 2rem;
+    }
+    .popup-inner {
+      background: white; border-radius: 2rem;
+      padding: 3.5rem 3rem; max-width: 520px; width: 100%;
+      text-align: center; box-shadow: 0 40px 100px rgba(15,37,64,0.3);
+      animation: slideUp 0.35s ease;
+    }
+    @keyframes slideUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+    .popup-icon { font-size: 3rem; margin-bottom: 1.2rem; }
+    .popup-title { font-family: 'Cormorant Garamond', serif; font-size: 2rem; font-weight: 300; color: var(--marine); margin-bottom: 0.8rem; line-height: 1.2; }
+    .popup-title em { font-style: italic; background: linear-gradient(135deg, var(--iris-4), var(--or)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .popup-text { font-size: 0.88rem; font-weight: 300; color: var(--muted); line-height: 1.8; margin-bottom: 2rem; }
+    .popup-btn {
+      padding: 0.9rem 2.5rem; border-radius: 3rem; border: none;
+      font-family: 'Raleway', sans-serif; font-size: 0.78rem; font-weight: 500;
+      letter-spacing: 0.18em; text-transform: uppercase;
+      background: linear-gradient(135deg, var(--iris-4), var(--turquoise-2));
+      color: var(--marine); cursor: pointer;
+      box-shadow: 0 4px 20px rgba(110,206,206,0.35);
+    }
+
+    /* ─── FOOTER ──────────────────────────── */
+    footer { background: var(--deep); color: rgba(255,255,255,0.85); padding: 4rem 2rem 2rem; }
+    .footer-grid { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 4rem; padding-bottom: 3rem; border-bottom: 1px solid rgba(255,255,255,0.08); margin-bottom: 2rem; }
+    .footer-logo { font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; font-weight: 300; letter-spacing: 0.12em; background: linear-gradient(120deg, var(--turquoise), var(--or)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin-bottom: 0.8rem; }
+    .footer-tagline { font-size: 0.75rem; font-weight: 200; color: rgba(255,255,255,0.45); line-height: 1.8; }
+    .footer-col h5 { font-size: 0.65rem; font-weight: 400; letter-spacing: 0.3em; text-transform: uppercase; color: rgba(255,255,255,0.4); margin-bottom: 1.2rem; }
+    .footer-col a { display: block; font-size: 0.82rem; font-weight: 200; color: rgba(255,255,255,0.75); text-decoration: none; margin-bottom: 0.6rem; transition: color 0.2s; }
+    .footer-col a:hover { color: var(--turquoise); }
+    .footer-bottom { max-width: 1100px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; font-size: 0.72rem; font-weight: 200; color: rgba(255,255,255,0.3); }
+
+    @media (max-width: 768px) {
+      nav { padding: 1rem 1.5rem; }
+      .nav-links { gap: 1rem; }
+      .form-wrapper { padding: 2rem 1.5rem; }
+      .form-row { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr; gap: 2rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="index.html" class="nav-logo">Esprit irisé</a>
+    <ul class="nav-links">
+      <li><a href="formations.html">Formations</a></li>
+      <li><a href="livres.html">Livres</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a href="reservation.html" class="nav-cta">Réserver</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section class="page-hero">
+    <div class="hero-orb orb-1"></div>
+    <div class="hero-orb orb-2"></div>
+    <div class="hero-orb orb-3"></div>
+    <div class="page-hero-content">
+      <p class="hero-eyebrow">Esprit irisé · Destin en Main</p>
+      <h1>Votre guide spirituel<br><em>100% personnalisé</em></h1>
+      <p>Remplissez ce questionnaire avec soin — chaque réponse<br>nourrira la création de votre œuvre unique.</p>
+    </div>
+  </section>
+
+  <hr class="iris-divider">
+
+  <!-- INTRO -->
+  <section class="intro-section">
+    <div class="container">
+      <span class="intro-badge">🪄 Mon livre exclusif · Édition limitée</span>
+      <h2 class="intro-title">Merci pour votre <em>confiance</em></h2>
+      <p class="intro-text">Remplissez les champs pour la personne à qui est destiné l'offre. Prenez le temps de les remplir sérieusement afin qu'Alicia dispose des informations nécessaires pour vous offrir un livre spécial et personnel de qualité.</p>
+      <p class="intro-text">Si vous ne disposez pas de tous les renseignements précis demandés, précisez-le et partagez uniquement les informations dont vous disposez.</p>
+      <div class="intro-note">
+        <p>🔮 <strong>Pour le Design Humain</strong>, l'heure exacte, la date et le lieu de naissance sont <strong>indispensables</strong>. Ces trois éléments permettent à Alicia de générer votre carte énergétique complète.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- POPUP CONFIRMATION -->
+  <div id="popupConfirm">
+    <div class="popup-inner">
+      <div class="popup-icon">🪄</div>
+      <h2 class="popup-title">Questionnaire envoyé<br><em>avec succès</em></h2>
+      <p class="popup-text">Alicia a bien reçu vos informations et va commencer à créer votre guide unique. Vous recevrez votre <em>Destin en Main</em> sous 3 à 5 semaines. Merci pour votre confiance ✨</p>
+      <button class="popup-btn" onclick="document.getElementById('popupConfirm').style.display='none'">Merci, j'ai hâte !</button>
+    </div>
+  </div>
+
+  <!-- FORMULAIRE -->
+  <section class="form-section">
+    <div class="container">
+      <div class="form-wrapper">
+
+        <form id="formDestin">
+
+          <!-- BLOC 1 : IDENTITÉ -->
+          <div class="form-section-title">✦ Vos informations</div>
+
+          <div class="form-group">
+            <label>Civilité <span class="req">*</span></label>
+            <div class="radio-group">
+              <input type="radio" name="civilite" id="civ-mme" value="Madame" class="radio-option" required>
+              <label for="civ-mme" class="radio-label">👩 Madame</label>
+              <input type="radio" name="civilite" id="civ-mr" value="Monsieur" class="radio-option">
+              <label for="civ-mr" class="radio-label">👨 Monsieur</label>
+              <input type="radio" name="civilite" id="civ-enf" value="Enfant" class="radio-option">
+              <label for="civ-enf" class="radio-label">🧒 Enfant</label>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="email">Votre e-mail <span class="req">*</span></label>
+            <input type="email" id="email" name="email" placeholder="votre@email.com" required>
+          </div>
+
+          <div class="form-group">
+            <label for="adresse">Adresse postale <span class="req">*</span></label>
+            <input type="text" id="adresse" name="adresse" placeholder="Rue, ville, code postal, pays" required>
+          </div>
+
+          <div class="form-group">
+            <label>Cet achat est <span class="req">*</span></label>
+            <div class="achat-group">
+              <input type="radio" name="achat_pour" id="achat-moi" value="Pour moi" class="achat-option" required>
+              <label for="achat-moi" class="achat-label">💝 Pour moi</label>
+              <input type="radio" name="achat_pour" id="achat-proche" value="Offert par un proche" class="achat-option">
+              <label for="achat-proche" class="achat-label">🎁 Offert par un proche</label>
+            </div>
+          </div>
+
+          <!-- BLOC 2 : PERSONNE CONCERNÉE -->
+          <div class="form-section-title">🌿 La personne concernée par le guide</div>
+
+          <div class="form-group">
+            <label for="nom_prenom">Nom d'usage et prénom(s) <span class="req">*</span></label>
+            <input type="text" id="nom_prenom" name="nom_prenom" placeholder="Ex : Marie DUPONT" required>
+          </div>
+
+          <div class="form-group">
+            <label for="naissance">Date, heure et lieu de naissance <span class="req">*</span></label>
+            <textarea id="naissance" name="naissance" placeholder="Ex : 15 mars 1987, 14h30, Lyon (France)&#10;Si l'heure n'est pas connue, précisez-le." required></textarea>
+          </div>
+
+          <div class="form-group">
+            <label for="fratrie">Rang dans la fratrie</label>
+            <input type="text" id="fratrie" name="fratrie" placeholder="Ex : Aîné(e) de 3 enfants, enfant unique…">
+          </div>
+
+          <!-- BLOC 3 : SITUATION -->
+          <div class="form-section-title">✨ Situation & contexte</div>
+
+          <div class="form-group">
+            <label for="situation">Situation professionnelle</label>
+            <select id="situation" name="situation">
+              <option value="">Choisissez…</option>
+              <option value="Étudiant(e)">Étudiant(e)</option>
+              <option value="Salarié(e) (employé, ouvrier, cadre…)">Salarié(e) (employé, ouvrier, cadre…)</option>
+              <option value="Parent au foyer">Parent au foyer</option>
+              <option value="Indépendant(e) (entrepreneur, artisan, agriculteur…)">Indépendant(e) (entrepreneur, artisan, agriculteur…)</option>
+              <option value="Retraité(e)">Retraité(e)</option>
+              <option value="Sans activité">Sans activité</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="precisions_situation">Précisions sur votre situation (optionnel)</label>
+            <textarea id="precisions_situation" name="precisions_situation" placeholder="Quelques mots sur votre parcours, votre contexte actuel…"></textarea>
+          </div>
+
+          <div class="form-group">
+            <label for="animal">Votre animal préféré</label>
+            <input type="text" id="animal" name="animal" placeholder="Ex : Le loup, le dauphin, l'aigle…">
+          </div>
+
+          <!-- BLOC 4 : ATTENTES -->
+          <div class="form-section-title">🔮 Vos attentes</div>
+
+          <div class="form-group">
+            <label for="attentes">Vos attentes par rapport à votre achat <span class="req">*</span></label>
+            <textarea id="attentes" name="attentes" placeholder="Qu'espérez-vous trouver dans ce guide ? Quelles questions vous habitent ? Qu'est-ce qui vous a amené(e) à commander ?" required></textarea>
+          </div>
+
+          <div class="form-group">
+            <label for="complementaires">Informations complémentaires (optionnel)</label>
+            <textarea id="complementaires" name="complementaires" placeholder="Tout ce qui vous semble important à partager avec Alicia pour personnaliser au mieux votre guide…"></textarea>
+          </div>
+
+          <button type="submit" class="form-submit">🪄 Envoyer mon questionnaire</button>
+          <p class="form-note">Vos informations restent strictement confidentielles et seront exclusivement utilisées<br>pour créer votre guide <em>Destin en Main</em>.</p>
+
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <hr class="iris-divider">
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-grid">
+      <div>
+        <div class="footer-logo">Esprit irisé</div>
+        <p class="footer-tagline">École de vie intérieure · Formations holistiques<br>Science, Corps & Sens de la vie<br><br>Tresson, 72440 · Sarthe</p>
+      </div>
+      <div class="footer-col">
+        <h5>Pages</h5>
+        <a href="index.html">Accueil</a>
+        <a href="reservation.html">Réserver une séance</a>
+        <a href="formations.html">Formations</a>
+        <a href="livres.html">Livres & Outils</a>
+        <a href="contact.html">Contact</a>
+      </div>
+      <div class="footer-col">
+        <h5>Contact</h5>
+        <a href="mailto:espritirise@gmail.com">espritirise@gmail.com</a>
+        <a href="tel:0672634154">06 72 63 41 54</a>
+        <a href="index.html#alicia">À propos d'Alicia</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2025 Esprit irisé · Alicia Desmons · SIRET 90419149100011</span>
+      <span><a href="cgv.html" style="color:rgba(255,255,255,0.3); text-decoration:none;">CGV</a> · <a href="confidentialite.html" style="color:rgba(255,255,255,0.3); text-decoration:none;">Confidentialité</a></span>
+    </div>
+  </footer>
+
+  <script>
+    const errStyle = '1px solid #e05252';
+    const okStyle  = '1px solid rgba(110,206,206,0.25)';
+
+    document.getElementById('formDestin').addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      const email    = document.getElementById('email');
+      const adresse  = document.getElementById('adresse');
+      const nom      = document.getElementById('nom_prenom');
+      const naiss    = document.getElementById('naissance');
+      const attentes = document.getElementById('attentes');
+      const civilite = document.querySelector('input[name="civilite"]:checked');
+      const achat    = document.querySelector('input[name="achat_pour"]:checked');
+
+      let valid = true;
+      [email, adresse, nom, naiss, attentes].forEach(el => {
+        if (!el.value.trim()) { el.style.border = errStyle; valid = false; }
+        else { el.style.border = okStyle; }
+      });
+      if (!civilite || !achat) { valid = false; }
+      if (!valid) { document.querySelector('[style*="border: 1px solid rgb(224"]') && document.querySelector('[style*="border: 1px solid rgb(224"]').focus(); return; }
+
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value)) {
+        email.style.border = errStyle; email.focus(); return;
+      }
+
+      const btn = document.querySelector('.form-submit');
+      btn.disabled = true;
+      btn.textContent = 'Envoi en cours…';
+
+      fetch('https://formspree.io/f/xlgpnynd', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify({
+          civilite:              civilite.value,
+          email:                 email.value,
+          adresse:               adresse.value,
+          achat_pour:            achat.value,
+          nom_prenom:            nom.value,
+          naissance:             naiss.value,
+          fratrie:               document.getElementById('fratrie').value,
+          situation:             document.getElementById('situation').value,
+          precisions_situation:  document.getElementById('precisions_situation').value,
+          animal:                document.getElementById('animal').value,
+          attentes:              attentes.value,
+          complementaires:       document.getElementById('complementaires').value
+        })
+      })
+      .then(res => {
+        if (res.ok) {
+          document.getElementById('popupConfirm').style.display = 'flex';
+          document.getElementById('formDestin').reset();
+          [email, adresse, nom, naiss, attentes].forEach(el => el.style.border = okStyle);
+        } else {
+          alert('Une erreur est survenue. Merci d\'écrire directement à espritirise@gmail.com');
+        }
+      })
+      .catch(() => {
+        alert('Une erreur est survenue. Merci d\'écrire directement à espritirise@gmail.com');
+      })
+      .finally(() => {
+        btn.disabled = false;
+        btn.textContent = '🪄 Envoyer mon questionnaire';
+      });
+    });
+
+    document.getElementById('popupConfirm').addEventListener('click', function(e) {
+      if (e.target === this) this.style.display = 'none';
+    });
+  </script>
+
+</body>
+</html>
