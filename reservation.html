@@ -738,42 +738,34 @@
       const dispos       = document.getElementById('disponibilites').value || 'Non renseignées';
       const message      = document.getElementById('message').value || 'Aucun message';
 
-      const btn = document.querySelector('.form-submit');
-      btn.disabled = true;
-      btn.textContent = 'Envoi en cours…';
+      const sujet = encodeURIComponent('Demande de réservation — ' + prenomV + ' ' + nomV);
+      const corps = encodeURIComponent(
+        'Bonjour Alicia,\n\n' +
+        'Nouvelle demande de réservation reçue depuis le site.\n\n' +
+        '─── Informations ───────────────────\n' +
+        'Prénom : ' + prenomV + '\n' +
+        'Nom : ' + nomV + '\n' +
+        'E-mail : ' + emailV + '\n' +
+        'Téléphone : ' + telephone + '\n\n' +
+        '─── Séance ─────────────────────────\n' +
+        'Type : ' + seanceV + '\n' +
+        'Modalité : ' + modalite + '\n' +
+        'Disponibilités : ' + dispos + '\n\n' +
+        '─── Message ────────────────────────\n' +
+        message + '\n\n' +
+        '────────────────────────────────────\n' +
+        'Message envoyé depuis esprit-irise.fr'
+      );
 
-      fetch('https://formspree.io/f/meerkwwz', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-        body: JSON.stringify({
-          prenom: prenomV,
-          nom: nomV,
-          email: emailV,
-          telephone: telephone,
-          seance: seanceV,
-          modalite: modalite,
-          disponibilites: dispos,
-          message: message
-        })
-      })
-      .then(res => {
-        if (res.ok) {
-          document.getElementById('popupConfirm').style.display = 'flex';
-          document.getElementById('formReservation').reset();
-          ['prenom','nom','email','seance'].forEach(id => {
-            document.getElementById(id).style.border = okStyle;
-            document.getElementById(id).style.boxShadow = '';
-          });
-        } else {
-          alert('Une erreur est survenue. Merci de réessayer ou d\'écrire directement à espritirise@gmail.com');
-        }
-      })
-      .catch(() => {
-        alert('Une erreur est survenue. Merci de réessayer ou d\'écrire directement à espritirise@gmail.com');
-      })
-      .finally(() => {
-        btn.disabled = false;
-        btn.textContent = 'Envoyer ma demande de réservation';
+      window.location.href = 'mailto:espritirise@gmail.com?subject=' + sujet + '&body=' + corps;
+
+      // Popup confirmation
+      document.getElementById('popupConfirm').style.display = 'flex';
+      document.getElementById('formReservation').reset();
+      // Remettre les bordures à la normale après reset
+      ['prenom','nom','email','seance'].forEach(id => {
+        document.getElementById(id).style.border = okStyle;
+        document.getElementById(id).style.boxShadow = '';
       });
     });
 
@@ -804,7 +796,7 @@
       </div>
       <div class="footer-col">
         <h5>Contact</h5>
-        <a href="/cdn-cgi/l/email-protection#2e4b5d5e5c475a475c475d4b6e49434f4742004d4143"><span class="__cf_email__" data-cfemail="05607675776c716c776c7660456268646c692b666a68">[email&#160;protected]</span></a>
+        <a href="mailto:espritirise@gmail.com">espritirise@gmail.com</a>
         <a href="tel:0672634154">06 72 63 41 54</a>
         <a href="index.html#alicia">À propos d'Alicia</a>
       </div>

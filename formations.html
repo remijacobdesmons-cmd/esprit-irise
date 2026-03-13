@@ -513,7 +513,7 @@
     </div>
   </footer>
 
-  <script>
+  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
     function openModal(nom, prix) {
       document.getElementById('modalNom').textContent = nom;
       document.getElementById('modalFormationNom').textContent = nom;
@@ -535,6 +535,4 @@
       const email = document.getElementById('modalEmail').value;
       const formation = document.getElementById('modalFormationNom').textContent;
       const prix = document.getElementById('modalPrix').textContent;
-      // Redirection vers mailto avec pré-remplissage
-      const sujet = encodeURIComponent(`Commande formation — ${formation}`);
-      const corps = encodeURIComponent(`Bonjour Alicia,\n\nJe souhaite commander la formation "${formation}" (${prix}).\n\nPrénom : ${prenom}\nNom : ${nom
+      // Redirection vers mailto avec pré
